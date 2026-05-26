@@ -1,0 +1,7106 @@
+[
+  {
+    "start": 0.69,
+    "end": 1.65,
+    "text": "おはよう",
+    "words": [
+      {
+        "word": "お",
+        "start": 0.69,
+        "end": 1.17,
+        "probability": 0.231
+      },
+      {
+        "word": "は",
+        "start": 1.17,
+        "end": 1.35,
+        "probability": 0.929
+      },
+      {
+        "word": "よう",
+        "start": 1.35,
+        "end": 1.65,
+        "probability": 0.874
+      }
+    ],
+    "translated_text": "早啊"
+  },
+  {
+    "start": 2.81,
+    "end": 9.71,
+    "text": "よく眠れた? それ?",
+    "words": [
+      {
+        "word": "よ",
+        "start": 2.81,
+        "end": 3.29,
+        "probability": 0.326
+      },
+      {
+        "word": "く",
+        "start": 3.29,
+        "end": 3.53,
+        "probability": 0.996
+      },
+      {
+        "word": "眠",
+        "start": 3.53,
+        "end": 3.81,
+        "probability": 0.645
+      },
+      {
+        "word": "れた?",
+        "start": 3.81,
+        "end": 4.15,
+        "probability": 0.979
+      },
+      {
+        "word": "それ?",
+        "start": 9.23,
+        "end": 9.71,
+        "probability": 0.148
+      }
+    ],
+    "translated_text": "睡得好吗？嗯？"
+  },
+  {
+    "start": 11.31,
+    "end": 16.45,
+    "text": "悪いこの君を繋いでおくためのくさりだよ そう",
+    "words": [
+      {
+        "word": "悪",
+        "start": 11.31,
+        "end": 11.69,
+        "probability": 0.987
+      },
+      {
+        "word": "い",
+        "start": 11.69,
+        "end": 11.85,
+        "probability": 0.992
+      },
+      {
+        "word": "この",
+        "start": 11.85,
+        "end": 12.07,
+        "probability": 0.643
+      },
+      {
+        "word": "君",
+        "start": 12.07,
+        "end": 12.35,
+        "probability": 0.875
+      },
+      {
+        "word": "を",
+        "start": 12.35,
+        "end": 12.55,
+        "probability": 0.998
+      },
+      {
+        "word": "繋",
+        "start": 12.55,
+        "end": 12.81,
+        "probability": 0.797
+      },
+      {
+        "word": "い",
+        "start": 12.81,
+        "end": 12.99,
+        "probability": 0.987
+      },
+      {
+        "word": "で",
+        "start": 12.99,
+        "end": 13.09,
+        "probability": 0.996
+      },
+      {
+        "word": "お",
+        "start": 13.09,
+        "end": 13.19,
+        "probability": 0.584
+      },
+      {
+        "word": "く",
+        "start": 13.19,
+        "end": 13.31,
+        "probability": 0.895
+      },
+      {
+        "word": "ため",
+        "start": 13.31,
+        "end": 13.47,
+        "probability": 0.917
+      },
+      {
+        "word": "の",
+        "start": 13.47,
+        "end": 13.65,
+        "probability": 0.952
+      },
+      {
+        "word": "く",
+        "start": 13.65,
+        "end": 13.77,
+        "probability": 0.252
+      },
+      {
+        "word": "さ",
+        "start": 13.77,
+        "end": 13.93,
+        "probability": 0.913
+      },
+      {
+        "word": "り",
+        "start": 13.93,
+        "end": 14.05,
+        "probability": 0.971
+      },
+      {
+        "word": "だ",
+        "start": 14.05,
+        "end": 14.19,
+        "probability": 0.997
+      },
+      {
+        "word": "よ",
+        "start": 14.19,
+        "end": 14.39,
+        "probability": 0.998
+      },
+      {
+        "word": "そう",
+        "start": 16.21,
+        "end": 16.45,
+        "probability": 0.418
+      }
+    ],
+    "translated_text": "这是为了绑住你这个坏孩子而准备的锁链哦，没错。"
+  },
+  {
+    "start": 17.39,
+    "end": 19.33,
+    "text": "君は私に閉じた",
+    "words": [
+      {
+        "word": "君",
+        "start": 17.39,
+        "end": 17.87,
+        "probability": 0.571
+      },
+      {
+        "word": "は",
+        "start": 17.87,
+        "end": 18.09,
+        "probability": 0.994
+      },
+      {
+        "word": "私",
+        "start": 18.09,
+        "end": 18.47,
+        "probability": 0.969
+      },
+      {
+        "word": "に",
+        "start": 18.47,
+        "end": 18.67,
+        "probability": 0.895
+      },
+      {
+        "word": "閉",
+        "start": 18.67,
+        "end": 18.81,
+        "probability": 0.711
+      },
+      {
+        "word": "じ",
+        "start": 18.81,
+        "end": 19.01,
+        "probability": 0.702
+      },
+      {
+        "word": "た",
+        "start": 19.01,
+        "end": 19.33,
+        "probability": 0.959
+      }
+    ],
+    "translated_text": "你对我封闭了心呢，"
+  },
+  {
+    "start": 20.03,
+    "end": 21.71,
+    "text": "嘘をついたからね",
+    "words": [
+      {
+        "word": "嘘",
+        "start": 20.03,
+        "end": 20.51,
+        "probability": 0.887
+      },
+      {
+        "word": "を",
+        "start": 20.51,
+        "end": 20.69,
+        "probability": 0.993
+      },
+      {
+        "word": "つ",
+        "start": 20.69,
+        "end": 20.89,
+        "probability": 0.568
+      },
+      {
+        "word": "いた",
+        "start": 20.89,
+        "end": 21.07,
+        "probability": 0.991
+      },
+      {
+        "word": "から",
+        "start": 21.07,
+        "end": 21.33,
+        "probability": 0.985
+      },
+      {
+        "word": "ね",
+        "start": 21.33,
+        "end": 21.71,
+        "probability": 0.857
+      }
+    ],
+    "translated_text": "因为你说谎了嘛。"
+  },
+  {
+    "start": 23.18,
+    "end": 25.24,
+    "text": "しばられるのは当然でしょ",
+    "words": [
+      {
+        "word": "し",
+        "start": 23.18,
+        "end": 23.68,
+        "probability": 0.183
+      },
+      {
+        "word": "ば",
+        "start": 23.68,
+        "end": 23.84,
+        "probability": 0.972
+      },
+      {
+        "word": "ら",
+        "start": 23.84,
+        "end": 23.94,
+        "probability": 0.999
+      },
+      {
+        "word": "れる",
+        "start": 23.94,
+        "end": 24.18,
+        "probability": 0.995
+      },
+      {
+        "word": "のは",
+        "start": 24.18,
+        "end": 24.4,
+        "probability": 0.967
+      },
+      {
+        "word": "当然",
+        "start": 24.4,
+        "end": 24.8,
+        "probability": 0.951
+      },
+      {
+        "word": "で",
+        "start": 24.8,
+        "end": 25.02,
+        "probability": 0.682
+      },
+      {
+        "word": "しょ",
+        "start": 25.02,
+        "end": 25.24,
+        "probability": 0.998
+      }
+    ],
+    "translated_text": "被绑起来不是理当然的吗？"
+  },
+  {
+    "start": 29.08,
+    "end": 30.54,
+    "text": "本当に覚えてないの",
+    "words": [
+      {
+        "word": "本当",
+        "start": 29.08,
+        "end": 29.32,
+        "probability": 0.78
+      },
+      {
+        "word": "に",
+        "start": 29.32,
+        "end": 29.72,
+        "probability": 0.972
+      },
+      {
+        "word": "覚",
+        "start": 29.72,
+        "end": 29.94,
+        "probability": 0.985
+      },
+      {
+        "word": "えて",
+        "start": 29.94,
+        "end": 30.14,
+        "probability": 0.997
+      },
+      {
+        "word": "ない",
+        "start": 30.14,
+        "end": 30.36,
+        "probability": 0.984
+      },
+      {
+        "word": "の",
+        "start": 30.36,
+        "end": 30.54,
+        "probability": 0.978
+      }
+    ],
+    "translated_text": "你真的不记得了？"
+  },
+  {
+    "start": 31.92,
+    "end": 33.56,
+    "text": "自分の言ったこと",
+    "words": [
+      {
+        "word": "自",
+        "start": 31.92,
+        "end": 32.4,
+        "probability": 0.435
+      },
+      {
+        "word": "分",
+        "start": 32.4,
+        "end": 32.68,
+        "probability": 0.999
+      },
+      {
+        "word": "の",
+        "start": 32.68,
+        "end": 32.84,
+        "probability": 0.668
+      },
+      {
+        "word": "言",
+        "start": 32.84,
+        "end": 32.96,
+        "probability": 0.598
+      },
+      {
+        "word": "った",
+        "start": 32.96,
+        "end": 33.2,
+        "probability": 0.997
+      },
+      {
+        "word": "こと",
+        "start": 33.2,
+        "end": 33.56,
+        "probability": 0.825
+      }
+    ],
+    "translated_text": "自己说过的话？"
+  },
+  {
+    "start": 35.71,
+    "end": 37.11,
+    "text": "あの時言ったよね",
+    "words": [
+      {
+        "word": "あの",
+        "start": 35.71,
+        "end": 35.97,
+        "probability": 0.393
+      },
+      {
+        "word": "時",
+        "start": 35.97,
+        "end": 36.27,
+        "probability": 0.887
+      },
+      {
+        "word": "言",
+        "start": 36.27,
+        "end": 36.51,
+        "probability": 0.686
+      },
+      {
+        "word": "った",
+        "start": 36.51,
+        "end": 36.79,
+        "probability": 0.998
+      },
+      {
+        "word": "よね",
+        "start": 36.79,
+        "end": 37.11,
+        "probability": 0.669
+      }
+    ],
+    "translated_text": "那时候说过的吧？"
+  },
+  {
+    "start": 38.45,
+    "end": 39.71,
+    "text": "この人はいない?",
+    "words": [
+      {
+        "word": "この",
+        "start": 38.45,
+        "end": 38.93,
+        "probability": 0.448
+      },
+      {
+        "word": "人",
+        "start": 38.93,
+        "end": 39.17,
+        "probability": 0.331
+      },
+      {
+        "word": "はい",
+        "start": 39.17,
+        "end": 39.41,
+        "probability": 0.699
+      },
+      {
+        "word": "ない?",
+        "start": 39.41,
+        "end": 39.71,
+        "probability": 0.905
+      }
+    ],
+    "translated_text": "「这个人不存在」？"
+  },
+  {
+    "start": 40.83,
+    "end": 43.61,
+    "text": "今はどれどもつき合いしてないと",
+    "words": [
+      {
+        "word": "今",
+        "start": 40.83,
+        "end": 41.35,
+        "probability": 0.16
+      },
+      {
+        "word": "は",
+        "start": 41.35,
+        "end": 41.59,
+        "probability": 0.899
+      },
+      {
+        "word": "ど",
+        "start": 41.59,
+        "end": 41.75,
+        "probability": 0.646
+      },
+      {
+        "word": "れ",
+        "start": 41.75,
+        "end": 41.89,
+        "probability": 0.993
+      },
+      {
+        "word": "ども",
+        "start": 41.89,
+        "end": 42.11,
+        "probability": 0.835
+      },
+      {
+        "word": "つ",
+        "start": 42.11,
+        "end": 42.41,
+        "probability": 0.106
+      },
+      {
+        "word": "き",
+        "start": 42.41,
+        "end": 42.59,
+        "probability": 0.904
+      },
+      {
+        "word": "合",
+        "start": 42.59,
+        "end": 42.67,
+        "probability": 0.586
+      },
+      {
+        "word": "い",
+        "start": 42.67,
+        "end": 42.77,
+        "probability": 0.717
+      },
+      {
+        "word": "して",
+        "start": 42.77,
+        "end": 42.99,
+        "probability": 0.966
+      },
+      {
+        "word": "ない",
+        "start": 42.99,
+        "end": 43.23,
+        "probability": 0.743
+      },
+      {
+        "word": "と",
+        "start": 43.23,
+        "end": 43.61,
+        "probability": 0.426
+      }
+    ],
+    "translated_text": "现在明明说没在跟任何人交往"
+  },
+  {
+    "start": 47.26,
+    "end": 48.48,
+    "text": "なのに君は",
+    "words": [
+      {
+        "word": "な",
+        "start": 47.26,
+        "end": 47.5,
+        "probability": 0.439
+      },
+      {
+        "word": "の",
+        "start": 47.5,
+        "end": 47.66,
+        "probability": 0.933
+      },
+      {
+        "word": "に",
+        "start": 47.66,
+        "end": 47.84,
+        "probability": 0.991
+      },
+      {
+        "word": "君",
+        "start": 47.84,
+        "end": 48.2,
+        "probability": 0.942
+      },
+      {
+        "word": "は",
+        "start": 48.2,
+        "end": 48.48,
+        "probability": 0.994
+      }
+    ],
+    "translated_text": "可你却"
+  },
+  {
+    "start": 49.78,
+    "end": 51.16,
+    "text": "私に関れた",
+    "words": [
+      {
+        "word": "私",
+        "start": 49.78,
+        "end": 50.3,
+        "probability": 0.752
+      },
+      {
+        "word": "に",
+        "start": 50.3,
+        "end": 50.58,
+        "probability": 0.998
+      },
+      {
+        "word": "関",
+        "start": 50.58,
+        "end": 50.84,
+        "probability": 0.454
+      },
+      {
+        "word": "れた",
+        "start": 50.84,
+        "end": 51.16,
+        "probability": 0.835
+      }
+    ],
+    "translated_text": "碰了我"
+  },
+  {
+    "start": 52.42,
+    "end": 54.8,
+    "text": "別の女と交差していた",
+    "words": [
+      {
+        "word": "別",
+        "start": 52.42,
+        "end": 52.94,
+        "probability": 0.88
+      },
+      {
+        "word": "の",
+        "start": 52.94,
+        "end": 53.22,
+        "probability": 0.982
+      },
+      {
+        "word": "女",
+        "start": 53.22,
+        "end": 53.46,
+        "probability": 0.956
+      },
+      {
+        "word": "と",
+        "start": 53.46,
+        "end": 53.66,
+        "probability": 0.985
+      },
+      {
+        "word": "交",
+        "start": 53.66,
+        "end": 53.92,
+        "probability": 0.602
+      },
+      {
+        "word": "差",
+        "start": 53.92,
+        "end": 54.16,
+        "probability": 0.547
+      },
+      {
+        "word": "して",
+        "start": 54.16,
+        "end": 54.48,
+        "probability": 0.973
+      },
+      {
+        "word": "いた",
+        "start": 54.48,
+        "end": 54.8,
+        "probability": 0.519
+      }
+    ],
+    "translated_text": "还和别的女人有交集"
+  },
+  {
+    "start": 57.06,
+    "end": 60.34,
+    "text": "倒って許されることじゃないよね",
+    "words": [
+      {
+        "word": "倒",
+        "start": 57.06,
+        "end": 57.32,
+        "probability": 0.039
+      },
+      {
+        "word": "って",
+        "start": 57.32,
+        "end": 57.96,
+        "probability": 0.928
+      },
+      {
+        "word": "許",
+        "start": 57.96,
+        "end": 58.68,
+        "probability": 0.696
+      },
+      {
+        "word": "さ",
+        "start": 58.68,
+        "end": 59.06,
+        "probability": 0.998
+      },
+      {
+        "word": "れる",
+        "start": 59.06,
+        "end": 59.24,
+        "probability": 0.995
+      },
+      {
+        "word": "こと",
+        "start": 59.24,
+        "end": 59.44,
+        "probability": 0.86
+      },
+      {
+        "word": "じゃない",
+        "start": 59.44,
+        "end": 59.88,
+        "probability": 0.961
+      },
+      {
+        "word": "よね",
+        "start": 59.88,
+        "end": 60.34,
+        "probability": 0.784
+      }
+    ],
+    "translated_text": "这种事不可原谅吧"
+  },
+  {
+    "start": 61.48,
+    "end": 62.44,
+    "text": "むしろ",
+    "words": [
+      {
+        "word": "む",
+        "start": 61.48,
+        "end": 62.0,
+        "probability": 0.84
+      },
+      {
+        "word": "し",
+        "start": 62.0,
+        "end": 62.22,
+        "probability": 0.965
+      },
+      {
+        "word": "ろ",
+        "start": 62.22,
+        "end": 62.44,
+        "probability": 0.998
+      }
+    ],
+    "translated_text": "倒不如说"
+  },
+  {
+    "start": 63.12,
+    "end": 69.99,
+    "text": "こうしてしばってるだけなことに関差してほしいから 私とは",
+    "words": [
+      {
+        "word": "こう",
+        "start": 63.12,
+        "end": 63.64,
+        "probability": 0.472
+      },
+      {
+        "word": "して",
+        "start": 63.64,
+        "end": 63.92,
+        "probability": 0.996
+      },
+      {
+        "word": "し",
+        "start": 63.92,
+        "end": 64.12,
+        "probability": 0.201
+      },
+      {
+        "word": "ば",
+        "start": 64.12,
+        "end": 64.24,
+        "probability": 0.964
+      },
+      {
+        "word": "ってる",
+        "start": 64.24,
+        "end": 64.48,
+        "probability": 0.839
+      },
+      {
+        "word": "だけ",
+        "start": 64.48,
+        "end": 64.78,
+        "probability": 0.991
+      },
+      {
+        "word": "な",
+        "start": 64.78,
+        "end": 64.96,
+        "probability": 0.725
+      },
+      {
+        "word": "こと",
+        "start": 64.96,
+        "end": 65.12,
+        "probability": 0.919
+      },
+      {
+        "word": "に",
+        "start": 65.12,
+        "end": 65.32,
+        "probability": 0.998
+      },
+      {
+        "word": "関",
+        "start": 65.32,
+        "end": 65.58,
+        "probability": 0.745
+      },
+      {
+        "word": "差",
+        "start": 65.58,
+        "end": 65.74,
+        "probability": 0.707
+      },
+      {
+        "word": "して",
+        "start": 65.74,
+        "end": 65.96,
+        "probability": 0.988
+      },
+      {
+        "word": "ほ",
+        "start": 65.96,
+        "end": 66.1,
+        "probability": 0.237
+      },
+      {
+        "word": "しい",
+        "start": 66.1,
+        "end": 66.36,
+        "probability": 0.994
+      },
+      {
+        "word": "から",
+        "start": 66.36,
+        "end": 66.68,
+        "probability": 0.436
+      },
+      {
+        "word": "私",
+        "start": 66.68,
+        "end": 67.56,
+        "probability": 0.838
+      },
+      {
+        "word": "と",
+        "start": 69.39,
+        "end": 69.73,
+        "probability": 0.97
+      },
+      {
+        "word": "は",
+        "start": 69.73,
+        "end": 69.99,
+        "probability": 0.143
+      }
+    ],
+    "translated_text": "我宁愿你只参与这种被束缚的关系 和我间"
+  },
+  {
+    "start": 70.87,
+    "end": 72.93,
+    "text": "ただの友達でいたかった",
+    "words": [
+      {
+        "word": "ただ",
+        "start": 70.87,
+        "end": 71.39,
+        "probability": 0.825
+      },
+      {
+        "word": "の",
+        "start": 71.39,
+        "end": 71.67,
+        "probability": 0.987
+      },
+      {
+        "word": "友",
+        "start": 71.67,
+        "end": 71.93,
+        "probability": 0.962
+      },
+      {
+        "word": "達",
+        "start": 71.93,
+        "end": 72.25,
+        "probability": 0.986
+      },
+      {
+        "word": "で",
+        "start": 72.25,
+        "end": 72.37,
+        "probability": 0.881
+      },
+      {
+        "word": "いた",
+        "start": 72.37,
+        "end": 72.55,
+        "probability": 0.897
+      },
+      {
+        "word": "かった",
+        "start": 72.55,
+        "end": 72.93,
+        "probability": 0.813
+      }
+    ],
+    "translated_text": "只想做普通朋友"
+  },
+  {
+    "start": 74.5,
+    "end": 75.66,
+    "text": "何され",
+    "words": [
+      {
+        "word": "何",
+        "start": 74.5,
+        "end": 75.1,
+        "probability": 0.509
+      },
+      {
+        "word": "さ",
+        "start": 75.1,
+        "end": 75.42,
+        "probability": 0.824
+      },
+      {
+        "word": "れ",
+        "start": 75.42,
+        "end": 75.66,
+        "probability": 0.935
+      }
+    ],
+    "translated_text": "你对我做了什么？"
+  },
+  {
+    "start": 76.22,
+    "end": 77.34,
+    "text": "情談でしょ",
+    "words": [
+      {
+        "word": "情",
+        "start": 76.22,
+        "end": 76.62,
+        "probability": 0.006
+      },
+      {
+        "word": "談",
+        "start": 76.62,
+        "end": 76.92,
+        "probability": 0.248
+      },
+      {
+        "word": "で",
+        "start": 76.92,
+        "end": 77.14,
+        "probability": 0.671
+      },
+      {
+        "word": "しょ",
+        "start": 77.14,
+        "end": 77.34,
+        "probability": 0.996
+      }
+    ],
+    "translated_text": "开玩笑的吧"
+  },
+  {
+    "start": 79.21,
+    "end": 81.99,
+    "text": "私の気持ちを知っておきながら そのイーグさん",
+    "words": [
+      {
+        "word": "私",
+        "start": 79.21,
+        "end": 79.61,
+        "probability": 0.256
+      },
+      {
+        "word": "の",
+        "start": 79.61,
+        "end": 79.85,
+        "probability": 0.997
+      },
+      {
+        "word": "気",
+        "start": 79.85,
+        "end": 79.97,
+        "probability": 0.969
+      },
+      {
+        "word": "持",
+        "start": 79.97,
+        "end": 80.07,
+        "probability": 0.999
+      },
+      {
+        "word": "ち",
+        "start": 80.07,
+        "end": 80.27,
+        "probability": 0.981
+      },
+      {
+        "word": "を",
+        "start": 80.27,
+        "end": 80.33,
+        "probability": 0.994
+      },
+      {
+        "word": "知",
+        "start": 80.33,
+        "end": 80.47,
+        "probability": 0.988
+      },
+      {
+        "word": "って",
+        "start": 80.47,
+        "end": 80.63,
+        "probability": 0.991
+      },
+      {
+        "word": "お",
+        "start": 80.63,
+        "end": 80.73,
+        "probability": 0.559
+      },
+      {
+        "word": "き",
+        "start": 80.73,
+        "end": 80.85,
+        "probability": 0.967
+      },
+      {
+        "word": "な",
+        "start": 80.85,
+        "end": 80.95,
+        "probability": 0.982
+      },
+      {
+        "word": "が",
+        "start": 80.95,
+        "end": 81.03,
+        "probability": 0.994
+      },
+      {
+        "word": "ら",
+        "start": 81.03,
+        "end": 81.15,
+        "probability": 0.999
+      },
+      {
+        "word": "その",
+        "start": 81.15,
+        "end": 81.43,
+        "probability": 0.908
+      },
+      {
+        "word": "イ",
+        "start": 81.43,
+        "end": 81.67,
+        "probability": 0.309
+      },
+      {
+        "word": "ー",
+        "start": 81.67,
+        "end": 81.69,
+        "probability": 0.499
+      },
+      {
+        "word": "グ",
+        "start": 81.69,
+        "end": 81.75,
+        "probability": 0.924
+      },
+      {
+        "word": "さん",
+        "start": 81.75,
+        "end": 81.99,
+        "probability": 0.941
+      }
+    ],
+    "translated_text": "明明知道我的心意，却还那样，伊格先生"
+  },
+  {
+    "start": 82.73,
+    "end": 83.47,
+    "text": "正直",
+    "words": [
+      {
+        "word": "正",
+        "start": 82.73,
+        "end": 83.13,
+        "probability": 0.382
+      },
+      {
+        "word": "直",
+        "start": 83.13,
+        "end": 83.47,
+        "probability": 0.982
+      }
+    ],
+    "translated_text": "说实话"
+  },
+  {
+    "start": 84.05,
+    "end": 85.49,
+    "text": "信じられないんだけど",
+    "words": [
+      {
+        "word": "信",
+        "start": 84.05,
+        "end": 84.45,
+        "probability": 0.806
+      },
+      {
+        "word": "じ",
+        "start": 84.45,
+        "end": 84.65,
+        "probability": 0.997
+      },
+      {
+        "word": "ら",
+        "start": 84.65,
+        "end": 84.77,
+        "probability": 0.998
+      },
+      {
+        "word": "れない",
+        "start": 84.77,
+        "end": 85.01,
+        "probability": 0.994
+      },
+      {
+        "word": "んだ",
+        "start": 85.01,
+        "end": 85.23,
+        "probability": 0.999
+      },
+      {
+        "word": "けど",
+        "start": 85.23,
+        "end": 85.49,
+        "probability": 0.996
+      }
+    ],
+    "translated_text": "真是难以置信啊"
+  },
+  {
+    "start": 87.75,
+    "end": 88.85,
+    "text": "大好きだったのに",
+    "words": [
+      {
+        "word": "大",
+        "start": 87.75,
+        "end": 87.95,
+        "probability": 0.625
+      },
+      {
+        "word": "好",
+        "start": 87.95,
+        "end": 88.15,
+        "probability": 0.99
+      },
+      {
+        "word": "き",
+        "start": 88.15,
+        "end": 88.27,
+        "probability": 0.999
+      },
+      {
+        "word": "だ",
+        "start": 88.27,
+        "end": 88.41,
+        "probability": 0.998
+      },
+      {
+        "word": "った",
+        "start": 88.41,
+        "end": 88.61,
+        "probability": 0.996
+      },
+      {
+        "word": "の",
+        "start": 88.61,
+        "end": 88.73,
+        "probability": 0.483
+      },
+      {
+        "word": "に",
+        "start": 88.73,
+        "end": 88.85,
+        "probability": 0.938
+      }
+    ],
+    "translated_text": "明明曾经最喜欢你了"
+  },
+  {
+    "start": 90.58,
+    "end": 92.46,
+    "text": "本当に好きだったのに",
+    "words": [
+      {
+        "word": "本当",
+        "start": 90.58,
+        "end": 90.98,
+        "probability": 0.916
+      },
+      {
+        "word": "に",
+        "start": 90.98,
+        "end": 91.22,
+        "probability": 0.988
+      },
+      {
+        "word": "好",
+        "start": 91.22,
+        "end": 91.42,
+        "probability": 0.991
+      },
+      {
+        "word": "き",
+        "start": 91.42,
+        "end": 91.54,
+        "probability": 1.0
+      },
+      {
+        "word": "だ",
+        "start": 91.54,
+        "end": 91.66,
+        "probability": 0.999
+      },
+      {
+        "word": "った",
+        "start": 91.66,
+        "end": 91.84,
+        "probability": 0.999
+      },
+      {
+        "word": "の",
+        "start": 91.84,
+        "end": 91.96,
+        "probability": 0.984
+      },
+      {
+        "word": "に",
+        "start": 91.96,
+        "end": 92.46,
+        "probability": 0.972
+      }
+    ],
+    "translated_text": "明明是真的很喜欢你"
+  },
+  {
+    "start": 94.06,
+    "end": 96.22,
+    "text": "君には私しかいないと思ってた",
+    "words": [
+      {
+        "word": "君",
+        "start": 94.06,
+        "end": 94.36,
+        "probability": 0.869
+      },
+      {
+        "word": "には",
+        "start": 94.36,
+        "end": 94.62,
+        "probability": 0.994
+      },
+      {
+        "word": "私",
+        "start": 94.62,
+        "end": 94.92,
+        "probability": 0.975
+      },
+      {
+        "word": "しか",
+        "start": 94.92,
+        "end": 95.26,
+        "probability": 0.957
+      },
+      {
+        "word": "い",
+        "start": 95.26,
+        "end": 95.38,
+        "probability": 0.838
+      },
+      {
+        "word": "ない",
+        "start": 95.38,
+        "end": 95.5,
+        "probability": 0.992
+      },
+      {
+        "word": "と思",
+        "start": 95.5,
+        "end": 95.82,
+        "probability": 0.984
+      },
+      {
+        "word": "って",
+        "start": 95.82,
+        "end": 96.06,
+        "probability": 0.855
+      },
+      {
+        "word": "た",
+        "start": 96.06,
+        "end": 96.22,
+        "probability": 0.956
+      }
+    ],
+    "translated_text": "我以为你只有我"
+  },
+  {
+    "start": 97.18,
+    "end": 100.26,
+    "text": "私だけが 君にふさわしいと思ってた",
+    "words": [
+      {
+        "word": "私",
+        "start": 97.18,
+        "end": 97.58,
+        "probability": 0.971
+      },
+      {
+        "word": "だけ",
+        "start": 97.58,
+        "end": 97.9,
+        "probability": 0.979
+      },
+      {
+        "word": "が",
+        "start": 97.9,
+        "end": 98.16,
+        "probability": 0.994
+      },
+      {
+        "word": "君",
+        "start": 98.16,
+        "end": 98.9,
+        "probability": 0.964
+      },
+      {
+        "word": "に",
+        "start": 98.9,
+        "end": 99.08,
+        "probability": 0.999
+      },
+      {
+        "word": "ふ",
+        "start": 99.08,
+        "end": 99.18,
+        "probability": 0.08
+      },
+      {
+        "word": "さ",
+        "start": 99.18,
+        "end": 99.28,
+        "probability": 0.943
+      },
+      {
+        "word": "わ",
+        "start": 99.28,
+        "end": 99.4,
+        "probability": 0.852
+      },
+      {
+        "word": "しい",
+        "start": 99.4,
+        "end": 99.58,
+        "probability": 0.937
+      },
+      {
+        "word": "と思",
+        "start": 99.58,
+        "end": 99.82,
+        "probability": 0.891
+      },
+      {
+        "word": "って",
+        "start": 99.82,
+        "end": 100.12,
+        "probability": 0.526
+      },
+      {
+        "word": "た",
+        "start": 100.12,
+        "end": 100.26,
+        "probability": 0.991
+      }
+    ],
+    "translated_text": "我以为只有我才配得上你"
+  },
+  {
+    "start": 101.78,
+    "end": 103.16,
+    "text": "それののに君は",
+    "words": [
+      {
+        "word": "それ",
+        "start": 101.78,
+        "end": 102.18,
+        "probability": 0.794
+      },
+      {
+        "word": "の",
+        "start": 102.18,
+        "end": 102.34,
+        "probability": 0.729
+      },
+      {
+        "word": "の",
+        "start": 102.34,
+        "end": 102.5,
+        "probability": 0.72
+      },
+      {
+        "word": "に",
+        "start": 102.5,
+        "end": 102.58,
+        "probability": 0.973
+      },
+      {
+        "word": "君",
+        "start": 102.58,
+        "end": 102.96,
+        "probability": 0.985
+      },
+      {
+        "word": "は",
+        "start": 102.96,
+        "end": 103.16,
+        "probability": 0.272
+      }
+    ],
+    "translated_text": "可你却"
+  },
+  {
+    "start": 103.96,
+    "end": 105.12,
+    "text": "私を裏切ったの",
+    "words": [
+      {
+        "word": "私",
+        "start": 103.96,
+        "end": 104.36,
+        "probability": 0.911
+      },
+      {
+        "word": "を",
+        "start": 104.36,
+        "end": 104.52,
+        "probability": 0.872
+      },
+      {
+        "word": "裏",
+        "start": 104.52,
+        "end": 104.62,
+        "probability": 0.661
+      },
+      {
+        "word": "切",
+        "start": 104.62,
+        "end": 104.76,
+        "probability": 0.917
+      },
+      {
+        "word": "った",
+        "start": 104.76,
+        "end": 104.96,
+        "probability": 0.991
+      },
+      {
+        "word": "の",
+        "start": 104.96,
+        "end": 105.12,
+        "probability": 0.668
+      }
+    ],
+    "translated_text": "背叛了我"
+  },
+  {
+    "start": 106.9,
+    "end": 108.9,
+    "text": "恋だって明確に伝えたよね",
+    "words": [
+      {
+        "word": "恋",
+        "start": 106.9,
+        "end": 107.3,
+        "probability": 0.51
+      },
+      {
+        "word": "だ",
+        "start": 107.3,
+        "end": 107.5,
+        "probability": 0.972
+      },
+      {
+        "word": "って",
+        "start": 107.5,
+        "end": 107.68,
+        "probability": 0.995
+      },
+      {
+        "word": "明",
+        "start": 107.68,
+        "end": 107.9,
+        "probability": 0.582
+      },
+      {
+        "word": "確",
+        "start": 107.9,
+        "end": 108.02,
+        "probability": 0.986
+      },
+      {
+        "word": "に",
+        "start": 108.02,
+        "end": 108.24,
+        "probability": 0.998
+      },
+      {
+        "word": "伝",
+        "start": 108.24,
+        "end": 108.46,
+        "probability": 0.984
+      },
+      {
+        "word": "え",
+        "start": 108.46,
+        "end": 108.54,
+        "probability": 0.989
+      },
+      {
+        "word": "た",
+        "start": 108.54,
+        "end": 108.66,
+        "probability": 0.978
+      },
+      {
+        "word": "よね",
+        "start": 108.66,
+        "end": 108.9,
+        "probability": 0.897
+      }
+    ],
+    "translated_text": "我明明明确地告诉过你『我喜欢你』，对吧"
+  },
+  {
+    "start": 110.62,
+    "end": 112.22,
+    "text": "一人の男性だした",
+    "words": [
+      {
+        "word": "一",
+        "start": 110.62,
+        "end": 111.02,
+        "probability": 0.448
+      },
+      {
+        "word": "人",
+        "start": 111.02,
+        "end": 111.22,
+        "probability": 0.996
+      },
+      {
+        "word": "の",
+        "start": 111.22,
+        "end": 111.38,
+        "probability": 0.999
+      },
+      {
+        "word": "男",
+        "start": 111.38,
+        "end": 111.56,
+        "probability": 0.569
+      },
+      {
+        "word": "性",
+        "start": 111.56,
+        "end": 111.8,
+        "probability": 0.971
+      },
+      {
+        "word": "だ",
+        "start": 111.8,
+        "end": 111.96,
+        "probability": 0.113
+      },
+      {
+        "word": "した",
+        "start": 111.96,
+        "end": 112.22,
+        "probability": 0.991
+      }
+    ],
+    "translated_text": "你居然有了别的男人"
+  },
+  {
+    "start": 113.0,
+    "end": 114.62,
+    "text": "君のことが好きだった",
+    "words": [
+      {
+        "word": "君",
+        "start": 113.0,
+        "end": 113.4,
+        "probability": 0.082
+      },
+      {
+        "word": "の",
+        "start": 113.4,
+        "end": 113.62,
+        "probability": 0.976
+      },
+      {
+        "word": "こと",
+        "start": 113.62,
+        "end": 113.8,
+        "probability": 0.928
+      },
+      {
+        "word": "が",
+        "start": 113.8,
+        "end": 113.98,
+        "probability": 0.997
+      },
+      {
+        "word": "好",
+        "start": 113.98,
+        "end": 114.14,
+        "probability": 0.961
+      },
+      {
+        "word": "き",
+        "start": 114.14,
+        "end": 114.24,
+        "probability": 0.999
+      },
+      {
+        "word": "だ",
+        "start": 114.24,
+        "end": 114.38,
+        "probability": 0.998
+      },
+      {
+        "word": "った",
+        "start": 114.38,
+        "end": 114.62,
+        "probability": 0.498
+      }
+    ],
+    "translated_text": "我喜欢你啊"
+  },
+  {
+    "start": 116.9,
+    "end": 118.46,
+    "text": "私の気持ちを知った上で",
+    "words": [
+      {
+        "word": "私",
+        "start": 116.9,
+        "end": 117.1,
+        "probability": 0.645
+      },
+      {
+        "word": "の",
+        "start": 117.1,
+        "end": 117.26,
+        "probability": 0.978
+      },
+      {
+        "word": "気",
+        "start": 117.26,
+        "end": 117.4,
+        "probability": 0.987
+      },
+      {
+        "word": "持",
+        "start": 117.4,
+        "end": 117.52,
+        "probability": 0.998
+      },
+      {
+        "word": "ち",
+        "start": 117.52,
+        "end": 117.72,
+        "probability": 0.972
+      },
+      {
+        "word": "を",
+        "start": 117.72,
+        "end": 117.78,
+        "probability": 0.992
+      },
+      {
+        "word": "知",
+        "start": 117.78,
+        "end": 117.92,
+        "probability": 0.992
+      },
+      {
+        "word": "った",
+        "start": 117.92,
+        "end": 118.16,
+        "probability": 0.994
+      },
+      {
+        "word": "上",
+        "start": 118.16,
+        "end": 118.32,
+        "probability": 0.674
+      },
+      {
+        "word": "で",
+        "start": 118.32,
+        "end": 118.46,
+        "probability": 0.97
+      }
+    ],
+    "translated_text": "在知道我的心意后"
+  },
+  {
+    "start": 119.54,
+    "end": 125.19,
+    "text": "そういうことするんだ 許せのさすぎず",
+    "words": [
+      {
+        "word": "そう",
+        "start": 119.54,
+        "end": 119.94,
+        "probability": 0.212
+      },
+      {
+        "word": "いうこと",
+        "start": 119.94,
+        "end": 120.34,
+        "probability": 0.941
+      },
+      {
+        "word": "する",
+        "start": 120.34,
+        "end": 120.7,
+        "probability": 0.649
+      },
+      {
+        "word": "んだ",
+        "start": 120.7,
+        "end": 120.96,
+        "probability": 0.94
+      },
+      {
+        "word": "許",
+        "start": 120.96,
+        "end": 121.38,
+        "probability": 0.202
+      },
+      {
+        "word": "せ",
+        "start": 123.87,
+        "end": 124.25,
+        "probability": 0.674
+      },
+      {
+        "word": "の",
+        "start": 124.25,
+        "end": 124.39,
+        "probability": 0.903
+      },
+      {
+        "word": "さ",
+        "start": 124.39,
+        "end": 124.53,
+        "probability": 0.359
+      },
+      {
+        "word": "す",
+        "start": 124.53,
+        "end": 124.75,
+        "probability": 0.893
+      },
+      {
+        "word": "ぎ",
+        "start": 124.75,
+        "end": 124.85,
+        "probability": 0.997
+      },
+      {
+        "word": "ず",
+        "start": 124.85,
+        "end": 125.19,
+        "probability": 0.485
+      }
+    ],
+    "translated_text": "你还做这种事，不可原谅"
+  },
+  {
+    "start": 125.87,
+    "end": 128.99,
+    "text": "頭が昔かなりそうだよ",
+    "words": [
+      {
+        "word": "頭",
+        "start": 125.87,
+        "end": 126.27,
+        "probability": 0.218
+      },
+      {
+        "word": "が",
+        "start": 126.27,
+        "end": 126.61,
+        "probability": 0.953
+      },
+      {
+        "word": "昔",
+        "start": 126.61,
+        "end": 126.89,
+        "probability": 0.627
+      },
+      {
+        "word": "かな",
+        "start": 126.89,
+        "end": 127.19,
+        "probability": 0.607
+      },
+      {
+        "word": "り",
+        "start": 127.19,
+        "end": 127.37,
+        "probability": 0.991
+      },
+      {
+        "word": "そうだ",
+        "start": 127.37,
+        "end": 127.63,
+        "probability": 0.637
+      },
+      {
+        "word": "よ",
+        "start": 127.63,
+        "end": 128.99,
+        "probability": 0.962
+      }
+    ],
+    "translated_text": "我脑袋都要不正常了"
+  },
+  {
+    "start": 131.65,
+    "end": 132.31,
+    "text": "死ぬ",
+    "words": [
+      {
+        "word": "死",
+        "start": 131.65,
+        "end": 132.05,
+        "probability": 0.411
+      },
+      {
+        "word": "ぬ",
+        "start": 132.05,
+        "end": 132.31,
+        "probability": 0.804
+      }
+    ],
+    "translated_text": "死"
+  },
+  {
+    "start": 132.83,
+    "end": 133.91,
+    "text": "死ぬ死ぬ",
+    "words": [
+      {
+        "word": "死",
+        "start": 132.83,
+        "end": 133.23,
+        "probability": 0.536
+      },
+      {
+        "word": "ぬ",
+        "start": 133.23,
+        "end": 133.55,
+        "probability": 0.975
+      },
+      {
+        "word": "死",
+        "start": 133.55,
+        "end": 133.73,
+        "probability": 0.869
+      },
+      {
+        "word": "ぬ",
+        "start": 133.73,
+        "end": 133.91,
+        "probability": 0.992
+      }
+    ],
+    "translated_text": "死死"
+  },
+  {
+    "start": 134.51,
+    "end": 140.49,
+    "text": "私を好きじゃない 君なんて 死んじゃうぼいんの あんな思わせぶりなこといった",
+    "words": [
+      {
+        "word": "私",
+        "start": 134.51,
+        "end": 134.91,
+        "probability": 0.697
+      },
+      {
+        "word": "を",
+        "start": 134.91,
+        "end": 135.19,
+        "probability": 0.771
+      },
+      {
+        "word": "好",
+        "start": 135.19,
+        "end": 135.33,
+        "probability": 0.991
+      },
+      {
+        "word": "き",
+        "start": 135.33,
+        "end": 135.41,
+        "probability": 0.998
+      },
+      {
+        "word": "じゃない",
+        "start": 135.41,
+        "end": 135.69,
+        "probability": 0.991
+      },
+      {
+        "word": "君",
+        "start": 135.69,
+        "end": 135.99,
+        "probability": 0.94
+      },
+      {
+        "word": "なん",
+        "start": 135.99,
+        "end": 136.19,
+        "probability": 0.379
+      },
+      {
+        "word": "て",
+        "start": 136.19,
+        "end": 136.41,
+        "probability": 0.878
+      },
+      {
+        "word": "死",
+        "start": 136.41,
+        "end": 137.19,
+        "probability": 0.742
+      },
+      {
+        "word": "ん",
+        "start": 137.19,
+        "end": 137.39,
+        "probability": 0.902
+      },
+      {
+        "word": "じゃ",
+        "start": 137.39,
+        "end": 137.51,
+        "probability": 0.81
+      },
+      {
+        "word": "う",
+        "start": 137.51,
+        "end": 137.65,
+        "probability": 0.4
+      },
+      {
+        "word": "ぼ",
+        "start": 137.65,
+        "end": 137.73,
+        "probability": 0.526
+      },
+      {
+        "word": "い",
+        "start": 137.73,
+        "end": 137.85,
+        "probability": 0.663
+      },
+      {
+        "word": "ん",
+        "start": 137.85,
+        "end": 138.01,
+        "probability": 0.406
+      },
+      {
+        "word": "の",
+        "start": 138.01,
+        "end": 138.13,
+        "probability": 0.921
+      },
+      {
+        "word": "あ",
+        "start": 138.13,
+        "end": 138.87,
+        "probability": 0.255
+      },
+      {
+        "word": "んな",
+        "start": 138.87,
+        "end": 139.09,
+        "probability": 0.904
+      },
+      {
+        "word": "思",
+        "start": 139.09,
+        "end": 139.29,
+        "probability": 0.655
+      },
+      {
+        "word": "わ",
+        "start": 139.29,
+        "end": 139.45,
+        "probability": 0.677
+      },
+      {
+        "word": "せ",
+        "start": 139.45,
+        "end": 139.61,
+        "probability": 0.913
+      },
+      {
+        "word": "ぶ",
+        "start": 139.61,
+        "end": 139.73,
+        "probability": 0.719
+      },
+      {
+        "word": "り",
+        "start": 139.73,
+        "end": 139.81,
+        "probability": 0.972
+      },
+      {
+        "word": "な",
+        "start": 139.81,
+        "end": 139.89,
+        "probability": 0.474
+      },
+      {
+        "word": "こと",
+        "start": 139.89,
+        "end": 140.07,
+        "probability": 0.954
+      },
+      {
+        "word": "い",
+        "start": 140.07,
+        "end": 140.29,
+        "probability": 0.39
+      },
+      {
+        "word": "った",
+        "start": 140.29,
+        "end": 140.49,
+        "probability": 0.932
+      }
+    ],
+    "translated_text": "你不喜欢我…"
+  },
+  {
+    "start": 140.99,
+    "end": 142.73,
+    "text": "私をその気にさせたくせに",
+    "words": [
+      {
+        "word": "私",
+        "start": 140.99,
+        "end": 141.39,
+        "probability": 0.927
+      },
+      {
+        "word": "を",
+        "start": 141.39,
+        "end": 141.51,
+        "probability": 0.879
+      },
+      {
+        "word": "その",
+        "start": 141.51,
+        "end": 141.71,
+        "probability": 0.984
+      },
+      {
+        "word": "気",
+        "start": 141.71,
+        "end": 141.87,
+        "probability": 0.81
+      },
+      {
+        "word": "に",
+        "start": 141.87,
+        "end": 141.95,
+        "probability": 0.997
+      },
+      {
+        "word": "さ",
+        "start": 141.95,
+        "end": 142.09,
+        "probability": 0.97
+      },
+      {
+        "word": "せ",
+        "start": 142.09,
+        "end": 142.23,
+        "probability": 0.979
+      },
+      {
+        "word": "た",
+        "start": 142.23,
+        "end": 142.33,
+        "probability": 0.993
+      },
+      {
+        "word": "く",
+        "start": 142.33,
+        "end": 142.45,
+        "probability": 0.609
+      },
+      {
+        "word": "せ",
+        "start": 142.45,
+        "end": 142.57,
+        "probability": 0.988
+      },
+      {
+        "word": "に",
+        "start": 142.57,
+        "end": 142.73,
+        "probability": 0.914
+      }
+    ],
+    "translated_text": "明明让我动了心"
+  },
+  {
+    "start": 153.24,
+    "end": 155.1,
+    "text": "私の体目的だった",
+    "words": [
+      {
+        "word": "私",
+        "start": 153.24,
+        "end": 153.64,
+        "probability": 0.953
+      },
+      {
+        "word": "の",
+        "start": 153.64,
+        "end": 153.88,
+        "probability": 0.998
+      },
+      {
+        "word": "体",
+        "start": 153.88,
+        "end": 154.18,
+        "probability": 0.889
+      },
+      {
+        "word": "目",
+        "start": 154.18,
+        "end": 154.48,
+        "probability": 0.177
+      },
+      {
+        "word": "的",
+        "start": 154.48,
+        "end": 154.72,
+        "probability": 0.936
+      },
+      {
+        "word": "だ",
+        "start": 154.72,
+        "end": 154.88,
+        "probability": 0.999
+      },
+      {
+        "word": "った",
+        "start": 154.88,
+        "end": 155.1,
+        "probability": 0.994
+      }
+    ],
+    "translated_text": "原来是冲着我的身体来的"
+  },
+  {
+    "start": 157.57,
+    "end": 158.93,
+    "text": "今まで酸酸",
+    "words": [
+      {
+        "word": "今",
+        "start": 157.57,
+        "end": 157.99,
+        "probability": 0.525
+      },
+      {
+        "word": "まで",
+        "start": 157.99,
+        "end": 158.27,
+        "probability": 0.793
+      },
+      {
+        "word": "酸",
+        "start": 158.27,
+        "end": 158.65,
+        "probability": 0.593
+      },
+      {
+        "word": "酸",
+        "start": 158.65,
+        "end": 158.93,
+        "probability": 0.995
+      }
+    ],
+    "translated_text": "前让你睡得那么香呢"
+  },
+  {
+    "start": 160.27,
+    "end": 162.15,
+    "text": "広いろしてあげたもんね",
+    "words": [
+      {
+        "word": "広",
+        "start": 160.27,
+        "end": 160.75,
+        "probability": 0.01
+      },
+      {
+        "word": "い",
+        "start": 160.75,
+        "end": 160.93,
+        "probability": 0.923
+      },
+      {
+        "word": "ろ",
+        "start": 160.93,
+        "end": 161.03,
+        "probability": 0.805
+      },
+      {
+        "word": "して",
+        "start": 161.03,
+        "end": 161.25,
+        "probability": 0.949
+      },
+      {
+        "word": "あ",
+        "start": 161.25,
+        "end": 161.45,
+        "probability": 0.658
+      },
+      {
+        "word": "げ",
+        "start": 161.45,
+        "end": 161.51,
+        "probability": 0.999
+      },
+      {
+        "word": "た",
+        "start": 161.51,
+        "end": 161.71,
+        "probability": 0.985
+      },
+      {
+        "word": "も",
+        "start": 161.71,
+        "end": 161.85,
+        "probability": 0.527
+      },
+      {
+        "word": "ん",
+        "start": 161.85,
+        "end": 161.99,
+        "probability": 0.659
+      },
+      {
+        "word": "ね",
+        "start": 161.99,
+        "end": 162.15,
+        "probability": 0.821
+      }
+    ],
+    "translated_text": "我还特意让你睡得宽敞呢"
+  },
+  {
+    "start": 163.62,
+    "end": 170.04,
+    "text": "違わないでしょ 私を要分にする",
+    "words": [
+      {
+        "word": "違",
+        "start": 163.62,
+        "end": 164.04,
+        "probability": 0.056
+      },
+      {
+        "word": "わ",
+        "start": 164.04,
+        "end": 164.4,
+        "probability": 0.82
+      },
+      {
+        "word": "ない",
+        "start": 164.4,
+        "end": 164.64,
+        "probability": 0.999
+      },
+      {
+        "word": "で",
+        "start": 164.64,
+        "end": 164.78,
+        "probability": 0.917
+      },
+      {
+        "word": "しょ",
+        "start": 164.78,
+        "end": 165.02,
+        "probability": 0.998
+      },
+      {
+        "word": "私",
+        "start": 165.02,
+        "end": 165.58,
+        "probability": 0.675
+      },
+      {
+        "word": "を",
+        "start": 168.94,
+        "end": 169.3,
+        "probability": 0.334
+      },
+      {
+        "word": "要",
+        "start": 169.3,
+        "end": 169.46,
+        "probability": 0.272
+      },
+      {
+        "word": "分",
+        "start": 169.46,
+        "end": 169.68,
+        "probability": 0.541
+      },
+      {
+        "word": "に",
+        "start": 169.68,
+        "end": 169.82,
+        "probability": 0.997
+      },
+      {
+        "word": "する",
+        "start": 169.82,
+        "end": 170.04,
+        "probability": 0.967
+      }
+    ],
+    "translated_text": "没错吧，你就是在利用我"
+  },
+  {
+    "start": 170.04,
+    "end": 174.08,
+    "text": "きまんまんだったんでしょ 許せないな",
+    "words": [
+      {
+        "word": "き",
+        "start": 170.04,
+        "end": 170.28,
+        "probability": 0.011
+      },
+      {
+        "word": "ま",
+        "start": 170.28,
+        "end": 170.42,
+        "probability": 0.514
+      },
+      {
+        "word": "ん",
+        "start": 170.42,
+        "end": 170.58,
+        "probability": 0.756
+      },
+      {
+        "word": "ま",
+        "start": 170.58,
+        "end": 170.68,
+        "probability": 0.804
+      },
+      {
+        "word": "んだ",
+        "start": 170.68,
+        "end": 170.86,
+        "probability": 0.527
+      },
+      {
+        "word": "った",
+        "start": 170.86,
+        "end": 171.1,
+        "probability": 0.993
+      },
+      {
+        "word": "んで",
+        "start": 171.1,
+        "end": 171.28,
+        "probability": 0.95
+      },
+      {
+        "word": "しょ",
+        "start": 171.28,
+        "end": 172.6,
+        "probability": 0.908
+      },
+      {
+        "word": "許",
+        "start": 172.6,
+        "end": 173.12,
+        "probability": 0.241
+      },
+      {
+        "word": "せ",
+        "start": 173.12,
+        "end": 173.56,
+        "probability": 0.946
+      },
+      {
+        "word": "ない",
+        "start": 173.56,
+        "end": 173.82,
+        "probability": 0.978
+      },
+      {
+        "word": "な",
+        "start": 173.82,
+        "end": 174.08,
+        "probability": 0.964
+      }
+    ],
+    "translated_text": "你是得意忘形了吧，不可原谅"
+  },
+  {
+    "start": 174.08,
+    "end": 190.78,
+    "text": "みたいな変態に",
+    "words": [
+      {
+        "word": "みたい",
+        "start": 174.08,
+        "end": 174.78,
+        "probability": 0.354
+      },
+      {
+        "word": "な",
+        "start": 189.88,
+        "end": 190.12,
+        "probability": 0.947
+      },
+      {
+        "word": "変",
+        "start": 190.12,
+        "end": 190.34,
+        "probability": 0.52
+      },
+      {
+        "word": "態",
+        "start": 190.34,
+        "end": 190.56,
+        "probability": 0.925
+      },
+      {
+        "word": "に",
+        "start": 190.56,
+        "end": 190.78,
+        "probability": 0.994
+      }
+    ],
+    "translated_text": "像你这样的变态啊"
+  },
+  {
+    "start": 190.78,
+    "end": 192.86,
+    "text": "首なんか閉められてさ",
+    "words": [
+      {
+        "word": "首",
+        "start": 190.78,
+        "end": 191.02,
+        "probability": 0.626
+      },
+      {
+        "word": "なんか",
+        "start": 191.02,
+        "end": 191.36,
+        "probability": 0.67
+      },
+      {
+        "word": "閉",
+        "start": 191.36,
+        "end": 191.64,
+        "probability": 0.68
+      },
+      {
+        "word": "め",
+        "start": 191.64,
+        "end": 191.78,
+        "probability": 0.985
+      },
+      {
+        "word": "ら",
+        "start": 191.78,
+        "end": 191.94,
+        "probability": 0.974
+      },
+      {
+        "word": "れて",
+        "start": 191.94,
+        "end": 192.18,
+        "probability": 0.763
+      },
+      {
+        "word": "さ",
+        "start": 192.18,
+        "end": 192.86,
+        "probability": 0.944
+      }
+    ],
+    "translated_text": "掐住你的脖子的时候"
+  },
+  {
+    "start": 203.1,
+    "end": 206.02,
+    "text": "君のその顔が見たかったのかもしれない",
+    "words": [
+      {
+        "word": "君",
+        "start": 203.1,
+        "end": 203.42,
+        "probability": 0.706
+      },
+      {
+        "word": "の",
+        "start": 203.42,
+        "end": 203.68,
+        "probability": 0.998
+      },
+      {
+        "word": "その",
+        "start": 203.68,
+        "end": 203.92,
+        "probability": 0.594
+      },
+      {
+        "word": "顔",
+        "start": 203.92,
+        "end": 204.2,
+        "probability": 0.965
+      },
+      {
+        "word": "が",
+        "start": 204.2,
+        "end": 204.38,
+        "probability": 0.984
+      },
+      {
+        "word": "見",
+        "start": 204.38,
+        "end": 204.52,
+        "probability": 0.985
+      },
+      {
+        "word": "た",
+        "start": 204.52,
+        "end": 204.68,
+        "probability": 0.82
+      },
+      {
+        "word": "かった",
+        "start": 204.68,
+        "end": 205.0,
+        "probability": 0.932
+      },
+      {
+        "word": "の",
+        "start": 205.0,
+        "end": 205.16,
+        "probability": 0.943
+      },
+      {
+        "word": "か",
+        "start": 205.16,
+        "end": 205.28,
+        "probability": 0.933
+      },
+      {
+        "word": "もし",
+        "start": 205.28,
+        "end": 205.64,
+        "probability": 0.81
+      },
+      {
+        "word": "れない",
+        "start": 205.64,
+        "end": 206.02,
+        "probability": 0.953
+      }
+    ],
+    "translated_text": "也许我就是想看看你那副表情呢"
+  },
+  {
+    "start": 213.21,
+    "end": 214.01,
+    "text": "どうしたの?",
+    "words": [
+      {
+        "word": "どう",
+        "start": 213.21,
+        "end": 213.45,
+        "probability": 0.367
+      },
+      {
+        "word": "した",
+        "start": 213.45,
+        "end": 213.77,
+        "probability": 0.98
+      },
+      {
+        "word": "の?",
+        "start": 213.77,
+        "end": 214.01,
+        "probability": 0.985
+      }
+    ],
+    "translated_text": "怎么了？"
+  },
+  {
+    "start": 215.47,
+    "end": 216.21,
+    "text": "もしね?",
+    "words": [
+      {
+        "word": "もし",
+        "start": 215.47,
+        "end": 215.95,
+        "probability": 0.214
+      },
+      {
+        "word": "ね?",
+        "start": 215.95,
+        "end": 216.21,
+        "probability": 0.666
+      }
+    ],
+    "translated_text": "如果呢？"
+  },
+  {
+    "start": 222.49,
+    "end": 223.83,
+    "text": "バリアーメト",
+    "words": [
+      {
+        "word": "バ",
+        "start": 222.49,
+        "end": 222.77,
+        "probability": 0.717
+      },
+      {
+        "word": "リ",
+        "start": 222.77,
+        "end": 222.89,
+        "probability": 0.931
+      },
+      {
+        "word": "ア",
+        "start": 222.89,
+        "end": 223.11,
+        "probability": 0.78
+      },
+      {
+        "word": "ーメ",
+        "start": 223.11,
+        "end": 223.39,
+        "probability": 0.687
+      },
+      {
+        "word": "ト",
+        "start": 223.39,
+        "end": 223.83,
+        "probability": 0.514
+      }
+    ],
+    "translated_text": "屏障？"
+  },
+  {
+    "start": 225.11,
+    "end": 226.47,
+    "text": "君を殺すの",
+    "words": [
+      {
+        "word": "君",
+        "start": 225.11,
+        "end": 225.59,
+        "probability": 0.87
+      },
+      {
+        "word": "を",
+        "start": 225.59,
+        "end": 225.81,
+        "probability": 0.918
+      },
+      {
+        "word": "殺",
+        "start": 225.81,
+        "end": 226.03,
+        "probability": 0.938
+      },
+      {
+        "word": "す",
+        "start": 226.03,
+        "end": 226.35,
+        "probability": 0.989
+      },
+      {
+        "word": "の",
+        "start": 226.35,
+        "end": 226.47,
+        "probability": 0.981
+      }
+    ],
+    "translated_text": "我要杀了你哦。"
+  },
+  {
+    "start": 228.68,
+    "end": 229.34,
+    "text": "ごめんな?",
+    "words": [
+      {
+        "word": "ご",
+        "start": 228.68,
+        "end": 228.92,
+        "probability": 0.419
+      },
+      {
+        "word": "め",
+        "start": 228.92,
+        "end": 229.1,
+        "probability": 0.997
+      },
+      {
+        "word": "んな?",
+        "start": 229.1,
+        "end": 229.34,
+        "probability": 0.965
+      }
+    ],
+    "translated_text": "抱歉呢？"
+  },
+  {
+    "start": 230.14,
+    "end": 231.88,
+    "text": "酸酸暗しめちゃった",
+    "words": [
+      {
+        "word": "酸",
+        "start": 230.14,
+        "end": 230.62,
+        "probability": 0.385
+      },
+      {
+        "word": "酸",
+        "start": 230.62,
+        "end": 230.84,
+        "probability": 0.977
+      },
+      {
+        "word": "暗",
+        "start": 230.84,
+        "end": 231.14,
+        "probability": 0.49
+      },
+      {
+        "word": "し",
+        "start": 231.14,
+        "end": 231.3,
+        "probability": 0.775
+      },
+      {
+        "word": "め",
+        "start": 231.3,
+        "end": 231.44,
+        "probability": 0.974
+      },
+      {
+        "word": "ちゃ",
+        "start": 231.44,
+        "end": 231.6,
+        "probability": 0.964
+      },
+      {
+        "word": "った",
+        "start": 231.6,
+        "end": 231.88,
+        "probability": 0.979
+      }
+    ],
+    "translated_text": "安详地杀掉了呢。"
+  },
+  {
+    "start": 233.19,
+    "end": 234.21,
+    "text": "でもさ",
+    "words": [
+      {
+        "word": "でも",
+        "start": 233.19,
+        "end": 233.91,
+        "probability": 0.089
+      },
+      {
+        "word": "さ",
+        "start": 233.91,
+        "end": 234.21,
+        "probability": 0.987
+      }
+    ],
+    "translated_text": "但是啊，"
+  },
+  {
+    "start": 235.23,
+    "end": 236.83,
+    "text": "わかって欲しかったんだ",
+    "words": [
+      {
+        "word": "わか",
+        "start": 235.23,
+        "end": 235.71,
+        "probability": 0.099
+      },
+      {
+        "word": "って",
+        "start": 235.71,
+        "end": 235.99,
+        "probability": 0.986
+      },
+      {
+        "word": "欲",
+        "start": 235.99,
+        "end": 236.13,
+        "probability": 0.895
+      },
+      {
+        "word": "し",
+        "start": 236.13,
+        "end": 236.23,
+        "probability": 0.974
+      },
+      {
+        "word": "かった",
+        "start": 236.23,
+        "end": 236.57,
+        "probability": 0.998
+      },
+      {
+        "word": "んだ",
+        "start": 236.57,
+        "end": 236.83,
+        "probability": 0.989
+      }
+    ],
+    "translated_text": "我希望你能明白。"
+  },
+  {
+    "start": 237.93,
+    "end": 239.37,
+    "text": "私の暗しめ",
+    "words": [
+      {
+        "word": "私",
+        "start": 237.93,
+        "end": 238.41,
+        "probability": 0.614
+      },
+      {
+        "word": "の",
+        "start": 238.41,
+        "end": 238.71,
+        "probability": 0.986
+      },
+      {
+        "word": "暗",
+        "start": 238.71,
+        "end": 238.97,
+        "probability": 0.984
+      },
+      {
+        "word": "し",
+        "start": 238.97,
+        "end": 239.15,
+        "probability": 0.942
+      },
+      {
+        "word": "め",
+        "start": 239.15,
+        "end": 239.37,
+        "probability": 0.969
+      }
+    ],
+    "translated_text": "我的这份黑暗。"
+  },
+  {
+    "start": 241.55,
+    "end": 244.97,
+    "text": "君が女と交差してるって知ったとき",
+    "words": [
+      {
+        "word": "君",
+        "start": 241.55,
+        "end": 242.35,
+        "probability": 0.765
+      },
+      {
+        "word": "が",
+        "start": 242.35,
+        "end": 242.63,
+        "probability": 0.993
+      },
+      {
+        "word": "女",
+        "start": 242.63,
+        "end": 242.91,
+        "probability": 0.871
+      },
+      {
+        "word": "と",
+        "start": 242.91,
+        "end": 243.11,
+        "probability": 0.936
+      },
+      {
+        "word": "交",
+        "start": 243.11,
+        "end": 243.35,
+        "probability": 0.344
+      },
+      {
+        "word": "差",
+        "start": 243.35,
+        "end": 243.57,
+        "probability": 0.523
+      },
+      {
+        "word": "して",
+        "start": 243.57,
+        "end": 243.87,
+        "probability": 0.974
+      },
+      {
+        "word": "る",
+        "start": 243.87,
+        "end": 243.99,
+        "probability": 0.806
+      },
+      {
+        "word": "って",
+        "start": 243.99,
+        "end": 244.19,
+        "probability": 0.474
+      },
+      {
+        "word": "知",
+        "start": 244.19,
+        "end": 244.39,
+        "probability": 0.963
+      },
+      {
+        "word": "った",
+        "start": 244.39,
+        "end": 244.61,
+        "probability": 0.996
+      },
+      {
+        "word": "と",
+        "start": 244.61,
+        "end": 244.77,
+        "probability": 0.333
+      },
+      {
+        "word": "き",
+        "start": 244.77,
+        "end": 244.97,
+        "probability": 0.981
+      }
+    ],
+    "translated_text": "当我得知你和那个女人有交集的时候，"
+  },
+  {
+    "start": 245.89,
+    "end": 250.91,
+    "text": "それこそ 呼吸困難になるぐらい苦しかったし 悲しかった",
+    "words": [
+      {
+        "word": "それ",
+        "start": 245.89,
+        "end": 246.37,
+        "probability": 0.83
+      },
+      {
+        "word": "こ",
+        "start": 246.37,
+        "end": 246.57,
+        "probability": 0.993
+      },
+      {
+        "word": "そ",
+        "start": 246.57,
+        "end": 246.71,
+        "probability": 0.999
+      },
+      {
+        "word": "呼",
+        "start": 246.71,
+        "end": 246.93,
+        "probability": 0.109
+      },
+      {
+        "word": "吸",
+        "start": 246.93,
+        "end": 247.07,
+        "probability": 0.901
+      },
+      {
+        "word": "困",
+        "start": 247.07,
+        "end": 247.39,
+        "probability": 0.71
+      },
+      {
+        "word": "難",
+        "start": 247.39,
+        "end": 247.53,
+        "probability": 0.976
+      },
+      {
+        "word": "にな",
+        "start": 247.53,
+        "end": 247.83,
+        "probability": 0.957
+      },
+      {
+        "word": "る",
+        "start": 247.83,
+        "end": 247.99,
+        "probability": 0.976
+      },
+      {
+        "word": "ぐ",
+        "start": 247.99,
+        "end": 248.17,
+        "probability": 0.542
+      },
+      {
+        "word": "らい",
+        "start": 248.17,
+        "end": 248.29,
+        "probability": 0.999
+      },
+      {
+        "word": "苦",
+        "start": 248.29,
+        "end": 248.57,
+        "probability": 0.787
+      },
+      {
+        "word": "し",
+        "start": 248.57,
+        "end": 248.73,
+        "probability": 0.979
+      },
+      {
+        "word": "かった",
+        "start": 248.73,
+        "end": 249.07,
+        "probability": 0.998
+      },
+      {
+        "word": "し",
+        "start": 249.07,
+        "end": 249.33,
+        "probability": 0.982
+      },
+      {
+        "word": "悲",
+        "start": 249.33,
+        "end": 250.27,
+        "probability": 0.629
+      },
+      {
+        "word": "し",
+        "start": 250.27,
+        "end": 250.51,
+        "probability": 0.995
+      },
+      {
+        "word": "かった",
+        "start": 250.51,
+        "end": 250.91,
+        "probability": 0.999
+      }
+    ],
+    "translated_text": "那真是痛苦到呼吸困难，而且特别悲伤。"
+  },
+  {
+    "start": 251.93,
+    "end": 254.15,
+    "text": "あんなに苦しい思いをしたの",
+    "words": [
+      {
+        "word": "あ",
+        "start": 251.93,
+        "end": 252.41,
+        "probability": 0.65
+      },
+      {
+        "word": "んな",
+        "start": 252.41,
+        "end": 252.57,
+        "probability": 0.879
+      },
+      {
+        "word": "に",
+        "start": 252.57,
+        "end": 252.73,
+        "probability": 0.997
+      },
+      {
+        "word": "苦",
+        "start": 252.73,
+        "end": 252.91,
+        "probability": 0.94
+      },
+      {
+        "word": "しい",
+        "start": 252.91,
+        "end": 253.21,
+        "probability": 0.981
+      },
+      {
+        "word": "思",
+        "start": 253.21,
+        "end": 253.49,
+        "probability": 0.895
+      },
+      {
+        "word": "い",
+        "start": 253.49,
+        "end": 253.67,
+        "probability": 0.798
+      },
+      {
+        "word": "を",
+        "start": 253.67,
+        "end": 253.75,
+        "probability": 0.601
+      },
+      {
+        "word": "した",
+        "start": 253.75,
+        "end": 253.97,
+        "probability": 0.983
+      },
+      {
+        "word": "の",
+        "start": 253.97,
+        "end": 254.15,
+        "probability": 0.908
+      }
+    ],
+    "translated_text": "我经历了那么痛苦的感受，"
+  },
+  {
+    "start": 254.79,
+    "end": 257.15,
+    "text": "生まれて初めてでそう",
+    "words": [
+      {
+        "word": "生",
+        "start": 254.79,
+        "end": 255.03,
+        "probability": 0.54
+      },
+      {
+        "word": "ま",
+        "start": 255.03,
+        "end": 255.41,
+        "probability": 0.985
+      },
+      {
+        "word": "れて",
+        "start": 255.41,
+        "end": 255.41,
+        "probability": 0.984
+      },
+      {
+        "word": "初",
+        "start": 255.41,
+        "end": 255.71,
+        "probability": 0.648
+      },
+      {
+        "word": "めて",
+        "start": 255.71,
+        "end": 255.99,
+        "probability": 0.957
+      },
+      {
+        "word": "で",
+        "start": 255.99,
+        "end": 256.17,
+        "probability": 0.359
+      },
+      {
+        "word": "そう",
+        "start": 256.17,
+        "end": 257.15,
+        "probability": 0.485
+      }
+    ],
+    "translated_text": "出生以来第一次这样呢。"
+  },
+  {
+    "start": 257.79,
+    "end": 260.39,
+    "text": "自分でも農に行っちゃいそうだった",
+    "words": [
+      {
+        "word": "自",
+        "start": 257.79,
+        "end": 258.27,
+        "probability": 0.917
+      },
+      {
+        "word": "分",
+        "start": 258.27,
+        "end": 258.47,
+        "probability": 1.0
+      },
+      {
+        "word": "でも",
+        "start": 258.47,
+        "end": 258.77,
+        "probability": 0.997
+      },
+      {
+        "word": "農",
+        "start": 258.77,
+        "end": 258.97,
+        "probability": 0.639
+      },
+      {
+        "word": "に",
+        "start": 258.97,
+        "end": 259.15,
+        "probability": 0.607
+      },
+      {
+        "word": "行",
+        "start": 259.15,
+        "end": 259.33,
+        "probability": 0.546
+      },
+      {
+        "word": "っちゃ",
+        "start": 259.33,
+        "end": 259.67,
+        "probability": 0.952
+      },
+      {
+        "word": "い",
+        "start": 259.67,
+        "end": 259.77,
+        "probability": 0.517
+      },
+      {
+        "word": "そうだ",
+        "start": 259.77,
+        "end": 260.01,
+        "probability": 0.785
+      },
+      {
+        "word": "った",
+        "start": 260.01,
+        "end": 260.39,
+        "probability": 0.885
+      }
+    ],
+    "translated_text": "连我自己都差点要逃走了呢。"
+  },
+  {
+    "start": 261.37,
+    "end": 262.31,
+    "text": "ほんとに",
+    "words": [
+      {
+        "word": "ほ",
+        "start": 261.37,
+        "end": 261.77,
+        "probability": 0.052
+      },
+      {
+        "word": "んと",
+        "start": 261.77,
+        "end": 262.07,
+        "probability": 0.807
+      },
+      {
+        "word": "に",
+        "start": 262.07,
+        "end": 262.31,
+        "probability": 0.938
+      }
+    ],
+    "translated_text": "真的。"
+  },
+  {
+    "start": 264.04,
+    "end": 266.48,
+    "text": "さっきのは苦しみのうっそわく",
+    "words": [
+      {
+        "word": "さ",
+        "start": 264.04,
+        "end": 264.4,
+        "probability": 0.157
+      },
+      {
+        "word": "っ",
+        "start": 264.4,
+        "end": 264.58,
+        "probability": 0.986
+      },
+      {
+        "word": "き",
+        "start": 264.58,
+        "end": 264.66,
+        "probability": 0.998
+      },
+      {
+        "word": "のは",
+        "start": 264.66,
+        "end": 264.88,
+        "probability": 0.96
+      },
+      {
+        "word": "苦",
+        "start": 264.88,
+        "end": 265.18,
+        "probability": 0.962
+      },
+      {
+        "word": "し",
+        "start": 265.18,
+        "end": 265.42,
+        "probability": 0.929
+      },
+      {
+        "word": "み",
+        "start": 265.42,
+        "end": 265.56,
+        "probability": 0.982
+      },
+      {
+        "word": "の",
+        "start": 265.56,
+        "end": 265.72,
+        "probability": 0.941
+      },
+      {
+        "word": "う",
+        "start": 265.72,
+        "end": 265.98,
+        "probability": 0.045
+      },
+      {
+        "word": "っ",
+        "start": 265.98,
+        "end": 265.98,
+        "probability": 0.6
+      },
+      {
+        "word": "そ",
+        "start": 265.98,
+        "end": 266.1,
+        "probability": 0.521
+      },
+      {
+        "word": "わ",
+        "start": 266.1,
+        "end": 266.26,
+        "probability": 0.663
+      },
+      {
+        "word": "く",
+        "start": 266.26,
+        "end": 266.48,
+        "probability": 0.738
+      }
+    ],
+    "translated_text": "刚才那痛苦是骗人的吧？"
+  },
+  {
+    "start": 267.56,
+    "end": 272.11,
+    "text": "そういうことにした されにしても",
+    "words": [
+      {
+        "word": "そう",
+        "start": 267.56,
+        "end": 267.96,
+        "probability": 0.753
+      },
+      {
+        "word": "いうこと",
+        "start": 267.96,
+        "end": 268.36,
+        "probability": 0.932
+      },
+      {
+        "word": "に",
+        "start": 268.36,
+        "end": 268.6,
+        "probability": 0.864
+      },
+      {
+        "word": "した",
+        "start": 268.6,
+        "end": 268.84,
+        "probability": 0.957
+      },
+      {
+        "word": "さ",
+        "start": 268.84,
+        "end": 269.62,
+        "probability": 0.495
+      },
+      {
+        "word": "れ",
+        "start": 271.25,
+        "end": 271.41,
+        "probability": 0.577
+      },
+      {
+        "word": "に",
+        "start": 271.41,
+        "end": 271.55,
+        "probability": 0.965
+      },
+      {
+        "word": "して",
+        "start": 271.55,
+        "end": 271.77,
+        "probability": 0.843
+      },
+      {
+        "word": "も",
+        "start": 271.77,
+        "end": 272.11,
+        "probability": 0.981
+      }
+    ],
+    "translated_text": "就这么办吧。虽说如此，"
+  },
+  {
+    "start": 273.29,
+    "end": 275.05,
+    "text": "君もうぼうびだね",
+    "words": [
+      {
+        "word": "君",
+        "start": 273.29,
+        "end": 273.69,
+        "probability": 0.644
+      },
+      {
+        "word": "も",
+        "start": 273.69,
+        "end": 273.99,
+        "probability": 0.984
+      },
+      {
+        "word": "う",
+        "start": 273.99,
+        "end": 274.17,
+        "probability": 0.08
+      },
+      {
+        "word": "ぼ",
+        "start": 274.17,
+        "end": 274.27,
+        "probability": 0.937
+      },
+      {
+        "word": "う",
+        "start": 274.27,
+        "end": 274.39,
+        "probability": 0.44
+      },
+      {
+        "word": "び",
+        "start": 274.39,
+        "end": 274.47,
+        "probability": 0.837
+      },
+      {
+        "word": "だ",
+        "start": 274.47,
+        "end": 274.59,
+        "probability": 0.984
+      },
+      {
+        "word": "ね",
+        "start": 274.59,
+        "end": 275.05,
+        "probability": 0.922
+      }
+    ],
+    "translated_text": "你已经得到报应了吧？"
+  },
+  {
+    "start": 276.43,
+    "end": 279.75,
+    "text": "私の目の前で 固点と寝ちゃうのってそう",
+    "words": [
+      {
+        "word": "私",
+        "start": 276.43,
+        "end": 276.83,
+        "probability": 0.378
+      },
+      {
+        "word": "の",
+        "start": 276.83,
+        "end": 277.07,
+        "probability": 0.996
+      },
+      {
+        "word": "目",
+        "start": 277.07,
+        "end": 277.23,
+        "probability": 0.928
+      },
+      {
+        "word": "の",
+        "start": 277.23,
+        "end": 277.37,
+        "probability": 0.99
+      },
+      {
+        "word": "前",
+        "start": 277.37,
+        "end": 277.55,
+        "probability": 0.992
+      },
+      {
+        "word": "で",
+        "start": 277.55,
+        "end": 277.69,
+        "probability": 0.994
+      },
+      {
+        "word": "固",
+        "start": 277.69,
+        "end": 277.91,
+        "probability": 0.548
+      },
+      {
+        "word": "点",
+        "start": 277.91,
+        "end": 278.07,
+        "probability": 0.659
+      },
+      {
+        "word": "と",
+        "start": 278.07,
+        "end": 278.27,
+        "probability": 0.995
+      },
+      {
+        "word": "寝",
+        "start": 278.27,
+        "end": 278.39,
+        "probability": 0.931
+      },
+      {
+        "word": "ちゃ",
+        "start": 278.39,
+        "end": 278.59,
+        "probability": 0.867
+      },
+      {
+        "word": "う",
+        "start": 278.59,
+        "end": 278.71,
+        "probability": 0.748
+      },
+      {
+        "word": "の",
+        "start": 278.71,
+        "end": 278.77,
+        "probability": 0.336
+      },
+      {
+        "word": "って",
+        "start": 278.77,
+        "end": 279.01,
+        "probability": 0.314
+      },
+      {
+        "word": "そう",
+        "start": 279.01,
+        "end": 279.75,
+        "probability": 0.569
+      }
+    ],
+    "translated_text": "在我眼前和固点睡觉，就是那样。"
+  },
+  {
+    "start": 280.71,
+    "end": 281.21,
+    "text": "うま",
+    "words": [
+      {
+        "word": "う",
+        "start": 280.71,
+        "end": 281.11,
+        "probability": 0.076
+      },
+      {
+        "word": "ま",
+        "start": 281.11,
+        "end": 281.21,
+        "probability": 0.478
+      }
+    ],
+    "translated_text": "嗯哼。"
+  },
+  {
+    "start": 282.05,
+    "end": 284.89,
+    "text": "飲み物に水味薬をしこんでおいたから",
+    "words": [
+      {
+        "word": "飲",
+        "start": 282.05,
+        "end": 282.45,
+        "probability": 0.496
+      },
+      {
+        "word": "み",
+        "start": 282.45,
+        "end": 282.57,
+        "probability": 0.99
+      },
+      {
+        "word": "物",
+        "start": 282.57,
+        "end": 282.73,
+        "probability": 0.981
+      },
+      {
+        "word": "に",
+        "start": 282.73,
+        "end": 282.93,
+        "probability": 0.995
+      },
+      {
+        "word": "水",
+        "start": 282.93,
+        "end": 283.19,
+        "probability": 0.394
+      },
+      {
+        "word": "味",
+        "start": 283.19,
+        "end": 283.37,
+        "probability": 0.535
+      },
+      {
+        "word": "薬",
+        "start": 283.37,
+        "end": 283.61,
+        "probability": 0.636
+      },
+      {
+        "word": "を",
+        "start": 283.61,
+        "end": 283.79,
+        "probability": 0.956
+      },
+      {
+        "word": "し",
+        "start": 283.79,
+        "end": 283.95,
+        "probability": 0.415
+      },
+      {
+        "word": "こん",
+        "start": 283.95,
+        "end": 284.13,
+        "probability": 0.161
+      },
+      {
+        "word": "で",
+        "start": 284.13,
+        "end": 284.29,
+        "probability": 0.977
+      },
+      {
+        "word": "お",
+        "start": 284.29,
+        "end": 284.39,
+        "probability": 0.592
+      },
+      {
+        "word": "いた",
+        "start": 284.39,
+        "end": 284.55,
+        "probability": 0.912
+      },
+      {
+        "word": "から",
+        "start": 284.55,
+        "end": 284.89,
+        "probability": 0.977
+      }
+    ],
+    "translated_text": "因为我在饮料里放了安眠药呢。"
+  },
+  {
+    "start": 285.61,
+    "end": 288.11,
+    "text": "当たり前といえば当たり前なんだけど",
+    "words": [
+      {
+        "word": "当",
+        "start": 285.61,
+        "end": 286.01,
+        "probability": 0.536
+      },
+      {
+        "word": "た",
+        "start": 286.01,
+        "end": 286.17,
+        "probability": 0.981
+      },
+      {
+        "word": "り",
+        "start": 286.17,
+        "end": 286.29,
+        "probability": 0.982
+      },
+      {
+        "word": "前",
+        "start": 286.29,
+        "end": 286.43,
+        "probability": 0.94
+      },
+      {
+        "word": "と",
+        "start": 286.43,
+        "end": 286.69,
+        "probability": 0.966
+      },
+      {
+        "word": "い",
+        "start": 286.69,
+        "end": 286.77,
+        "probability": 0.604
+      },
+      {
+        "word": "えば",
+        "start": 286.77,
+        "end": 286.95,
+        "probability": 0.993
+      },
+      {
+        "word": "当",
+        "start": 286.95,
+        "end": 287.13,
+        "probability": 0.968
+      },
+      {
+        "word": "た",
+        "start": 287.13,
+        "end": 287.21,
+        "probability": 0.931
+      },
+      {
+        "word": "り",
+        "start": 287.21,
+        "end": 287.31,
+        "probability": 0.991
+      },
+      {
+        "word": "前",
+        "start": 287.31,
+        "end": 287.51,
+        "probability": 0.998
+      },
+      {
+        "word": "なんだ",
+        "start": 287.51,
+        "end": 287.81,
+        "probability": 0.943
+      },
+      {
+        "word": "けど",
+        "start": 287.81,
+        "end": 288.11,
+        "probability": 0.996
+      }
+    ],
+    "translated_text": "说起来也是理当然的，"
+  },
+  {
+    "start": 289.39,
+    "end": 290.63,
+    "text": "改めて",
+    "words": [
+      {
+        "word": "改",
+        "start": 289.39,
+        "end": 290.15,
+        "probability": 0.763
+      },
+      {
+        "word": "めて",
+        "start": 290.15,
+        "end": 290.63,
+        "probability": 0.983
+      }
+    ],
+    "translated_text": "不过还是再确认一下。"
+  },
+  {
+    "start": 291.59,
+    "end": 292.39,
+    "text": "ありがとうね",
+    "words": [
+      {
+        "word": "ありがとう",
+        "start": 291.59,
+        "end": 291.99,
+        "probability": 0.642
+      },
+      {
+        "word": "ね",
+        "start": 291.99,
+        "end": 292.39,
+        "probability": 0.991
+      }
+    ],
+    "translated_text": "谢啦~"
+  },
+  {
+    "start": 293.79,
+    "end": 295.99,
+    "text": "私のディナーの誘いに落ちてくれ",
+    "words": [
+      {
+        "word": "私",
+        "start": 293.79,
+        "end": 294.19,
+        "probability": 0.681
+      },
+      {
+        "word": "の",
+        "start": 294.19,
+        "end": 294.43,
+        "probability": 0.986
+      },
+      {
+        "word": "デ",
+        "start": 294.43,
+        "end": 294.59,
+        "probability": 0.716
+      },
+      {
+        "word": "ィ",
+        "start": 294.59,
+        "end": 294.59,
+        "probability": 0.952
+      },
+      {
+        "word": "ナ",
+        "start": 294.59,
+        "end": 294.67,
+        "probability": 0.967
+      },
+      {
+        "word": "ー",
+        "start": 294.67,
+        "end": 294.75,
+        "probability": 0.918
+      },
+      {
+        "word": "の",
+        "start": 294.75,
+        "end": 294.87,
+        "probability": 0.992
+      },
+      {
+        "word": "誘",
+        "start": 294.87,
+        "end": 295.07,
+        "probability": 0.571
+      },
+      {
+        "word": "い",
+        "start": 295.07,
+        "end": 295.27,
+        "probability": 0.944
+      },
+      {
+        "word": "に",
+        "start": 295.27,
+        "end": 295.37,
+        "probability": 0.998
+      },
+      {
+        "word": "落",
+        "start": 295.37,
+        "end": 295.51,
+        "probability": 0.226
+      },
+      {
+        "word": "ち",
+        "start": 295.51,
+        "end": 295.65,
+        "probability": 0.979
+      },
+      {
+        "word": "て",
+        "start": 295.65,
+        "end": 295.75,
+        "probability": 0.932
+      },
+      {
+        "word": "く",
+        "start": 295.75,
+        "end": 295.89,
+        "probability": 0.994
+      },
+      {
+        "word": "れ",
+        "start": 295.89,
+        "end": 295.99,
+        "probability": 0.877
+      }
+    ],
+    "translated_text": "乖乖落入我的晚餐邀请吧"
+  },
+  {
+    "start": 298.55,
+    "end": 302.55,
+    "text": "竹実中に冷静さを と思ってた自分を 褒めてやりたいよ",
+    "words": [
+      {
+        "word": "竹",
+        "start": 298.55,
+        "end": 298.81,
+        "probability": 0.432
+      },
+      {
+        "word": "実",
+        "start": 298.81,
+        "end": 299.17,
+        "probability": 0.236
+      },
+      {
+        "word": "中",
+        "start": 299.17,
+        "end": 299.43,
+        "probability": 0.55
+      },
+      {
+        "word": "に",
+        "start": 299.43,
+        "end": 299.59,
+        "probability": 0.991
+      },
+      {
+        "word": "冷",
+        "start": 299.59,
+        "end": 299.77,
+        "probability": 0.847
+      },
+      {
+        "word": "静",
+        "start": 299.77,
+        "end": 299.99,
+        "probability": 0.777
+      },
+      {
+        "word": "さ",
+        "start": 299.99,
+        "end": 300.23,
+        "probability": 0.477
+      },
+      {
+        "word": "を",
+        "start": 300.23,
+        "end": 300.37,
+        "probability": 0.998
+      },
+      {
+        "word": "と思",
+        "start": 300.37,
+        "end": 300.57,
+        "probability": 0.175
+      },
+      {
+        "word": "って",
+        "start": 300.57,
+        "end": 300.77,
+        "probability": 0.914
+      },
+      {
+        "word": "た",
+        "start": 300.77,
+        "end": 300.91,
+        "probability": 0.751
+      },
+      {
+        "word": "自",
+        "start": 300.91,
+        "end": 301.13,
+        "probability": 0.964
+      },
+      {
+        "word": "分",
+        "start": 301.13,
+        "end": 301.29,
+        "probability": 0.999
+      },
+      {
+        "word": "を",
+        "start": 301.29,
+        "end": 301.47,
+        "probability": 0.995
+      },
+      {
+        "word": "褒",
+        "start": 301.47,
+        "end": 301.63,
+        "probability": 0.814
+      },
+      {
+        "word": "めて",
+        "start": 301.63,
+        "end": 301.85,
+        "probability": 0.956
+      },
+      {
+        "word": "や",
+        "start": 301.85,
+        "end": 302.01,
+        "probability": 0.993
+      },
+      {
+        "word": "り",
+        "start": 302.01,
+        "end": 302.11,
+        "probability": 0.993
+      },
+      {
+        "word": "たい",
+        "start": 302.11,
+        "end": 302.37,
+        "probability": 0.958
+      },
+      {
+        "word": "よ",
+        "start": 302.37,
+        "end": 302.55,
+        "probability": 0.489
+      }
+    ],
+    "translated_text": "我真想夸夸那个在竹实中还能保持冷静的自己呢"
+  },
+  {
+    "start": 305.52,
+    "end": 310.54,
+    "text": "には定めしがくえるっていいな だから 飲んきに喜んでたけどね",
+    "words": [
+      {
+        "word": "には",
+        "start": 305.52,
+        "end": 305.72,
+        "probability": 0.164
+      },
+      {
+        "word": "定",
+        "start": 305.72,
+        "end": 305.94,
+        "probability": 0.113
+      },
+      {
+        "word": "め",
+        "start": 305.94,
+        "end": 306.2,
+        "probability": 0.804
+      },
+      {
+        "word": "し",
+        "start": 306.2,
+        "end": 306.36,
+        "probability": 0.468
+      },
+      {
+        "word": "が",
+        "start": 306.36,
+        "end": 306.54,
+        "probability": 0.965
+      },
+      {
+        "word": "く",
+        "start": 306.54,
+        "end": 306.76,
+        "probability": 0.811
+      },
+      {
+        "word": "える",
+        "start": 306.76,
+        "end": 307.04,
+        "probability": 0.654
+      },
+      {
+        "word": "って",
+        "start": 307.04,
+        "end": 307.62,
+        "probability": 0.816
+      },
+      {
+        "word": "いい",
+        "start": 307.62,
+        "end": 307.86,
+        "probability": 0.658
+      },
+      {
+        "word": "な",
+        "start": 307.86,
+        "end": 307.98,
+        "probability": 0.929
+      },
+      {
+        "word": "だから",
+        "start": 307.98,
+        "end": 308.28,
+        "probability": 0.005
+      },
+      {
+        "word": "飲",
+        "start": 308.76,
+        "end": 309.16,
+        "probability": 0.515
+      },
+      {
+        "word": "ん",
+        "start": 309.16,
+        "end": 309.32,
+        "probability": 0.054
+      },
+      {
+        "word": "き",
+        "start": 309.32,
+        "end": 309.36,
+        "probability": 0.543
+      },
+      {
+        "word": "に",
+        "start": 309.36,
+        "end": 309.5,
+        "probability": 0.996
+      },
+      {
+        "word": "喜",
+        "start": 309.5,
+        "end": 309.7,
+        "probability": 0.786
+      },
+      {
+        "word": "んで",
+        "start": 309.7,
+        "end": 310.02,
+        "probability": 0.995
+      },
+      {
+        "word": "た",
+        "start": 310.02,
+        "end": 310.18,
+        "probability": 0.957
+      },
+      {
+        "word": "けど",
+        "start": 310.18,
+        "end": 310.38,
+        "probability": 0.985
+      },
+      {
+        "word": "ね",
+        "start": 310.38,
+        "end": 310.54,
+        "probability": 0.85
+      }
+    ],
+    "translated_text": "对你来说注定要疯狂真是太好了…"
+  },
+  {
+    "start": 314.93,
+    "end": 319.23,
+    "text": "ここ心声放して 言わなかった まあ",
+    "words": [
+      {
+        "word": "ここ",
+        "start": 314.93,
+        "end": 315.13,
+        "probability": 0.703
+      },
+      {
+        "word": "心",
+        "start": 315.13,
+        "end": 315.53,
+        "probability": 0.173
+      },
+      {
+        "word": "声",
+        "start": 315.53,
+        "end": 315.87,
+        "probability": 0.378
+      },
+      {
+        "word": "放",
+        "start": 315.87,
+        "end": 316.13,
+        "probability": 0.817
+      },
+      {
+        "word": "して",
+        "start": 316.13,
+        "end": 316.33,
+        "probability": 0.476
+      },
+      {
+        "word": "言",
+        "start": 316.33,
+        "end": 316.93,
+        "probability": 0.031
+      },
+      {
+        "word": "わ",
+        "start": 318.53,
+        "end": 318.69,
+        "probability": 0.142
+      },
+      {
+        "word": "な",
+        "start": 318.69,
+        "end": 318.79,
+        "probability": 0.124
+      },
+      {
+        "word": "かった",
+        "start": 318.79,
+        "end": 318.95,
+        "probability": 0.444
+      },
+      {
+        "word": "まあ",
+        "start": 318.95,
+        "end": 319.23,
+        "probability": 0.146
+      }
+    ],
+    "translated_text": "在这里把心声放出来……嘛，我可没说出口"
+  },
+  {
+    "start": 319.95,
+    "end": 322.05,
+    "text": "ずれないこと言わないだよ",
+    "words": [
+      {
+        "word": "ず",
+        "start": 319.95,
+        "end": 320.35,
+        "probability": 0.094
+      },
+      {
+        "word": "れない",
+        "start": 320.35,
+        "end": 320.63,
+        "probability": 0.791
+      },
+      {
+        "word": "こと",
+        "start": 320.63,
+        "end": 320.89,
+        "probability": 0.862
+      },
+      {
+        "word": "言",
+        "start": 320.89,
+        "end": 321.11,
+        "probability": 0.962
+      },
+      {
+        "word": "わ",
+        "start": 321.11,
+        "end": 321.25,
+        "probability": 0.992
+      },
+      {
+        "word": "ない",
+        "start": 321.25,
+        "end": 321.41,
+        "probability": 0.998
+      },
+      {
+        "word": "だ",
+        "start": 321.41,
+        "end": 321.61,
+        "probability": 0.731
+      },
+      {
+        "word": "よ",
+        "start": 321.61,
+        "end": 322.05,
+        "probability": 0.999
+      }
+    ],
+    "translated_text": "我可不是在说瞎话哦"
+  },
+  {
+    "start": 322.99,
+    "end": 325.09,
+    "text": "ふたむしみはこれからでしょ",
+    "words": [
+      {
+        "word": "ふ",
+        "start": 322.99,
+        "end": 323.39,
+        "probability": 0.206
+      },
+      {
+        "word": "た",
+        "start": 323.39,
+        "end": 323.53,
+        "probability": 0.744
+      },
+      {
+        "word": "む",
+        "start": 323.53,
+        "end": 323.69,
+        "probability": 0.29
+      },
+      {
+        "word": "し",
+        "start": 323.69,
+        "end": 323.87,
+        "probability": 0.912
+      },
+      {
+        "word": "み",
+        "start": 323.87,
+        "end": 324.01,
+        "probability": 0.947
+      },
+      {
+        "word": "は",
+        "start": 324.01,
+        "end": 324.13,
+        "probability": 0.78
+      },
+      {
+        "word": "これ",
+        "start": 324.13,
+        "end": 324.41,
+        "probability": 0.953
+      },
+      {
+        "word": "から",
+        "start": 324.41,
+        "end": 324.73,
+        "probability": 0.987
+      },
+      {
+        "word": "で",
+        "start": 324.73,
+        "end": 324.91,
+        "probability": 0.829
+      },
+      {
+        "word": "しょ",
+        "start": 324.91,
+        "end": 325.09,
+        "probability": 0.999
+      }
+    ],
+    "translated_text": "二虫见才是重头戏吧？"
+  },
+  {
+    "start": 325.09,
+    "end": 334.97,
+    "text": "私にうまのりになられてる気分",
+    "words": [
+      {
+        "word": "私",
+        "start": 325.09,
+        "end": 325.79,
+        "probability": 0.771
+      },
+      {
+        "word": "に",
+        "start": 333.05,
+        "end": 333.31,
+        "probability": 0.989
+      },
+      {
+        "word": "う",
+        "start": 333.31,
+        "end": 333.43,
+        "probability": 0.456
+      },
+      {
+        "word": "ま",
+        "start": 333.43,
+        "end": 333.55,
+        "probability": 0.995
+      },
+      {
+        "word": "の",
+        "start": 333.55,
+        "end": 333.69,
+        "probability": 0.904
+      },
+      {
+        "word": "り",
+        "start": 333.69,
+        "end": 333.81,
+        "probability": 0.914
+      },
+      {
+        "word": "にな",
+        "start": 333.81,
+        "end": 334.07,
+        "probability": 0.905
+      },
+      {
+        "word": "ら",
+        "start": 334.07,
+        "end": 334.19,
+        "probability": 0.995
+      },
+      {
+        "word": "れて",
+        "start": 334.19,
+        "end": 334.45,
+        "probability": 0.997
+      },
+      {
+        "word": "る",
+        "start": 334.45,
+        "end": 334.59,
+        "probability": 0.883
+      },
+      {
+        "word": "気",
+        "start": 334.59,
+        "end": 334.81,
+        "probability": 0.712
+      },
+      {
+        "word": "分",
+        "start": 334.81,
+        "end": 334.97,
+        "probability": 0.985
+      }
+    ],
+    "translated_text": "有种被我骑在身上的感觉呢"
+  },
+  {
+    "start": 339.02,
+    "end": 340.7,
+    "text": "私は幸せだよ",
+    "words": [
+      {
+        "word": "私",
+        "start": 339.02,
+        "end": 339.42,
+        "probability": 0.893
+      },
+      {
+        "word": "は",
+        "start": 339.42,
+        "end": 339.6,
+        "probability": 0.998
+      },
+      {
+        "word": "幸",
+        "start": 339.6,
+        "end": 339.9,
+        "probability": 0.895
+      },
+      {
+        "word": "せ",
+        "start": 339.9,
+        "end": 340.18,
+        "probability": 1.0
+      },
+      {
+        "word": "だ",
+        "start": 340.18,
+        "end": 340.34,
+        "probability": 0.998
+      },
+      {
+        "word": "よ",
+        "start": 340.34,
+        "end": 340.7,
+        "probability": 1.0
+      }
+    ],
+    "translated_text": "我很幸福哦"
+  },
+  {
+    "start": 341.8,
+    "end": 343.92,
+    "text": "ベッドにくさりで繋がれて",
+    "words": [
+      {
+        "word": "ベ",
+        "start": 341.8,
+        "end": 342.2,
+        "probability": 0.844
+      },
+      {
+        "word": "ッ",
+        "start": 342.2,
+        "end": 342.4,
+        "probability": 0.906
+      },
+      {
+        "word": "ド",
+        "start": 342.4,
+        "end": 342.48,
+        "probability": 0.97
+      },
+      {
+        "word": "に",
+        "start": 342.48,
+        "end": 342.6,
+        "probability": 0.926
+      },
+      {
+        "word": "く",
+        "start": 342.6,
+        "end": 342.82,
+        "probability": 0.157
+      },
+      {
+        "word": "さ",
+        "start": 342.82,
+        "end": 342.96,
+        "probability": 0.926
+      },
+      {
+        "word": "り",
+        "start": 342.96,
+        "end": 343.06,
+        "probability": 0.966
+      },
+      {
+        "word": "で",
+        "start": 343.06,
+        "end": 343.2,
+        "probability": 0.958
+      },
+      {
+        "word": "繋",
+        "start": 343.2,
+        "end": 343.48,
+        "probability": 0.726
+      },
+      {
+        "word": "が",
+        "start": 343.48,
+        "end": 343.64,
+        "probability": 0.979
+      },
+      {
+        "word": "れて",
+        "start": 343.64,
+        "end": 343.92,
+        "probability": 0.664
+      }
+    ],
+    "translated_text": "被锁链锁在床上"
+  },
+  {
+    "start": 344.9,
+    "end": 348.28,
+    "text": "見え動きは一切取れない 君を見終わらせて",
+    "words": [
+      {
+        "word": "見",
+        "start": 344.9,
+        "end": 345.36,
+        "probability": 0.389
+      },
+      {
+        "word": "え",
+        "start": 345.36,
+        "end": 345.46,
+        "probability": 0.386
+      },
+      {
+        "word": "動",
+        "start": 345.46,
+        "end": 345.58,
+        "probability": 0.404
+      },
+      {
+        "word": "き",
+        "start": 345.58,
+        "end": 345.78,
+        "probability": 0.997
+      },
+      {
+        "word": "は",
+        "start": 345.78,
+        "end": 345.92,
+        "probability": 0.488
+      },
+      {
+        "word": "一",
+        "start": 345.92,
+        "end": 346.12,
+        "probability": 0.86
+      },
+      {
+        "word": "切",
+        "start": 346.12,
+        "end": 346.4,
+        "probability": 0.852
+      },
+      {
+        "word": "取",
+        "start": 346.4,
+        "end": 346.68,
+        "probability": 0.81
+      },
+      {
+        "word": "れない",
+        "start": 346.68,
+        "end": 346.94,
+        "probability": 0.957
+      },
+      {
+        "word": "君",
+        "start": 346.94,
+        "end": 347.3,
+        "probability": 0.859
+      },
+      {
+        "word": "を",
+        "start": 347.3,
+        "end": 347.54,
+        "probability": 0.997
+      },
+      {
+        "word": "見",
+        "start": 347.54,
+        "end": 347.7,
+        "probability": 0.86
+      },
+      {
+        "word": "終",
+        "start": 347.7,
+        "end": 347.88,
+        "probability": 0.15
+      },
+      {
+        "word": "わ",
+        "start": 347.88,
+        "end": 347.9,
+        "probability": 0.985
+      },
+      {
+        "word": "ら",
+        "start": 347.9,
+        "end": 347.98,
+        "probability": 0.995
+      },
+      {
+        "word": "せて",
+        "start": 347.98,
+        "end": 348.28,
+        "probability": 0.721
+      }
+    ],
+    "translated_text": "无法动弹，只能让你看着我结束。"
+  },
+  {
+    "start": 349.68,
+    "end": 350.7,
+    "text": "私ね",
+    "words": [
+      {
+        "word": "私",
+        "start": 349.68,
+        "end": 350.42,
+        "probability": 0.389
+      },
+      {
+        "word": "ね",
+        "start": 350.42,
+        "end": 350.7,
+        "probability": 0.317
+      }
+    ],
+    "translated_text": "我啊，"
+  },
+  {
+    "start": 351.76,
+    "end": 356.38,
+    "text": "自分のことをいい人だと思ってた でも",
+    "words": [
+      {
+        "word": "自",
+        "start": 351.76,
+        "end": 352.22,
+        "probability": 0.67
+      },
+      {
+        "word": "分",
+        "start": 352.22,
+        "end": 352.46,
+        "probability": 0.999
+      },
+      {
+        "word": "の",
+        "start": 352.46,
+        "end": 352.58,
+        "probability": 0.997
+      },
+      {
+        "word": "こと",
+        "start": 352.58,
+        "end": 352.84,
+        "probability": 0.933
+      },
+      {
+        "word": "を",
+        "start": 352.84,
+        "end": 352.98,
+        "probability": 0.972
+      },
+      {
+        "word": "いい",
+        "start": 352.98,
+        "end": 353.16,
+        "probability": 0.516
+      },
+      {
+        "word": "人",
+        "start": 353.16,
+        "end": 353.44,
+        "probability": 0.992
+      },
+      {
+        "word": "だ",
+        "start": 353.44,
+        "end": 353.58,
+        "probability": 0.999
+      },
+      {
+        "word": "と思",
+        "start": 353.58,
+        "end": 353.9,
+        "probability": 0.967
+      },
+      {
+        "word": "って",
+        "start": 353.9,
+        "end": 354.12,
+        "probability": 0.923
+      },
+      {
+        "word": "た",
+        "start": 354.12,
+        "end": 354.32,
+        "probability": 0.801
+      },
+      {
+        "word": "でも",
+        "start": 355.92,
+        "end": 356.38,
+        "probability": 0.819
+      }
+    ],
+    "translated_text": "曾经觉得自己是个好人，但，"
+  },
+  {
+    "start": 357.68,
+    "end": 361.64,
+    "text": "本当は心に とんでもない怪物を買っていたんだって",
+    "words": [
+      {
+        "word": "本当",
+        "start": 357.68,
+        "end": 358.14,
+        "probability": 0.812
+      },
+      {
+        "word": "は",
+        "start": 358.14,
+        "end": 358.38,
+        "probability": 0.998
+      },
+      {
+        "word": "心",
+        "start": 358.38,
+        "end": 358.72,
+        "probability": 0.966
+      },
+      {
+        "word": "に",
+        "start": 358.72,
+        "end": 359.0,
+        "probability": 0.999
+      },
+      {
+        "word": "と",
+        "start": 359.0,
+        "end": 359.24,
+        "probability": 0.383
+      },
+      {
+        "word": "ん",
+        "start": 359.24,
+        "end": 359.38,
+        "probability": 0.912
+      },
+      {
+        "word": "でも",
+        "start": 359.38,
+        "end": 359.52,
+        "probability": 0.991
+      },
+      {
+        "word": "ない",
+        "start": 359.52,
+        "end": 359.8,
+        "probability": 0.993
+      },
+      {
+        "word": "怪",
+        "start": 359.8,
+        "end": 360.02,
+        "probability": 0.427
+      },
+      {
+        "word": "物",
+        "start": 360.02,
+        "end": 360.26,
+        "probability": 0.987
+      },
+      {
+        "word": "を",
+        "start": 360.26,
+        "end": 360.5,
+        "probability": 0.875
+      },
+      {
+        "word": "買",
+        "start": 360.5,
+        "end": 360.68,
+        "probability": 0.58
+      },
+      {
+        "word": "って",
+        "start": 360.68,
+        "end": 360.9,
+        "probability": 0.995
+      },
+      {
+        "word": "いた",
+        "start": 360.9,
+        "end": 361.1,
+        "probability": 0.879
+      },
+      {
+        "word": "んだ",
+        "start": 361.1,
+        "end": 361.3,
+        "probability": 0.999
+      },
+      {
+        "word": "って",
+        "start": 361.3,
+        "end": 361.64,
+        "probability": 0.878
+      }
+    ],
+    "translated_text": "实际上心里养着一只可怕的怪物呢。"
+  },
+  {
+    "start": 364.24,
+    "end": 369.4,
+    "text": "そういつは好きな男性よ 他の女に褒われて 目を覚ました",
+    "words": [
+      {
+        "word": "そう",
+        "start": 364.24,
+        "end": 364.8,
+        "probability": 0.211
+      },
+      {
+        "word": "いつ",
+        "start": 364.8,
+        "end": 365.02,
+        "probability": 0.401
+      },
+      {
+        "word": "は",
+        "start": 365.02,
+        "end": 365.14,
+        "probability": 0.988
+      },
+      {
+        "word": "好",
+        "start": 365.14,
+        "end": 365.3,
+        "probability": 0.921
+      },
+      {
+        "word": "き",
+        "start": 365.3,
+        "end": 365.44,
+        "probability": 0.999
+      },
+      {
+        "word": "な",
+        "start": 365.44,
+        "end": 365.58,
+        "probability": 0.998
+      },
+      {
+        "word": "男",
+        "start": 365.58,
+        "end": 365.72,
+        "probability": 0.89
+      },
+      {
+        "word": "性",
+        "start": 365.72,
+        "end": 366.02,
+        "probability": 0.955
+      },
+      {
+        "word": "よ",
+        "start": 366.02,
+        "end": 366.5,
+        "probability": 0.046
+      },
+      {
+        "word": "他",
+        "start": 366.5,
+        "end": 367.3,
+        "probability": 0.276
+      },
+      {
+        "word": "の",
+        "start": 367.3,
+        "end": 367.58,
+        "probability": 0.983
+      },
+      {
+        "word": "女",
+        "start": 367.58,
+        "end": 367.8,
+        "probability": 0.977
+      },
+      {
+        "word": "に",
+        "start": 367.8,
+        "end": 368.0,
+        "probability": 0.975
+      },
+      {
+        "word": "褒",
+        "start": 368.0,
+        "end": 368.14,
+        "probability": 0.485
+      },
+      {
+        "word": "わ",
+        "start": 368.14,
+        "end": 368.38,
+        "probability": 0.409
+      },
+      {
+        "word": "れて",
+        "start": 368.38,
+        "end": 368.58,
+        "probability": 0.995
+      },
+      {
+        "word": "目",
+        "start": 368.58,
+        "end": 368.78,
+        "probability": 0.699
+      },
+      {
+        "word": "を",
+        "start": 368.78,
+        "end": 368.9,
+        "probability": 0.988
+      },
+      {
+        "word": "覚",
+        "start": 368.9,
+        "end": 369.02,
+        "probability": 0.838
+      },
+      {
+        "word": "ま",
+        "start": 369.02,
+        "end": 369.4,
+        "probability": 0.688
+      },
+      {
+        "word": "した",
+        "start": 369.4,
+        "end": 369.4,
+        "probability": 0.645
+      }
+    ],
+    "translated_text": "那个喜欢的男人啊，被别的女人夸奖后，我清醒了。"
+  },
+  {
+    "start": 370.84,
+    "end": 372.7,
+    "text": "私の中で",
+    "words": [
+      {
+        "word": "私",
+        "start": 370.84,
+        "end": 371.64,
+        "probability": 0.925
+      },
+      {
+        "word": "の",
+        "start": 371.64,
+        "end": 371.86,
+        "probability": 0.999
+      },
+      {
+        "word": "中",
+        "start": 371.86,
+        "end": 372.08,
+        "probability": 0.988
+      },
+      {
+        "word": "で",
+        "start": 372.08,
+        "end": 372.7,
+        "probability": 0.95
+      }
+    ],
+    "translated_text": "在我心里，"
+  },
+  {
+    "start": 373.3,
+    "end": 378.13,
+    "text": "明確に学生したの そんなったら",
+    "words": [
+      {
+        "word": "明",
+        "start": 373.3,
+        "end": 373.76,
+        "probability": 0.606
+      },
+      {
+        "word": "確",
+        "start": 373.76,
+        "end": 373.96,
+        "probability": 0.973
+      },
+      {
+        "word": "に",
+        "start": 373.96,
+        "end": 374.2,
+        "probability": 0.995
+      },
+      {
+        "word": "学",
+        "start": 374.2,
+        "end": 374.4,
+        "probability": 0.261
+      },
+      {
+        "word": "生",
+        "start": 374.4,
+        "end": 374.6,
+        "probability": 0.892
+      },
+      {
+        "word": "した",
+        "start": 374.6,
+        "end": 374.84,
+        "probability": 0.975
+      },
+      {
+        "word": "の",
+        "start": 374.84,
+        "end": 374.98,
+        "probability": 0.858
+      },
+      {
+        "word": "そんな",
+        "start": 374.98,
+        "end": 375.62,
+        "probability": 0.017
+      },
+      {
+        "word": "った",
+        "start": 377.63,
+        "end": 377.99,
+        "probability": 0.899
+      },
+      {
+        "word": "ら",
+        "start": 377.99,
+        "end": 378.13,
+        "probability": 0.991
+      }
+    ],
+    "translated_text": "明确地觉醒了。既然这样，"
+  },
+  {
+    "start": 378.13,
+    "end": 381.37,
+    "text": "もう手段なんか選んでられないからさ",
+    "words": [
+      {
+        "word": "もう",
+        "start": 378.13,
+        "end": 378.51,
+        "probability": 0.812
+      },
+      {
+        "word": "手",
+        "start": 378.51,
+        "end": 379.49,
+        "probability": 0.491
+      },
+      {
+        "word": "段",
+        "start": 379.49,
+        "end": 379.65,
+        "probability": 0.942
+      },
+      {
+        "word": "なんか",
+        "start": 379.65,
+        "end": 380.01,
+        "probability": 0.865
+      },
+      {
+        "word": "選",
+        "start": 380.01,
+        "end": 380.15,
+        "probability": 0.832
+      },
+      {
+        "word": "んで",
+        "start": 380.15,
+        "end": 380.39,
+        "probability": 0.995
+      },
+      {
+        "word": "ら",
+        "start": 380.39,
+        "end": 380.55,
+        "probability": 0.921
+      },
+      {
+        "word": "れない",
+        "start": 380.55,
+        "end": 380.81,
+        "probability": 0.974
+      },
+      {
+        "word": "から",
+        "start": 380.81,
+        "end": 381.13,
+        "probability": 0.995
+      },
+      {
+        "word": "さ",
+        "start": 381.13,
+        "end": 381.37,
+        "probability": 0.975
+      }
+    ],
+    "translated_text": "就顾不上选手段了嘛，"
+  },
+  {
+    "start": 382.55,
+    "end": 385.69,
+    "text": "きょう高さくに出るしか選択肢はなかったわけ",
+    "words": [
+      {
+        "word": "き",
+        "start": 382.55,
+        "end": 382.95,
+        "probability": 0.071
+      },
+      {
+        "word": "ょ",
+        "start": 382.95,
+        "end": 383.01,
+        "probability": 0.974
+      },
+      {
+        "word": "う",
+        "start": 383.01,
+        "end": 383.15,
+        "probability": 0.966
+      },
+      {
+        "word": "高",
+        "start": 383.15,
+        "end": 383.23,
+        "probability": 0.104
+      },
+      {
+        "word": "さ",
+        "start": 383.23,
+        "end": 383.45,
+        "probability": 0.434
+      },
+      {
+        "word": "く",
+        "start": 383.45,
+        "end": 383.63,
+        "probability": 0.851
+      },
+      {
+        "word": "に",
+        "start": 383.63,
+        "end": 383.71,
+        "probability": 0.919
+      },
+      {
+        "word": "出",
+        "start": 383.71,
+        "end": 383.85,
+        "probability": 0.844
+      },
+      {
+        "word": "る",
+        "start": 383.85,
+        "end": 383.95,
+        "probability": 0.985
+      },
+      {
+        "word": "しか",
+        "start": 383.95,
+        "end": 384.17,
+        "probability": 0.95
+      },
+      {
+        "word": "選",
+        "start": 384.17,
+        "end": 384.45,
+        "probability": 0.847
+      },
+      {
+        "word": "択",
+        "start": 384.45,
+        "end": 384.59,
+        "probability": 0.922
+      },
+      {
+        "word": "肢",
+        "start": 384.59,
+        "end": 384.79,
+        "probability": 0.892
+      },
+      {
+        "word": "は",
+        "start": 384.79,
+        "end": 384.91,
+        "probability": 0.953
+      },
+      {
+        "word": "な",
+        "start": 384.91,
+        "end": 385.03,
+        "probability": 0.339
+      },
+      {
+        "word": "かった",
+        "start": 385.03,
+        "end": 385.41,
+        "probability": 0.997
+      },
+      {
+        "word": "わ",
+        "start": 385.41,
+        "end": 385.55,
+        "probability": 0.79
+      },
+      {
+        "word": "け",
+        "start": 385.55,
+        "end": 385.69,
+        "probability": 1.0
+      }
+    ],
+    "translated_text": "今天只能孤注一掷了。"
+  },
+  {
+    "start": 388.35,
+    "end": 390.53,
+    "text": "君に裏切られた痛みが",
+    "words": [
+      {
+        "word": "君",
+        "start": 388.35,
+        "end": 389.01,
+        "probability": 0.366
+      },
+      {
+        "word": "に",
+        "start": 389.01,
+        "end": 389.23,
+        "probability": 0.999
+      },
+      {
+        "word": "裏",
+        "start": 389.23,
+        "end": 389.41,
+        "probability": 0.846
+      },
+      {
+        "word": "切",
+        "start": 389.41,
+        "end": 389.57,
+        "probability": 0.821
+      },
+      {
+        "word": "ら",
+        "start": 389.57,
+        "end": 389.69,
+        "probability": 0.994
+      },
+      {
+        "word": "れた",
+        "start": 389.69,
+        "end": 389.95,
+        "probability": 0.837
+      },
+      {
+        "word": "痛",
+        "start": 389.95,
+        "end": 390.19,
+        "probability": 0.817
+      },
+      {
+        "word": "み",
+        "start": 390.19,
+        "end": 390.33,
+        "probability": 0.989
+      },
+      {
+        "word": "が",
+        "start": 390.33,
+        "end": 390.53,
+        "probability": 0.987
+      }
+    ],
+    "translated_text": "被你背叛的这份痛苦——"
+  },
+  {
+    "start": 391.77,
+    "end": 394.41,
+    "text": "首締め手屋ではさまると思う",
+    "words": [
+      {
+        "word": "首",
+        "start": 391.77,
+        "end": 392.17,
+        "probability": 0.153
+      },
+      {
+        "word": "締",
+        "start": 392.17,
+        "end": 392.47,
+        "probability": 0.537
+      },
+      {
+        "word": "め",
+        "start": 392.47,
+        "end": 392.67,
+        "probability": 0.891
+      },
+      {
+        "word": "手",
+        "start": 392.67,
+        "end": 392.75,
+        "probability": 0.75
+      },
+      {
+        "word": "屋",
+        "start": 392.75,
+        "end": 392.87,
+        "probability": 0.524
+      },
+      {
+        "word": "では",
+        "start": 392.87,
+        "end": 393.09,
+        "probability": 0.528
+      },
+      {
+        "word": "さ",
+        "start": 393.09,
+        "end": 393.35,
+        "probability": 0.588
+      },
+      {
+        "word": "ま",
+        "start": 393.35,
+        "end": 393.47,
+        "probability": 0.994
+      },
+      {
+        "word": "る",
+        "start": 393.47,
+        "end": 393.59,
+        "probability": 0.996
+      },
+      {
+        "word": "と思",
+        "start": 393.59,
+        "end": 393.95,
+        "probability": 0.821
+      },
+      {
+        "word": "う",
+        "start": 393.95,
+        "end": 394.41,
+        "probability": 0.979
+      }
+    ],
+    "translated_text": "我想你的脖子会被我的手掐住吧"
+  },
+  {
+    "start": 396.42,
+    "end": 397.78,
+    "text": "そんなわけないよね",
+    "words": [
+      {
+        "word": "そんな",
+        "start": 396.42,
+        "end": 396.84,
+        "probability": 0.113
+      },
+      {
+        "word": "わ",
+        "start": 396.84,
+        "end": 397.06,
+        "probability": 0.872
+      },
+      {
+        "word": "け",
+        "start": 397.06,
+        "end": 397.2,
+        "probability": 1.0
+      },
+      {
+        "word": "ない",
+        "start": 397.2,
+        "end": 397.42,
+        "probability": 0.877
+      },
+      {
+        "word": "よね",
+        "start": 397.42,
+        "end": 397.78,
+        "probability": 0.981
+      }
+    ],
+    "translated_text": "怎么可能呢，对吧？"
+  },
+  {
+    "start": 399.32,
+    "end": 402.84,
+    "text": "君は私を傷つけた むくいを受けるべきなんだよ",
+    "words": [
+      {
+        "word": "君",
+        "start": 399.32,
+        "end": 399.72,
+        "probability": 0.568
+      },
+      {
+        "word": "は",
+        "start": 399.72,
+        "end": 399.9,
+        "probability": 0.627
+      },
+      {
+        "word": "私",
+        "start": 399.9,
+        "end": 400.28,
+        "probability": 0.976
+      },
+      {
+        "word": "を",
+        "start": 400.28,
+        "end": 400.44,
+        "probability": 0.991
+      },
+      {
+        "word": "傷",
+        "start": 400.44,
+        "end": 400.64,
+        "probability": 0.701
+      },
+      {
+        "word": "つ",
+        "start": 400.64,
+        "end": 400.9,
+        "probability": 0.984
+      },
+      {
+        "word": "け",
+        "start": 400.9,
+        "end": 400.98,
+        "probability": 0.993
+      },
+      {
+        "word": "た",
+        "start": 400.98,
+        "end": 401.1,
+        "probability": 0.988
+      },
+      {
+        "word": "む",
+        "start": 401.1,
+        "end": 401.24,
+        "probability": 0.134
+      },
+      {
+        "word": "く",
+        "start": 401.24,
+        "end": 401.42,
+        "probability": 0.769
+      },
+      {
+        "word": "い",
+        "start": 401.42,
+        "end": 401.56,
+        "probability": 0.756
+      },
+      {
+        "word": "を",
+        "start": 401.56,
+        "end": 401.68,
+        "probability": 0.986
+      },
+      {
+        "word": "受",
+        "start": 401.68,
+        "end": 401.78,
+        "probability": 0.957
+      },
+      {
+        "word": "ける",
+        "start": 401.78,
+        "end": 402.0,
+        "probability": 0.85
+      },
+      {
+        "word": "べ",
+        "start": 402.0,
+        "end": 402.16,
+        "probability": 0.618
+      },
+      {
+        "word": "き",
+        "start": 402.16,
+        "end": 402.28,
+        "probability": 0.999
+      },
+      {
+        "word": "なんだ",
+        "start": 402.28,
+        "end": 402.56,
+        "probability": 0.97
+      },
+      {
+        "word": "よ",
+        "start": 402.56,
+        "end": 402.84,
+        "probability": 0.999
+      }
+    ],
+    "translated_text": "你伤害了我，应该受到报应哦"
+  },
+  {
+    "start": 404.02,
+    "end": 405.58,
+    "text": "それも絶対ときに",
+    "words": [
+      {
+        "word": "それ",
+        "start": 404.02,
+        "end": 404.42,
+        "probability": 0.961
+      },
+      {
+        "word": "も",
+        "start": 404.42,
+        "end": 404.62,
+        "probability": 0.97
+      },
+      {
+        "word": "絶",
+        "start": 404.62,
+        "end": 404.84,
+        "probability": 0.499
+      },
+      {
+        "word": "対",
+        "start": 404.84,
+        "end": 405.06,
+        "probability": 0.914
+      },
+      {
+        "word": "と",
+        "start": 405.06,
+        "end": 405.26,
+        "probability": 0.491
+      },
+      {
+        "word": "き",
+        "start": 405.26,
+        "end": 405.42,
+        "probability": 0.981
+      },
+      {
+        "word": "に",
+        "start": 405.42,
+        "end": 405.58,
+        "probability": 0.692
+      }
+    ],
+    "translated_text": "而且绝对是在该来的时候"
+  },
+  {
+    "start": 417.87,
+    "end": 420.69,
+    "text": "どれだけ先でも助けはこないから",
+    "words": [
+      {
+        "word": "ど",
+        "start": 417.87,
+        "end": 418.45,
+        "probability": 0.811
+      },
+      {
+        "word": "れ",
+        "start": 418.45,
+        "end": 418.59,
+        "probability": 0.715
+      },
+      {
+        "word": "だけ",
+        "start": 418.59,
+        "end": 418.85,
+        "probability": 0.714
+      },
+      {
+        "word": "先",
+        "start": 418.85,
+        "end": 419.17,
+        "probability": 0.11
+      },
+      {
+        "word": "でも",
+        "start": 419.17,
+        "end": 419.45,
+        "probability": 0.913
+      },
+      {
+        "word": "助",
+        "start": 419.45,
+        "end": 419.71,
+        "probability": 0.995
+      },
+      {
+        "word": "け",
+        "start": 419.71,
+        "end": 419.95,
+        "probability": 0.984
+      },
+      {
+        "word": "は",
+        "start": 419.95,
+        "end": 420.05,
+        "probability": 0.918
+      },
+      {
+        "word": "こ",
+        "start": 420.05,
+        "end": 420.23,
+        "probability": 0.379
+      },
+      {
+        "word": "ない",
+        "start": 420.23,
+        "end": 420.41,
+        "probability": 0.996
+      },
+      {
+        "word": "から",
+        "start": 420.41,
+        "end": 420.69,
+        "probability": 0.86
+      }
+    ],
+    "translated_text": "无论多久都不会有人来救你的"
+  },
+  {
+    "start": 422.95,
+    "end": 423.99,
+    "text": "この世式では",
+    "words": [
+      {
+        "word": "この",
+        "start": 422.95,
+        "end": 423.35,
+        "probability": 0.949
+      },
+      {
+        "word": "世",
+        "start": 423.35,
+        "end": 423.49,
+        "probability": 0.094
+      },
+      {
+        "word": "式",
+        "start": 423.49,
+        "end": 423.75,
+        "probability": 0.745
+      },
+      {
+        "word": "では",
+        "start": 423.75,
+        "end": 423.99,
+        "probability": 0.66
+      }
+    ],
+    "translated_text": "在这个世界上"
+  },
+  {
+    "start": 425.19,
+    "end": 426.93,
+    "text": "私そのものが法律",
+    "words": [
+      {
+        "word": "私",
+        "start": 425.19,
+        "end": 425.59,
+        "probability": 0.911
+      },
+      {
+        "word": "その",
+        "start": 425.59,
+        "end": 425.99,
+        "probability": 0.963
+      },
+      {
+        "word": "もの",
+        "start": 425.99,
+        "end": 426.21,
+        "probability": 0.518
+      },
+      {
+        "word": "が",
+        "start": 426.21,
+        "end": 426.41,
+        "probability": 0.998
+      },
+      {
+        "word": "法",
+        "start": 426.41,
+        "end": 426.67,
+        "probability": 0.897
+      },
+      {
+        "word": "律",
+        "start": 426.67,
+        "end": 426.93,
+        "probability": 0.986
+      }
+    ],
+    "translated_text": "我本身就是法律"
+  },
+  {
+    "start": 428.61,
+    "end": 430.27,
+    "text": "もちろん君は優先",
+    "words": [
+      {
+        "word": "も",
+        "start": 428.61,
+        "end": 429.01,
+        "probability": 0.034
+      },
+      {
+        "word": "ち",
+        "start": 429.01,
+        "end": 429.11,
+        "probability": 0.623
+      },
+      {
+        "word": "ろ",
+        "start": 429.11,
+        "end": 429.23,
+        "probability": 0.996
+      },
+      {
+        "word": "ん",
+        "start": 429.23,
+        "end": 429.35,
+        "probability": 0.995
+      },
+      {
+        "word": "君",
+        "start": 429.35,
+        "end": 429.57,
+        "probability": 0.385
+      },
+      {
+        "word": "は",
+        "start": 429.57,
+        "end": 429.79,
+        "probability": 0.982
+      },
+      {
+        "word": "優",
+        "start": 429.79,
+        "end": 429.99,
+        "probability": 0.676
+      },
+      {
+        "word": "先",
+        "start": 429.99,
+        "end": 430.27,
+        "probability": 0.438
+      }
+    ],
+    "translated_text": "当然，你优先"
+  },
+  {
+    "start": 431.47,
+    "end": 436.9,
+    "text": "思考有用なんても のは認められないよ 早速",
+    "words": [
+      {
+        "word": "思",
+        "start": 431.47,
+        "end": 431.87,
+        "probability": 0.016
+      },
+      {
+        "word": "考",
+        "start": 431.87,
+        "end": 432.17,
+        "probability": 0.401
+      },
+      {
+        "word": "有",
+        "start": 432.17,
+        "end": 432.37,
+        "probability": 0.193
+      },
+      {
+        "word": "用",
+        "start": 432.37,
+        "end": 432.55,
+        "probability": 0.319
+      },
+      {
+        "word": "なん",
+        "start": 432.55,
+        "end": 432.75,
+        "probability": 0.644
+      },
+      {
+        "word": "て",
+        "start": 432.75,
+        "end": 432.91,
+        "probability": 0.961
+      },
+      {
+        "word": "も",
+        "start": 432.91,
+        "end": 433.01,
+        "probability": 0.9
+      },
+      {
+        "word": "のは",
+        "start": 433.01,
+        "end": 433.23,
+        "probability": 0.969
+      },
+      {
+        "word": "認",
+        "start": 433.23,
+        "end": 433.41,
+        "probability": 0.676
+      },
+      {
+        "word": "め",
+        "start": 433.41,
+        "end": 433.61,
+        "probability": 0.998
+      },
+      {
+        "word": "ら",
+        "start": 433.61,
+        "end": 433.71,
+        "probability": 0.999
+      },
+      {
+        "word": "れない",
+        "start": 433.71,
+        "end": 433.95,
+        "probability": 0.984
+      },
+      {
+        "word": "よ",
+        "start": 433.95,
+        "end": 434.19,
+        "probability": 0.964
+      },
+      {
+        "word": "早",
+        "start": 434.19,
+        "end": 434.83,
+        "probability": 0.535
+      },
+      {
+        "word": "速",
+        "start": 436.46,
+        "end": 436.9,
+        "probability": 0.987
+      }
+    ],
+    "translated_text": "谓‘思考有用’这种东西是不被允许的哦，马上"
+  },
+  {
+    "start": 438.04,
+    "end": 438.94,
+    "text": "罰とした",
+    "words": [
+      {
+        "word": "罰",
+        "start": 438.04,
+        "end": 438.44,
+        "probability": 0.519
+      },
+      {
+        "word": "と",
+        "start": 438.44,
+        "end": 438.68,
+        "probability": 0.945
+      },
+      {
+        "word": "した",
+        "start": 438.68,
+        "end": 438.94,
+        "probability": 0.675
+      }
+    ],
+    "translated_text": "作为惩罚"
+  },
+  {
+    "start": 440.06,
+    "end": 443.04,
+    "text": "今つき合ってるこの女とは 遅れてもらうね",
+    "words": [
+      {
+        "word": "今",
+        "start": 440.06,
+        "end": 440.46,
+        "probability": 0.862
+      },
+      {
+        "word": "つ",
+        "start": 440.46,
+        "end": 440.7,
+        "probability": 0.513
+      },
+      {
+        "word": "き",
+        "start": 440.7,
+        "end": 440.92,
+        "probability": 0.802
+      },
+      {
+        "word": "合",
+        "start": 440.92,
+        "end": 441.0,
+        "probability": 0.675
+      },
+      {
+        "word": "ってる",
+        "start": 441.0,
+        "end": 441.24,
+        "probability": 0.848
+      },
+      {
+        "word": "この",
+        "start": 441.24,
+        "end": 441.62,
+        "probability": 0.852
+      },
+      {
+        "word": "女",
+        "start": 441.62,
+        "end": 441.8,
+        "probability": 0.231
+      },
+      {
+        "word": "と",
+        "start": 441.8,
+        "end": 441.94,
+        "probability": 0.559
+      },
+      {
+        "word": "は",
+        "start": 441.94,
+        "end": 442.08,
+        "probability": 0.428
+      },
+      {
+        "word": "遅",
+        "start": 442.08,
+        "end": 442.22,
+        "probability": 0.557
+      },
+      {
+        "word": "れて",
+        "start": 442.22,
+        "end": 442.52,
+        "probability": 0.97
+      },
+      {
+        "word": "も",
+        "start": 442.52,
+        "end": 442.66,
+        "probability": 0.978
+      },
+      {
+        "word": "ら",
+        "start": 442.66,
+        "end": 442.78,
+        "probability": 0.709
+      },
+      {
+        "word": "う",
+        "start": 442.78,
+        "end": 442.9,
+        "probability": 0.755
+      },
+      {
+        "word": "ね",
+        "start": 442.9,
+        "end": 443.04,
+        "probability": 0.941
+      }
+    ],
+    "translated_text": "现在跟我交往的这个女人，就让她晚点到啦"
+  },
+  {
+    "start": 443.04,
+    "end": 450.14,
+    "text": "頼いメスクロー 君を覚え返すんだ",
+    "words": [
+      {
+        "word": "頼",
+        "start": 443.04,
+        "end": 443.68,
+        "probability": 0.529
+      },
+      {
+        "word": "い",
+        "start": 446.82,
+        "end": 447.02,
+        "probability": 0.54
+      },
+      {
+        "word": "メ",
+        "start": 447.02,
+        "end": 447.16,
+        "probability": 0.62
+      },
+      {
+        "word": "ス",
+        "start": 447.16,
+        "end": 447.32,
+        "probability": 0.914
+      },
+      {
+        "word": "ク",
+        "start": 447.32,
+        "end": 447.5,
+        "probability": 0.741
+      },
+      {
+        "word": "ロ",
+        "start": 447.5,
+        "end": 447.7,
+        "probability": 0.908
+      },
+      {
+        "word": "ー",
+        "start": 447.7,
+        "end": 448.6,
+        "probability": 0.652
+      },
+      {
+        "word": "君",
+        "start": 448.6,
+        "end": 448.92,
+        "probability": 0.946
+      },
+      {
+        "word": "を",
+        "start": 448.92,
+        "end": 449.1,
+        "probability": 0.995
+      },
+      {
+        "word": "覚",
+        "start": 449.1,
+        "end": 449.3,
+        "probability": 0.89
+      },
+      {
+        "word": "え",
+        "start": 449.3,
+        "end": 449.44,
+        "probability": 0.973
+      },
+      {
+        "word": "返",
+        "start": 449.44,
+        "end": 449.62,
+        "probability": 0.97
+      },
+      {
+        "word": "す",
+        "start": 449.62,
+        "end": 449.9,
+        "probability": 0.96
+      },
+      {
+        "word": "んだ",
+        "start": 449.9,
+        "end": 450.14,
+        "probability": 0.783
+      }
+    ],
+    "translated_text": "拜托了，我一定要让你想起来"
+  },
+  {
+    "start": 451.58,
+    "end": 456.38,
+    "text": "そんな手を使ってでも あの子",
+    "words": [
+      {
+        "word": "そんな",
+        "start": 451.58,
+        "end": 451.88,
+        "probability": 0.266
+      },
+      {
+        "word": "手",
+        "start": 451.88,
+        "end": 452.16,
+        "probability": 0.87
+      },
+      {
+        "word": "を",
+        "start": 452.16,
+        "end": 452.26,
+        "probability": 0.716
+      },
+      {
+        "word": "使",
+        "start": 452.26,
+        "end": 452.48,
+        "probability": 0.912
+      },
+      {
+        "word": "って",
+        "start": 452.48,
+        "end": 452.8,
+        "probability": 0.84
+      },
+      {
+        "word": "でも",
+        "start": 452.8,
+        "end": 453.1,
+        "probability": 0.951
+      },
+      {
+        "word": "あの",
+        "start": 453.1,
+        "end": 453.52,
+        "probability": 0.597
+      },
+      {
+        "word": "子",
+        "start": 456.08,
+        "end": 456.38,
+        "probability": 0.956
+      }
+    ],
+    "translated_text": "就算用那种手段，也要把那个孩子…"
+  },
+  {
+    "start": 457.16,
+    "end": 459.02,
+    "text": "どんな顔それだろうね",
+    "words": [
+      {
+        "word": "ど",
+        "start": 457.16,
+        "end": 457.56,
+        "probability": 0.843
+      },
+      {
+        "word": "んな",
+        "start": 457.56,
+        "end": 457.76,
+        "probability": 0.983
+      },
+      {
+        "word": "顔",
+        "start": 457.76,
+        "end": 457.96,
+        "probability": 0.702
+      },
+      {
+        "word": "それ",
+        "start": 457.96,
+        "end": 458.2,
+        "probability": 0.647
+      },
+      {
+        "word": "だ",
+        "start": 458.2,
+        "end": 458.4,
+        "probability": 0.989
+      },
+      {
+        "word": "ろう",
+        "start": 458.4,
+        "end": 458.54,
+        "probability": 0.935
+      },
+      {
+        "word": "ね",
+        "start": 458.54,
+        "end": 459.02,
+        "probability": 0.992
+      }
+    ],
+    "translated_text": "会是什么表情呢？"
+  },
+  {
+    "start": 460.0,
+    "end": 462.42,
+    "text": "君がネトられてるって 知ったらさ",
+    "words": [
+      {
+        "word": "君",
+        "start": 460.0,
+        "end": 460.4,
+        "probability": 0.905
+      },
+      {
+        "word": "が",
+        "start": 460.4,
+        "end": 460.6,
+        "probability": 0.996
+      },
+      {
+        "word": "ネ",
+        "start": 460.6,
+        "end": 460.74,
+        "probability": 0.679
+      },
+      {
+        "word": "ト",
+        "start": 460.74,
+        "end": 460.9,
+        "probability": 0.657
+      },
+      {
+        "word": "ら",
+        "start": 460.9,
+        "end": 461.0,
+        "probability": 0.622
+      },
+      {
+        "word": "れて",
+        "start": 461.0,
+        "end": 461.24,
+        "probability": 0.994
+      },
+      {
+        "word": "る",
+        "start": 461.24,
+        "end": 461.38,
+        "probability": 0.98
+      },
+      {
+        "word": "って",
+        "start": 461.38,
+        "end": 461.66,
+        "probability": 0.992
+      },
+      {
+        "word": "知",
+        "start": 461.66,
+        "end": 461.82,
+        "probability": 0.932
+      },
+      {
+        "word": "った",
+        "start": 461.82,
+        "end": 462.06,
+        "probability": 0.986
+      },
+      {
+        "word": "ら",
+        "start": 462.06,
+        "end": 462.2,
+        "probability": 0.995
+      },
+      {
+        "word": "さ",
+        "start": 462.2,
+        "end": 462.42,
+        "probability": 0.672
+      }
+    ],
+    "translated_text": "要是知道你被勾引了的话…"
+  },
+  {
+    "start": 465.79,
+    "end": 467.73,
+    "text": "想像しただけで 続くぞ",
+    "words": [
+      {
+        "word": "想",
+        "start": 465.79,
+        "end": 466.19,
+        "probability": 0.699
+      },
+      {
+        "word": "像",
+        "start": 466.19,
+        "end": 466.37,
+        "probability": 0.994
+      },
+      {
+        "word": "した",
+        "start": 466.37,
+        "end": 466.67,
+        "probability": 0.87
+      },
+      {
+        "word": "だけ",
+        "start": 466.67,
+        "end": 466.99,
+        "probability": 0.994
+      },
+      {
+        "word": "で",
+        "start": 466.99,
+        "end": 467.17,
+        "probability": 0.993
+      },
+      {
+        "word": "続",
+        "start": 467.17,
+        "end": 467.33,
+        "probability": 0.097
+      },
+      {
+        "word": "く",
+        "start": 467.33,
+        "end": 467.63,
+        "probability": 0.918
+      },
+      {
+        "word": "ぞ",
+        "start": 467.63,
+        "end": 467.73,
+        "probability": 0.765
+      }
+    ],
+    "translated_text": "光是想象就兴奋得停不下来呢"
+  },
+  {
+    "start": 469.56,
+    "end": 472.18,
+    "text": "これがネトラバーの感覚なんだな",
+    "words": [
+      {
+        "word": "これ",
+        "start": 469.56,
+        "end": 470.08,
+        "probability": 0.487
+      },
+      {
+        "word": "が",
+        "start": 470.08,
+        "end": 470.24,
+        "probability": 0.989
+      },
+      {
+        "word": "ネ",
+        "start": 470.24,
+        "end": 470.44,
+        "probability": 0.908
+      },
+      {
+        "word": "ト",
+        "start": 470.44,
+        "end": 470.54,
+        "probability": 0.103
+      },
+      {
+        "word": "ラ",
+        "start": 470.54,
+        "end": 470.62,
+        "probability": 0.391
+      },
+      {
+        "word": "バ",
+        "start": 470.62,
+        "end": 470.76,
+        "probability": 0.362
+      },
+      {
+        "word": "ー",
+        "start": 470.76,
+        "end": 470.84,
+        "probability": 0.818
+      },
+      {
+        "word": "の",
+        "start": 470.84,
+        "end": 470.98,
+        "probability": 0.982
+      },
+      {
+        "word": "感",
+        "start": 470.98,
+        "end": 471.22,
+        "probability": 0.328
+      },
+      {
+        "word": "覚",
+        "start": 471.22,
+        "end": 471.38,
+        "probability": 0.953
+      },
+      {
+        "word": "なんだ",
+        "start": 471.38,
+        "end": 471.82,
+        "probability": 0.94
+      },
+      {
+        "word": "な",
+        "start": 471.82,
+        "end": 472.18,
+        "probability": 0.893
+      }
+    ],
+    "translated_text": "这就是被NTR的感觉啊"
+  },
+  {
+    "start": 473.12,
+    "end": 478.45,
+    "text": "癖になりそう 燃えてばこれえのえだ",
+    "words": [
+      {
+        "word": "癖",
+        "start": 473.12,
+        "end": 473.48,
+        "probability": 0.504
+      },
+      {
+        "word": "にな",
+        "start": 473.48,
+        "end": 473.84,
+        "probability": 0.974
+      },
+      {
+        "word": "り",
+        "start": 473.84,
+        "end": 473.98,
+        "probability": 0.932
+      },
+      {
+        "word": "そう",
+        "start": 473.98,
+        "end": 474.26,
+        "probability": 0.887
+      },
+      {
+        "word": "燃",
+        "start": 474.26,
+        "end": 474.76,
+        "probability": 0.531
+      },
+      {
+        "word": "えて",
+        "start": 477.25,
+        "end": 477.47,
+        "probability": 0.991
+      },
+      {
+        "word": "ば",
+        "start": 477.47,
+        "end": 477.65,
+        "probability": 0.8
+      },
+      {
+        "word": "これ",
+        "start": 477.65,
+        "end": 477.87,
+        "probability": 0.742
+      },
+      {
+        "word": "え",
+        "start": 477.87,
+        "end": 478.05,
+        "probability": 0.238
+      },
+      {
+        "word": "の",
+        "start": 478.05,
+        "end": 478.19,
+        "probability": 0.479
+      },
+      {
+        "word": "え",
+        "start": 478.19,
+        "end": 478.31,
+        "probability": 0.804
+      },
+      {
+        "word": "だ",
+        "start": 478.31,
+        "end": 478.45,
+        "probability": 0.969
+      }
+    ],
+    "translated_text": "感觉会上瘾呢，燃烧起来了啊"
+  },
+  {
+    "start": 479.81,
+    "end": 482.27,
+    "text": "君をそらそらかぐごを 決めたろう",
+    "words": [
+      {
+        "word": "君",
+        "start": 479.81,
+        "end": 480.17,
+        "probability": 0.666
+      },
+      {
+        "word": "を",
+        "start": 480.17,
+        "end": 480.41,
+        "probability": 0.177
+      },
+      {
+        "word": "そ",
+        "start": 480.41,
+        "end": 480.59,
+        "probability": 0.737
+      },
+      {
+        "word": "ら",
+        "start": 480.59,
+        "end": 480.69,
+        "probability": 0.717
+      },
+      {
+        "word": "そ",
+        "start": 480.69,
+        "end": 480.81,
+        "probability": 0.966
+      },
+      {
+        "word": "ら",
+        "start": 480.81,
+        "end": 480.85,
+        "probability": 0.516
+      },
+      {
+        "word": "か",
+        "start": 480.85,
+        "end": 481.09,
+        "probability": 0.29
+      },
+      {
+        "word": "ぐ",
+        "start": 481.09,
+        "end": 481.27,
+        "probability": 0.518
+      },
+      {
+        "word": "ご",
+        "start": 481.27,
+        "end": 481.39,
+        "probability": 0.472
+      },
+      {
+        "word": "を",
+        "start": 481.39,
+        "end": 481.49,
+        "probability": 0.865
+      },
+      {
+        "word": "決",
+        "start": 481.49,
+        "end": 481.67,
+        "probability": 0.92
+      },
+      {
+        "word": "め",
+        "start": 481.67,
+        "end": 481.81,
+        "probability": 0.993
+      },
+      {
+        "word": "た",
+        "start": 481.81,
+        "end": 482.01,
+        "probability": 0.981
+      },
+      {
+        "word": "ろう",
+        "start": 482.01,
+        "end": 482.27,
+        "probability": 0.392
+      }
+    ],
+    "translated_text": "你也做好觉悟了吧"
+  },
+  {
+    "start": 483.75,
+    "end": 485.25,
+    "text": "ここまで来たろう",
+    "words": [
+      {
+        "word": "ここ",
+        "start": 483.75,
+        "end": 484.11,
+        "probability": 0.769
+      },
+      {
+        "word": "まで",
+        "start": 484.11,
+        "end": 484.47,
+        "probability": 0.934
+      },
+      {
+        "word": "来",
+        "start": 484.47,
+        "end": 484.69,
+        "probability": 0.765
+      },
+      {
+        "word": "た",
+        "start": 484.69,
+        "end": 484.79,
+        "probability": 0.993
+      },
+      {
+        "word": "ろう",
+        "start": 484.79,
+        "end": 485.25,
+        "probability": 0.774
+      }
+    ],
+    "translated_text": "已经走到这一步了呢"
+  },
+  {
+    "start": 485.81,
+    "end": 487.45,
+    "text": "どうせ逃げられないんだから",
+    "words": [
+      {
+        "word": "どう",
+        "start": 485.81,
+        "end": 486.17,
+        "probability": 0.397
+      },
+      {
+        "word": "せ",
+        "start": 486.17,
+        "end": 486.43,
+        "probability": 0.93
+      },
+      {
+        "word": "逃",
+        "start": 486.43,
+        "end": 486.57,
+        "probability": 0.804
+      },
+      {
+        "word": "げ",
+        "start": 486.57,
+        "end": 486.71,
+        "probability": 0.989
+      },
+      {
+        "word": "ら",
+        "start": 486.71,
+        "end": 486.81,
+        "probability": 0.998
+      },
+      {
+        "word": "れない",
+        "start": 486.81,
+        "end": 487.07,
+        "probability": 0.982
+      },
+      {
+        "word": "んだ",
+        "start": 487.07,
+        "end": 487.27,
+        "probability": 0.948
+      },
+      {
+        "word": "から",
+        "start": 487.27,
+        "end": 487.45,
+        "probability": 0.982
+      }
+    ],
+    "translated_text": "反正你也逃不掉了嘛"
+  },
+  {
+    "start": 490.33,
+    "end": 496.5,
+    "text": "裏切りの対象は 高く作ってこっからだで しっかり覚えてない",
+    "words": [
+      {
+        "word": "裏",
+        "start": 490.33,
+        "end": 490.97,
+        "probability": 0.508
+      },
+      {
+        "word": "切",
+        "start": 490.97,
+        "end": 491.17,
+        "probability": 0.952
+      },
+      {
+        "word": "り",
+        "start": 491.17,
+        "end": 491.29,
+        "probability": 0.991
+      },
+      {
+        "word": "の",
+        "start": 491.29,
+        "end": 491.43,
+        "probability": 0.984
+      },
+      {
+        "word": "対",
+        "start": 491.43,
+        "end": 491.59,
+        "probability": 0.084
+      },
+      {
+        "word": "象",
+        "start": 491.59,
+        "end": 491.83,
+        "probability": 0.922
+      },
+      {
+        "word": "は",
+        "start": 491.83,
+        "end": 491.99,
+        "probability": 0.889
+      },
+      {
+        "word": "高",
+        "start": 491.99,
+        "end": 492.19,
+        "probability": 0.865
+      },
+      {
+        "word": "く",
+        "start": 492.19,
+        "end": 492.49,
+        "probability": 0.998
+      },
+      {
+        "word": "作",
+        "start": 492.49,
+        "end": 492.67,
+        "probability": 0.816
+      },
+      {
+        "word": "って",
+        "start": 492.67,
+        "end": 492.99,
+        "probability": 0.971
+      },
+      {
+        "word": "こ",
+        "start": 492.99,
+        "end": 493.19,
+        "probability": 0.605
+      },
+      {
+        "word": "っ",
+        "start": 494.7,
+        "end": 494.88,
+        "probability": 0.947
+      },
+      {
+        "word": "から",
+        "start": 494.88,
+        "end": 494.96,
+        "probability": 0.979
+      },
+      {
+        "word": "だ",
+        "start": 494.96,
+        "end": 495.14,
+        "probability": 0.84
+      },
+      {
+        "word": "で",
+        "start": 495.14,
+        "end": 495.28,
+        "probability": 0.751
+      },
+      {
+        "word": "し",
+        "start": 495.28,
+        "end": 495.44,
+        "probability": 0.944
+      },
+      {
+        "word": "っ",
+        "start": 495.44,
+        "end": 495.6,
+        "probability": 0.998
+      },
+      {
+        "word": "か",
+        "start": 495.6,
+        "end": 495.68,
+        "probability": 0.995
+      },
+      {
+        "word": "り",
+        "start": 495.68,
+        "end": 495.8,
+        "probability": 1.0
+      },
+      {
+        "word": "覚",
+        "start": 495.8,
+        "end": 496.0,
+        "probability": 0.994
+      },
+      {
+        "word": "えて",
+        "start": 496.0,
+        "end": 496.18,
+        "probability": 0.994
+      },
+      {
+        "word": "ない",
+        "start": 496.18,
+        "end": 496.5,
+        "probability": 0.477
+      }
+    ],
+    "translated_text": "背叛的代价可是很高的，你得给我记住了啊"
+  },
+  {
+    "start": 499.73,
+    "end": 501.55,
+    "text": "君みたいなクーズは",
+    "words": [
+      {
+        "word": "君",
+        "start": 499.73,
+        "end": 500.11,
+        "probability": 0.951
+      },
+      {
+        "word": "みたい",
+        "start": 500.11,
+        "end": 500.53,
+        "probability": 0.965
+      },
+      {
+        "word": "な",
+        "start": 500.53,
+        "end": 500.77,
+        "probability": 0.99
+      },
+      {
+        "word": "ク",
+        "start": 500.77,
+        "end": 501.05,
+        "probability": 0.422
+      },
+      {
+        "word": "ー",
+        "start": 501.05,
+        "end": 501.17,
+        "probability": 0.775
+      },
+      {
+        "word": "ズ",
+        "start": 501.17,
+        "end": 501.27,
+        "probability": 0.536
+      },
+      {
+        "word": "は",
+        "start": 501.27,
+        "end": 501.55,
+        "probability": 0.898
+      }
+    ],
+    "translated_text": "像你这样的废物"
+  },
+  {
+    "start": 502.75,
+    "end": 505.27,
+    "text": "また同じ間違いを おかすだろうから",
+    "words": [
+      {
+        "word": "また",
+        "start": 502.75,
+        "end": 503.11,
+        "probability": 0.867
+      },
+      {
+        "word": "同",
+        "start": 503.11,
+        "end": 503.31,
+        "probability": 0.975
+      },
+      {
+        "word": "じ",
+        "start": 503.31,
+        "end": 503.57,
+        "probability": 0.999
+      },
+      {
+        "word": "間",
+        "start": 503.57,
+        "end": 503.73,
+        "probability": 0.907
+      },
+      {
+        "word": "違",
+        "start": 503.73,
+        "end": 504.01,
+        "probability": 0.956
+      },
+      {
+        "word": "い",
+        "start": 504.01,
+        "end": 504.17,
+        "probability": 0.859
+      },
+      {
+        "word": "を",
+        "start": 504.17,
+        "end": 504.29,
+        "probability": 0.859
+      },
+      {
+        "word": "お",
+        "start": 504.29,
+        "end": 504.43,
+        "probability": 0.418
+      },
+      {
+        "word": "か",
+        "start": 504.43,
+        "end": 504.51,
+        "probability": 0.902
+      },
+      {
+        "word": "す",
+        "start": 504.51,
+        "end": 504.69,
+        "probability": 0.825
+      },
+      {
+        "word": "だ",
+        "start": 504.69,
+        "end": 504.83,
+        "probability": 0.984
+      },
+      {
+        "word": "ろう",
+        "start": 504.83,
+        "end": 504.95,
+        "probability": 0.973
+      },
+      {
+        "word": "から",
+        "start": 504.95,
+        "end": 505.27,
+        "probability": 0.872
+      }
+    ],
+    "translated_text": "肯定还会犯同样的错的吧"
+  }
+]

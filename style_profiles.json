@@ -1,0 +1,86 @@
+{
+  "anime": {
+    "name": "动漫/广播剧",
+    "description": "自然口语，语气词丰富，适合动漫字幕。病娇/黑化/傲娇等角色语气有强烈情感表现力",
+    "tone": "conversational",
+    "use_honorifics": false,
+    "contractions": true,
+    "max_sentence_length": 25,
+    "particles": ["嘛", "啊", "呀", "哦", "呢", "啦"],
+    "rules": {
+      "desu_masu": "simplify",
+      "compound_sentences": "split",
+      "repeated_deg": "merge",
+      "add_emotional_particles": true,
+      "use_slang": true
+    },
+    "system_prompt_suffix": "病娇角色语气要有压迫感、执念感、扭曲感。傲娇角色要有口是心非的感觉。",
+    "example": {
+      "ja": "おはよう、よく眠れた？",
+      "zh": "早啊，睡得好么？"
+    }
+  },
+  "drama": {
+    "name": "影视剧",
+    "description": "正式自然，保持原有节奏和语气。适合日剧、电影等真人影视作品",
+    "tone": "natural",
+    "use_honorifics": true,
+    "contractions": false,
+    "max_sentence_length": 30,
+    "particles": ["呢", "啊", "吧"],
+    "rules": {
+      "desu_masu": "preserve",
+      "compound_sentences": "keep",
+      "repeated_deg": "keep",
+      "add_emotional_particles": false,
+      "use_slang": false
+    },
+    "system_prompt_suffix": "保持原文的情感层次和人物性格，不要添加额外语气词。",
+    "example": {
+      "ja": "おはようございます、よく眠れましたか？",
+      "zh": "早上好，睡得好吗？"
+    }
+  },
+  "youtube": {
+    "name": "油管/Vlog",
+    "description": "轻松随意，大量口语化表达，适合网络视频和Vlog内容",
+    "tone": "casual",
+    "use_honorifics": false,
+    "contractions": true,
+    "max_sentence_length": 30,
+    "particles": ["嘛", "呀", "哦", "咯", "嘿嘿"],
+    "rules": {
+      "desu_masu": "simplify_extreme",
+      "compound_sentences": "split_short",
+      "repeated_deg": "merge",
+      "add_emotional_particles": true,
+      "use_slang": true
+    },
+    "system_prompt_suffix": "使用网络流行语和口语化表达，像朋友聊天一样自然。",
+    "example": {
+      "ja": "おはよう！よく寝た？",
+      "zh": "早啊！睡得咋样？"
+    }
+  },
+  "documentary": {
+    "name": "纪录片",
+    "description": "正式规范，准确优先，适合纪录片和教育类视频",
+    "tone": "formal",
+    "use_honorifics": true,
+    "contractions": false,
+    "max_sentence_length": 35,
+    "particles": [],
+    "rules": {
+      "desu_masu": "preserve_formal",
+      "compound_sentences": "keep",
+      "repeated_deg": "keep",
+      "add_emotional_particles": false,
+      "use_slang": false
+    },
+    "system_prompt_suffix": "使用规范的书面语，专业术语保持标准译法，信息完整不遗漏。",
+    "example": {
+      "ja": "おはようございます。よくお休みになれましたか？",
+      "zh": "早上好。您休息得还好吗？"
+    }
+  }
+}

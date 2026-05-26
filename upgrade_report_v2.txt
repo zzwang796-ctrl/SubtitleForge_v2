@@ -1,0 +1,27 @@
+SubtitleForge v2 升级报告
+============================================================
+
+生成时间: 2026-05-26 23:43:27
+句子总数: 114
+翻译引擎: ContextAwareTranslator (DeepSeek v4-flash)
+翻译风格: anime
+后处理: PostProcessor (去AI味 + 口语化 + 连贯性检查)
+
+项目文件清单:
+----------------------------------------
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\audio_extractor.py
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\final_subtitles_v2.json
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\main_v2.py
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\new_translated_v2.json
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\pipeline_v2.py
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\post_processor.py
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\README.md
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\run_test_v2.py
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\speech_recognizer.py
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\style_profiles.json
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\translation_comparison_v2.txt
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\translator_v2.py
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\upgrade_report_v2.txt
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\video_subtitle_result_v2.txt
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\__pycache__\post_processor.cpython-311.pyc
+  C:\Users\aaa\AppData\Roaming\Tencent\Marvis\User\ACFBDC35E50C8ADB5A927CC0C238E493\workspace\conv_19e59082374_8eb6a6d3ac46\output\SubtitleForge_v2\__pycache__\translator_v2.cpython-311.pyc
