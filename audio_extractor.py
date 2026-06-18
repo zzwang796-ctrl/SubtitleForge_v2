@@ -2,7 +2,251 @@ import subprocess
 import os
 import sys
 import json
+import re
 from pathlib import Path
+from typing import Dict, Optional, List, Tuple
+
+
+class VideoProbe:
+    """
+    视频预检模块，使用 ffprobe 获取视频详细信息
+    在处理前验证视频文件完整性
+    """
+
+    def __init__(self, ffprobe_path=None):
+        """初始化视频探测器"""
+        self.ffprobe = self._find_ffprobe(ffprobe_path)
+        self.ffmpeg = self._find_ffmpeg(ffprobe_path)
+        if not self.ffprobe:
+            raise RuntimeError("未找到 ffprobe，请确保 ffmpeg 已正确安装")
+
+    def _find_ffprobe(self, custom_path=None) -> Optional[str]:
+        """查找 ffprobe 可执行文件"""
+        if custom_path and os.path.exists(custom_path):
+            return custom_path
+
+        # 常见安装位置
+        common_paths = [
+            r"C:\ffmpeg\bin\ffprobe.exe",
+            r"C:\Program Files\ffmpeg\bin\ffprobe.exe",
+            r"C:\Program Files (x86)\ffmpeg\bin\ffprobe.exe",
+            r"D:\ffmpeg\bin\ffprobe.exe",
+            "ffprobe.exe",  # PATH 中查找
+        ]
+
+        for path in common_paths:
+            if os.path.exists(path):
+                return path
+
+        # 在 PATH 中查找
+        try:
+            result = subprocess.run(["where", "ffprobe"],
+                                   capture_output=True, text=True, shell=True)
+            if result.returncode == 0:
+                return result.stdout.strip().split('\n')[0]
+        except:
+            pass
+
+        return None
+
+    def _find_ffmpeg(self, custom_path=None) -> Optional[str]:
+        """查找 ffmpeg 可执行文件"""
+        if custom_path and os.path.exists(custom_path):
+            return custom_path
+
+        common_paths = [
+            r"C:\ffmpeg\bin\ffmpeg.exe",
+            r"C:\Program Files\ffmpeg\bin\ffmpeg.exe",
+            r"C:\Program Files (x86)\ffmpeg\bin\ffmpeg.exe",
+            r"D:\ffmpeg\bin\ffmpeg.exe",
+            "ffmpeg.exe",
+        ]
+
+        for path in common_paths:
+            if os.path.exists(path):
+                return path
+
+        try:
+            result = subprocess.run(["where", "ffmpeg"],
+                                   capture_output=True, text=True, shell=True)
+            if result.returncode == 0:
+                return result.stdout.strip().split('\n')[0]
+        except:
+            pass
+
+        return None
+
+    def probe(self, video_path: str) -> Dict:
+        """
+        使用 ffprobe 探测视频信息
+
+        Args:
+            video_path: 视频文件路径
+
+        Returns:
+            包含视频详细信息的字典
+        """
+        cmd = [
+            self.ffprobe,
+            '-v', 'quiet',
+            '-print_format', 'json',
+            '-show_format',
+            '-show_streams',
+            video_path
+        ]
+
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            return json.loads(result.stdout)
+        except subprocess.CalledProcessError as e:
+            raise RuntimeError(f"视频探测失败: {e.stderr}")
+        except json.JSONDecodeError as e:
+            raise RuntimeError(f"视频信息解析失败: {e}")
+
+    def validate(self, video_path: str) -> Tuple[bool, List[str]]:
+        """
+        验证视频文件完整性
+
+        Args:
+            video_path: 视频文件路径
+
+        Returns:
+            (是否有效, 错误列表)
+        """
+        errors = []
+
+        # 检查文件是否存在
+        if not os.path.exists(video_path):
+            return False, [f"视频文件不存在: {video_path}"]
+
+        # 检查文件是否为空
+        file_size = os.path.getsize(video_path)
+        if file_size == 0:
+            return False, ["视频文件为空"]
+
+        # 探测视频信息
+        try:
+            info = self.probe(video_path)
+        except Exception as e:
+            return False, [f"视频探测失败: {e}"]
+
+        # 检查是否有视频流
+        video_streams = [s for s in info.get('streams', []) if s.get('codec_type') == 'video']
+        if not video_streams:
+            errors.append("未找到视频流")
+
+        # 检查是否有音频流
+        audio_streams = [s for s in info.get('streams', []) if s.get('codec_type') == 'audio']
+        if not audio_streams:
+            errors.append("未找到音频流（无法提取字幕）")
+
+        # 检查时长
+        format_info = info.get('format', {})
+        duration = float(format_info.get('duration', 0))
+        if duration <= 0:
+            errors.append("视频时长无效或为 0")
+
+        # 检查文件大小是否与 format_size 一致
+        format_size = int(format_info.get('size', 0))
+        if format_size > 0 and abs(file_size - format_size) > 1024 * 1024:  # 差异超过 1MB
+            errors.append(f"文件大小不匹配（实际: {file_size}, 头信息: {format_size}）")
+
+        return len(errors) == 0, errors
+
+    def get_summary(self, video_path: str) -> Dict:
+        """
+        获取视频信息摘要
+
+        Returns:
+            包含关键信息的字典
+        """
+        try:
+            info = self.probe(video_path)
+            format_info = info.get('format', {})
+
+            # 提取视频流信息
+            video_streams = [s for s in info.get('streams', []) if s.get('codec_type') == 'video']
+            audio_streams = [s for s in info.get('streams', []) if s.get('codec_type') == 'audio']
+
+            summary = {
+                "filename": os.path.basename(video_path),
+                "path": video_path,
+                "file_size": os.path.getsize(video_path),
+                "duration": float(format_info.get('duration', 0)),
+                "format_name": format_info.get('format_name', 'unknown'),
+                "has_video": len(video_streams) > 0,
+                "has_audio": len(audio_streams) > 0,
+            }
+
+            if video_streams:
+                vs = video_streams[0]
+                summary["video_codec"] = vs.get('codec_name', 'unknown')
+                summary["video_width"] = vs.get('width', 0)
+                summary["video_height"] = vs.get('height', 0)
+                summary["video_fps"] = self._parse_fps(vs.get('r_frame_rate', '0/1'))
+
+            if audio_streams:
+                as_ = audio_streams[0]
+                summary["audio_codec"] = as_.get('codec_name', 'unknown')
+                summary["audio_channels"] = as_.get('channels', 0)
+                summary["audio_sample_rate"] = as_.get('sample_rate', 'unknown')
+
+            return summary
+
+        except Exception as e:
+            return {"error": str(e)}
+
+    def _parse_fps(self, fps_str: str) -> float:
+        """解析帧率字符串 (如 '30000/1001')"""
+        try:
+            if '/' in fps_str:
+                num, den = fps_str.split('/')
+                return float(num) / float(den)
+            return float(fps_str)
+        except:
+            return 0.0
+
+    def print_summary(self, video_path: str) -> bool:
+        """
+        打印视频信息摘要并返回是否有效
+
+        Returns:
+            True 如果视频有效，False 否则
+        """
+        print(f"\n{'='*50}")
+        print(f"视频预检: {os.path.basename(video_path)}")
+        print('='*50)
+
+        # 验证
+        is_valid, errors = self.validate(video_path)
+
+        if not is_valid:
+            print("✗ 视频验证失败:")
+            for error in errors:
+                print(f"  - {error}")
+            return False
+
+        # 获取摘要
+        summary = self.get_summary(video_path)
+
+        if "error" in summary:
+            print(f"✗ 获取视频信息失败: {summary['error']}")
+            return False
+
+        # 打印信息
+        print(f"文件大小: {summary['file_size'] / 1024 / 1024:.2f} MB")
+        print(f"时长: {summary['duration']:.1f} 秒 ({summary['duration']/60:.1f} 分钟)")
+        print(f"格式: {summary['format_name']}")
+
+        if summary.get('has_video'):
+            print(f"视频: {summary['video_codec']} {summary['video_width']}x{summary['video_height']} @ {summary['video_fps']:.2f}fps")
+
+        if summary.get('has_audio'):
+            print(f"音频: {summary['audio_codec']} {summary['audio_channels']}ch {summary['audio_sample_rate']}Hz")
+
+        print("✓ 视频验证通过")
+        return True
+
 
 class AudioExtractor:
     def __init__(self, ffmpeg_path=None):

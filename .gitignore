@@ -14,6 +14,31 @@ venv/
 # Output & Temp
 output/
 temp/
+test_output/
+test_output_strict/
+test_output_timestamp_fix/
+logs/
+
+# Build artifacts
+*.exe
+build_stdout.txt
+build_stderr.txt
+
+# Run artifacts (tracked source files: requirements.txt, README.md, style_profiles.json, .env.example are NOT matched)
+final_subtitles_*.json
+new_translated_*.json
+subtitle_*.json
+subtitle_*.srt
+subtitles.ass
+video_subtitle_result_*.txt
+translation_comparison_*.txt
+upgrade_report_*.txt
+video_with_subtitles*.mp4
+*.wav
+subtitleforge_ui_template.html
+
+# Editor
+.trae/
 
 # IDE
 .vscode/

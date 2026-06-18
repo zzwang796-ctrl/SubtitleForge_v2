@@ -5,7 +5,7 @@ SubtitleForge v2 - 命令行入口
 
 用法:
     python main_v2.py --video <视频路径> [选项]
-    
+
 示例:
     python main_v2.py --video "D:/video/anime.mp4" --style anime
     python main_v2.py --video "D:/video/anime.mp4" --style drama --api-key sk-xxx
@@ -16,7 +16,26 @@ import os
 import sys
 import argparse
 import json
+import locale
 from pathlib import Path
+
+# Windows UTF-8 模式支持 (Python 3.7+)
+if sys.platform == "win32":
+    # 尝试启用 UTF-8 模式
+    if hasattr(sys, "windows_version_info") and sys.version_info >= (3, 7):
+        try:
+            # 设置控制台为 UTF-8 模式
+            sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+            sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+        except Exception:
+            pass
+        # 设置环境变量
+        os.environ["PYTHONUTF8"] = "1"
+        # 尝试设置代码页为 65001 (UTF-8)
+        try:
+            os.system("chcp 65001 >nul 2>&1")
+        except Exception:
+            pass
 
 # 添加模块路径
 MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -108,7 +127,7 @@ def parse_args():
         "--whisper-model",
         type=str,
         default="base",
-        choices=["tiny", "base", "small", "medium", "large"],
+        choices=["tiny", "base", "small", "medium", "large", "large-v3"],
         help="Whisper 模型大小（默认 base）"
     )
     

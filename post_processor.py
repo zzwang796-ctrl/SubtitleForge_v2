@@ -47,8 +47,12 @@ class PostProcessor:
     
     def load_style_rules(self):
         """加载风格配置"""
+        import os
+        # 使用绝对路径，确保从任何目录运行都能找到配置文件
+        module_dir = os.path.dirname(os.path.abspath(__file__))
+        style_profiles_path = os.path.join(module_dir, "style_profiles.json")
         try:
-            with open("style_profiles.json", "r", encoding="utf-8") as f:
+            with open(style_profiles_path, "r", encoding="utf-8") as f:
                 self.style_profiles = json.load(f)
         except FileNotFoundError:
             self.style_profiles = {
