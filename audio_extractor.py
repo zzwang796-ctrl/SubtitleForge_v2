@@ -44,7 +44,7 @@ class VideoProbe:
                                    capture_output=True, text=True, shell=True)
             if result.returncode == 0:
                 return result.stdout.strip().split('\n')[0]
-        except:
+        except (subprocess.SubprocessError, OSError, FileNotFoundError):
             pass
 
         return None
@@ -71,7 +71,7 @@ class VideoProbe:
                                    capture_output=True, text=True, shell=True)
             if result.returncode == 0:
                 return result.stdout.strip().split('\n')[0]
-        except:
+        except (subprocess.SubprocessError, OSError, FileNotFoundError):
             pass
 
         return None
@@ -203,7 +203,7 @@ class VideoProbe:
                 num, den = fps_str.split('/')
                 return float(num) / float(den)
             return float(fps_str)
-        except:
+        except (ValueError, ZeroDivisionError):
             return 0.0
 
     def print_summary(self, video_path: str) -> bool:
@@ -281,7 +281,7 @@ class AudioExtractor:
                                   capture_output=True, text=True, shell=True)
             if result.returncode == 0:
                 return result.stdout.strip().split('\n')[0]
-        except:
+        except (subprocess.SubprocessError, OSError, FileNotFoundError):
             pass
         
         return None
@@ -425,7 +425,7 @@ def test_extraction():
         try:
             subprocess.run(cmd, capture_output=True, text=True)
             print(f"测试视频已生成: {test_video}")
-        except:
+        except (subprocess.SubprocessError, OSError):
             print("无法生成测试视频，请手动准备一个视频文件")
             return None
     

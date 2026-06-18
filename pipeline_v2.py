@@ -55,7 +55,7 @@ class SubtitlePipelineV2:
             result = subprocess.run(["where", "ffmpeg"], capture_output=True, text=True, shell=True)
             if result.returncode == 0:
                 return result.stdout.strip().split('\n')[0]
-        except:
+        except (subprocess.SubprocessError, OSError, FileNotFoundError):
             pass
         
         return "ffmpeg"
