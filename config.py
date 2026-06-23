@@ -14,7 +14,25 @@ import os
 import json
 import sys
 from pathlib import Path
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, Tuple
+import logging
+
+logger = logging.getLogger(__name__)
+
+SUPPORTED_MODELS = [
+    "tiny",
+    "base",
+    "small",
+    "medium",
+    "large",
+    "large-v1",
+    "large-v2",
+    "large-v3",
+]
+SUPPORTED_DEVICES = ["cpu", "cuda", "auto"]
+SUPPORTED_STYLES = ["anime", "drama", "youtube", "documentary"]
+FONT_SIZE_MIN = 20
+FONT_SIZE_MAX = 100
 
 # 配置目录
 CONFIG_DIR = Path.home() / ".subtitleforge"
@@ -189,6 +207,113 @@ class ConfigManager:
         elif provider == "openai":
             self.set("api.openai_key", key)
 
+    def _validate_api_key(self, api_key: str, provider: str) -> Tuple[bool, str]:
+        if not api_key or not isinstance(api_key, str) or api_key.strip() == "":
+            return False, f"API Key ({provider}) 不能为空"
+        key = api_key.strip()
+        if len(key) < 10:
+            return False, f"API Key ({provider}) 长度过短"
+        if key.isspace():
+            return False, f"API Key ({provider}) 仅包含空白字符"
+        return True, ""
+
+    def _validate_whisper_model(self, model: str) -> Tuple[bool, str]:
+        if not model or not isinstance(model, str):
+            return False, "Whisper 模型名称无效"
+        if model not in SUPPORTED_MODELS:
+            return False, f"Whisper 模型 '{model}' 不在支持列表中: {SUPPORTED_MODELS}"
+        return True, ""
+
+    def _validate_device(self, device: str) -> Tuple[bool, str]:
+        if not device or not isinstance(device, str):
+            return False, "设备名称无效"
+        if device not in SUPPORTED_DEVICES:
+            return False, f"设备 '{device}' 不在支持列表中: {SUPPORTED_DEVICES}"
+        return True, ""
+
+    def _validate_style(self, style: str) -> Tuple[bool, str]:
+        if not style or not isinstance(style, str):
+            return False, "风格名称无效"
+        if style not in SUPPORTED_STYLES:
+            return False, f"风格 '{style}' 不在支持列表中: {SUPPORTED_STYLES}"
+        return True, ""
+
+    def _validate_font_size(self, size: int, min_val: int = FONT_SIZE_MIN, max_val: int = FONT_SIZE_MAX) -> Tuple[bool, str]:
+        try:
+            size_int = int(size)
+        except (TypeError, ValueError):
+            return False, f"字号 '{size}' 不是有效整数"
+        if size_int < min_val or size_int > max_val:
+            return False, f"字号 {size_int} 超出有效范围 [{min_val}, {max_val}]"
+        return True, ""
+
+    def _validate_language(self, lang: str) -> Tuple[bool, str]:
+        if not lang or not isinstance(lang, str):
+            return False, "语言代码无效"
+        lang_code = lang.strip()
+        if not lang_code.isalpha() or not (2 <= len(lang_code) <= 3):
+            return False, f"语言代码 '{lang_code}' 格式不正确（应为 2-3 位字母）"
+        return True, ""
+
+    def validate_config(self, config_dict: Dict[str, Any]) -> Tuple[bool, Dict[str, str]]:
+        errors = {}
+
+        api = config_dict.get("api", {})
+        provider = api.get("provider", "")
+        deepseek_key = api.get("deepseek_key", "")
+        openai_key = api.get("openai_key", "")
+        if deepseek_key:
+            ok, msg = self._validate_api_key(deepseek_key, "deepseek")
+            if not ok:
+                errors["api.deepseek_key"] = msg
+        if openai_key:
+            ok, msg = self._validate_api_key(openai_key, "openai")
+            if not ok:
+                errors["api.openai_key"] = msg
+
+        whisper = config_dict.get("whisper", {})
+        whisper_model = whisper.get("model")
+        if whisper_model is not None:
+            ok, msg = self._validate_whisper_model(whisper_model)
+            if not ok:
+                errors["whisper.model"] = msg
+        device = whisper.get("device")
+        if device is not None:
+            ok, msg = self._validate_device(device)
+            if not ok:
+                errors["whisper.device"] = msg
+
+        translation = config_dict.get("translation", {})
+        style = translation.get("style")
+        if style is not None:
+            ok, msg = self._validate_style(style)
+            if not ok:
+                errors["translation.style"] = msg
+        source_lang = translation.get("source_lang")
+        if source_lang:
+            ok, msg = self._validate_language(source_lang)
+            if not ok:
+                errors["translation.source_lang"] = msg
+        target_lang = translation.get("target_lang")
+        if target_lang:
+            ok, msg = self._validate_language(target_lang)
+            if not ok:
+                errors["translation.target_lang"] = msg
+
+        subtitle = config_dict.get("subtitle", {})
+        zh_font_size = subtitle.get("zh_font_size")
+        if zh_font_size is not None:
+            ok, msg = self._validate_font_size(zh_font_size)
+            if not ok:
+                errors["subtitle.zh_font_size"] = msg
+        ja_font_size = subtitle.get("ja_font_size")
+        if ja_font_size is not None:
+            ok, msg = self._validate_font_size(ja_font_size)
+            if not ok:
+                errors["subtitle.ja_font_size"] = msg
+
+        return len(errors) == 0, errors
+
     # ============================================================
     # GUI 配置持久化
     # ============================================================
@@ -209,17 +334,58 @@ class ConfigManager:
             - font_name: 字体名称
             - device: 设备类型
         """
-        return {
-            "provider": self.get("api.provider", "deepseek"),
-            "model": self.get("api.model", "deepseek-chat"),
-            "whisper_model": self.get("whisper.model", "base"),
-            "whisper_model_path": self.get("whisper.model_path", ""),
-            "style": self.get("translation.style", "anime"),
-            "zh_font_size": self.get("subtitle.zh_font_size", 52),
-            "ja_font_size": self.get("subtitle.ja_font_size", 44),
-            "font_name": self.get("subtitle.font_name", "Microsoft YaHei"),
-            "device": self.get("whisper.device", "cpu"),
+        defaults = {
+            "provider": "deepseek",
+            "model": "deepseek-chat",
+            "whisper_model": "base",
+            "whisper_model_path": "",
+            "style": "anime",
+            "zh_font_size": 52,
+            "ja_font_size": 44,
+            "font_name": "Microsoft YaHei",
+            "device": "cpu",
         }
+
+        cfg = {
+            "provider": self.get("api.provider", defaults["provider"]),
+            "model": self.get("api.model", defaults["model"]),
+            "whisper_model": self.get("whisper.model", defaults["whisper_model"]),
+            "whisper_model_path": self.get("whisper.model_path", defaults["whisper_model_path"]),
+            "style": self.get("translation.style", defaults["style"]),
+            "zh_font_size": self.get("subtitle.zh_font_size", defaults["zh_font_size"]),
+            "ja_font_size": self.get("subtitle.ja_font_size", defaults["ja_font_size"]),
+            "font_name": self.get("subtitle.font_name", defaults["font_name"]),
+            "device": self.get("whisper.device", defaults["device"]),
+        }
+
+        valid_cfg = dict(cfg)
+
+        ok, msg = self._validate_whisper_model(cfg["whisper_model"])
+        if not ok:
+            logger.warning(f"加载配置验证失败 - whisper_model: {msg}，使用默认值 '{defaults['whisper_model']}'")
+            valid_cfg["whisper_model"] = defaults["whisper_model"]
+
+        ok, msg = self._validate_device(cfg["device"])
+        if not ok:
+            logger.warning(f"加载配置验证失败 - device: {msg}，使用默认值 '{defaults['device']}'")
+            valid_cfg["device"] = defaults["device"]
+
+        ok, msg = self._validate_style(cfg["style"])
+        if not ok:
+            logger.warning(f"加载配置验证失败 - style: {msg}，使用默认值 '{defaults['style']}'")
+            valid_cfg["style"] = defaults["style"]
+
+        ok, msg = self._validate_font_size(cfg["zh_font_size"])
+        if not ok:
+            logger.warning(f"加载配置验证失败 - zh_font_size: {msg}，使用默认值 {defaults['zh_font_size']}")
+            valid_cfg["zh_font_size"] = defaults["zh_font_size"]
+
+        ok, msg = self._validate_font_size(cfg["ja_font_size"])
+        if not ok:
+            logger.warning(f"加载配置验证失败 - ja_font_size: {msg}，使用默认值 {defaults['ja_font_size']}")
+            valid_cfg["ja_font_size"] = defaults["ja_font_size"]
+
+        return valid_cfg
 
     def save_gui_config(
         self,
@@ -251,6 +417,50 @@ class ConfigManager:
             api_key: API Key
             api_provider: API Key 对应的提供商
         """
+        validation_has_error = False
+
+        if whisper_model is not None:
+            ok, msg = self._validate_whisper_model(whisper_model)
+            if not ok:
+                logger.warning(f"保存配置验证失败 - whisper_model: {msg}")
+                validation_has_error = True
+                whisper_model = None
+
+        if device is not None:
+            ok, msg = self._validate_device(device)
+            if not ok:
+                logger.warning(f"保存配置验证失败 - device: {msg}")
+                validation_has_error = True
+                device = None
+
+        if style is not None:
+            ok, msg = self._validate_style(style)
+            if not ok:
+                logger.warning(f"保存配置验证失败 - style: {msg}")
+                validation_has_error = True
+                style = None
+
+        if zh_font_size is not None:
+            ok, msg = self._validate_font_size(zh_font_size)
+            if not ok:
+                logger.warning(f"保存配置验证失败 - zh_font_size: {msg}")
+                validation_has_error = True
+                zh_font_size = None
+
+        if ja_font_size is not None:
+            ok, msg = self._validate_font_size(ja_font_size)
+            if not ok:
+                logger.warning(f"保存配置验证失败 - ja_font_size: {msg}")
+                validation_has_error = True
+                ja_font_size = None
+
+        if api_key is not None and api_provider is not None:
+            ok, msg = self._validate_api_key(api_key, api_provider)
+            if not ok:
+                logger.warning(f"保存配置验证失败 - api_key: {msg}")
+                validation_has_error = True
+                api_key = None
+
         if provider is not None:
             self.set("api.provider", provider)
         if model is not None:
@@ -270,11 +480,14 @@ class ConfigManager:
         if device is not None:
             self.set("whisper.device", device)
 
-        # 保存 API Key（如果提供）
         if api_key is not None and api_provider is not None:
             self.set_api_key(api_provider, api_key)
 
-        # 保存到文件
+        _, errors = self.validate_config(self.config)
+        if errors:
+            for key, msg in errors.items():
+                logger.warning(f"保存配置整体验证问题 - {key}: {msg}")
+
         self.save()
 
 

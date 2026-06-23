@@ -21,44 +21,137 @@ sys.path.insert(0, MODULE_DIR)
 
 from translator_v2 import ContextAwareTranslator, TranslationConfig, TranslationStyle
 from post_processor import PostProcessor
+from logging_setup import get_logger
+from exceptions import (
+    SubtitleForgeError,
+    VideoFileNotFoundError,
+    InvalidVideoFileError,
+    AudioExtractionError,
+    SubtitleBurnError,
+    CheckpointError,
+)
+
+logger = get_logger("pipeline")
 
 
 class SubtitlePipelineV2:
     """SubtitleForge v2 升级版流水线"""
-    
+
+    # 支持的 whisper 模型
+    SUPPORTED_WHISPER_MODELS = {
+        "tiny", "base", "small", "medium", "large", "large-v2", "large-v3"
+    }
+    # 支持的设备
+    SUPPORTED_DEVICES = {"cpu", "cuda", "gpu"}
+    # 支持的计算类型
+    SUPPORTED_COMPUTE_TYPES = {
+        "default", "auto", "int8", "int16", "float16", "float32", "bfloat16"
+    }
+
     def __init__(self, ffmpeg_path=None, whisper_model="large-v3", device="cpu", compute_type="int8"):
+        # 验证 whisper_model
+        if whisper_model and not os.path.isdir(whisper_model):
+            if whisper_model not in self.SUPPORTED_WHISPER_MODELS:
+                logger.warning(
+                    f"未知的 whisper 模型 '{whisper_model}'，建议使用: {', '.join(sorted(self.SUPPORTED_WHISPER_MODELS))}"
+                )
+
+        # 验证 device
+        if device not in self.SUPPORTED_DEVICES:
+            logger.warning(
+                f"未知的设备类型 '{device}'，建议使用: {', '.join(sorted(self.SUPPORTED_DEVICES))}"
+            )
+
+        # 验证 compute_type
+        if compute_type not in self.SUPPORTED_COMPUTE_TYPES:
+            logger.warning(
+                f"未知的计算类型 '{compute_type}'，建议使用: {', '.join(sorted(self.SUPPORTED_COMPUTE_TYPES))}"
+            )
+
         self.ffmpeg_path = ffmpeg_path
         self.whisper_model = whisper_model
         self.device = device
         self.compute_type = compute_type
-        
+
         # 自动查找 ffmpeg
         self._ffmpeg = self._find_ffmpeg()
-        
+        logger.info(f"流水线初始化完成: whisper_model={whisper_model}, device={device}, compute_type={compute_type}")
+        logger.info(f"FFmpeg 路径: {self._ffmpeg}")
+
         # 检查点管理器（延迟初始化）
         self._checkpoint_manager = None
         self._checkpoint_enabled = False
         self._current_output_dir = None
-    
+
     def _find_ffmpeg(self):
         """查找 ffmpeg"""
         if self.ffmpeg_path and os.path.exists(self.ffmpeg_path):
+            logger.debug(f"使用指定的 FFmpeg 路径: {self.ffmpeg_path}")
             return self.ffmpeg_path
-        
+
         # 搜索项目目录下的 ffmpeg
         local_ffmpeg = os.path.join(MODULE_DIR, "ffmpeg", "ffmpeg.exe")
         if os.path.exists(local_ffmpeg):
+            logger.debug(f"在项目目录下找到 FFmpeg: {local_ffmpeg}")
             return local_ffmpeg
-        
+
         # PATH 中查找
         try:
             result = subprocess.run(["where", "ffmpeg"], capture_output=True, text=True, shell=True)
             if result.returncode == 0:
-                return result.stdout.strip().split('\n')[0]
+                path = result.stdout.strip().split('\n')[0]
+                logger.debug(f"在 PATH 中找到 FFmpeg: {path}")
+                return path
         except (subprocess.SubprocessError, OSError, FileNotFoundError):
             pass
-        
+
+        logger.warning("未在系统中找到 FFmpeg，将使用默认命令 'ffmpeg'（可能不可用）")
         return "ffmpeg"
+
+    def _validate_video_file(self, video_path: str) -> None:
+        """
+        验证视频文件是否合法
+
+        Args:
+            video_path: 视频文件路径
+
+        Raises:
+            VideoFileNotFoundError: 文件不存在
+            InvalidVideoFileError: 文件不是有效的视频文件
+        """
+        if not video_path:
+            raise VideoFileNotFoundError(video_path)
+
+        if not os.path.exists(video_path):
+            raise VideoFileNotFoundError(video_path)
+
+        if not os.path.isfile(video_path):
+            raise InvalidVideoFileError(video_path)
+
+        # 检查文件大小：0 字节直接报错，过小发出警告
+        file_size = os.path.getsize(video_path)
+        if file_size == 0:
+            raise InvalidVideoFileError(
+                f"视频文件为空（0 bytes）: {video_path}"
+            )
+        if file_size < 1024:
+            logger.warning(f"视频文件过小 ({file_size} bytes)，可能不是有效的视频")
+
+        # 检查文件扩展名（简单过滤）
+        video_exts = {
+            ".mp4", ".avi", ".mkv", ".mov", ".wmv", ".flv", ".webm",
+            ".m4v", ".3gp", ".ts", ".mpg", ".mpeg", ".rmvb", ".rm",
+            ".mkv", ".wav", ".mp3", ".aac"
+        }
+        ext = os.path.splitext(video_path)[1].lower()
+        if not ext:
+            raise InvalidVideoFileError(
+                f"视频文件缺少扩展名，无法识别格式: {video_path}"
+            )
+        if ext not in video_exts:
+            logger.warning(f"视频文件扩展名不常见: {ext}（可能仍可处理）")
+
+        logger.info(f"视频文件验证通过: {video_path} ({file_size} bytes)")
     
     def _init_checkpoint(self, output_dir: str, enabled: bool = True):
         """初始化检查点管理器"""
@@ -66,44 +159,53 @@ class SubtitlePipelineV2:
             self._checkpoint_manager = None
             self._checkpoint_enabled = False
             return
-        
+
         try:
             from checkpoint import CheckpointManager
             self._checkpoint_manager = CheckpointManager(output_dir)
             self._checkpoint_enabled = True
             self._current_output_dir = output_dir
-            
+
             # 加载现有检查点
             progress = self._checkpoint_manager.get_progress()
             if progress["has_checkpoint"]:
-                print(f"  [检查点] 发现已有进度: {self._checkpoint_manager.summarize()}")
+                logger.info(f"[检查点] 发现已有进度: {self._checkpoint_manager.summarize()}")
         except ImportError:
-            print("  [检查点] 检查点模块不可用，断点续传已禁用")
+            logger.warning("[检查点] 检查点模块不可用，断点续传已禁用")
             self._checkpoint_manager = None
             self._checkpoint_enabled = False
-    
+        except (KeyError, TypeError, AttributeError) as e:
+            logger.warning(f"[检查点] 初始化异常: {e}，断点续传已禁用")
+            self._checkpoint_manager = None
+            self._checkpoint_enabled = False
+
     def _save_checkpoint(self, stage, stage_name: str, data: Dict = None):
         """保存检查点"""
         if not self._checkpoint_enabled or self._checkpoint_manager is None:
             return
-        
+
         try:
             from checkpoint import PipelineStage
             stage_enum = PipelineStage[stage_name.upper()] if isinstance(stage_name, str) else stage
             self._checkpoint_manager.save_checkpoint(stage_enum, stage_name, data=data)
+        except (KeyError, TypeError, OSError, json.JSONDecodeError) as e:
+            logger.warning(f"[检查点] 保存失败: {e}")
         except Exception as e:
-            print(f"  [检查点] 保存失败: {e}")
-    
+            logger.warning(f"[检查点] 保存发生未预期错误: {e}")
+
     def _should_skip_stage(self, stage_name: str) -> bool:
         """检查是否应该跳过指定阶段"""
         if not self._checkpoint_enabled or self._checkpoint_manager is None:
             return False
-        
+
         try:
             from checkpoint import PipelineStage
             stage_enum = PipelineStage[stage_name.upper()]
             return self._checkpoint_manager.should_skip_stage(stage_enum)
-        except Exception:
+        except (KeyError, TypeError, AttributeError):
+            return False
+        except Exception as e:
+            logger.warning(f"[检查点] 检查阶段状态失败: {e}")
             return False
 
     # ========== 阶段 1: 音频提取 ==========
@@ -341,9 +443,9 @@ class SubtitlePipelineV2:
             elif d <= 8.0:  buckets["7-8s"] += 1
             else:           buckets[">8s"] += 1
 
-        print(f"断句完成: {len(all_words)} 个词 → {len(final)} 个句子")
-        print(f"时长统计: 总={total_dur:.1f}s  平均={avg_dur:.1f}s  最短={min_dur:.1f}s  最长={max_dur:.1f}s")
-        print(f"分布: " + " | ".join(f"{k}: {v}" for k, v in buckets.items() if v > 0))
+        logger.info(f"断句完成: {len(all_words)} 个词 → {len(final)} 个句子")
+        logger.info(f"  时长统计: 总={total_dur:.1f}s  平均={avg_dur:.1f}s  最短={min_dur:.1f}s  最长={max_dur:.1f}s")
+        logger.info(f"  分布: " + " | ".join(f"{k}: {v}" for k, v in buckets.items() if v > 0))
 
         return final
 
@@ -478,9 +580,9 @@ class SubtitlePipelineV2:
             elif d <= 10.0: buckets["7-10s"] += 1
             else:          buckets[">10s"] += 1
 
-        print(f"断句完成(降级): {len(segments)} 个原始片段 → {len(final)} 个句子")
-        print(f"时长统计: 总={total_dur:.1f}s  平均={avg_dur:.1f}s  最短={min_dur:.1f}s  最长={max_dur:.1f}s")
-        print(f"分布: " + " | ".join(f"{k}: {v}" for k, v in buckets.items() if v > 0))
+        logger.info(f"断句完成(降级): {len(segments)} 个原始片段 → {len(final)} 个句子")
+        logger.info(f"  时长统计: 总={total_dur:.1f}s  平均={avg_dur:.1f}s  最短={min_dur:.1f}s  最长={max_dur:.1f}s")
+        logger.info(f"  分布: " + " | ".join(f"{k}: {v}" for k, v in buckets.items() if v > 0))
 
         return final
     
@@ -533,7 +635,7 @@ class SubtitlePipelineV2:
         with open(json_path, 'w', encoding='utf-8') as f:
             json.dump(translated, f, ensure_ascii=False, indent=2)
         
-        print(f"翻译完成，已保存: {json_path}")
+        logger.info(f"翻译完成，已保存: {json_path}")
         
         return translated
     
@@ -544,7 +646,7 @@ class SubtitlePipelineV2:
         processor = PostProcessor(style=style)
         processed = processor.process(sentences)
         
-        print(f"后处理完成，共处理 {len(processed)} 句")
+        logger.info(f"后处理完成，共处理 {len(processed)} 句")
         
         return processed
     
@@ -568,7 +670,7 @@ class SubtitlePipelineV2:
         )
         translator = ContextAwareTranslator(config)
         refined = translator.refine_translations(sentences, api_key, provider=provider, model=model, style=style)
-        print(f"翻译校对完成，共处理 {len(refined)} 句")
+        logger.info(f"翻译校对完成，共处理 {len(refined)} 句")
         return refined
     
     # ========== 阶段 7: SRT 字幕生成 ==========
@@ -601,7 +703,7 @@ class SubtitlePipelineV2:
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(srt_content)
         
-        print(f"SRT 已生成: {output_path} ({len(sentences)} 条字幕)")
+        logger.info(f"SRT 已生成: {output_path} ({len(sentences)} 条字幕)")
         
         return output_path
     
@@ -651,212 +753,333 @@ class SubtitlePipelineV2:
 
         Returns:
             dict: 包含所有输出路径和处理结果
+
+        Raises:
+            SubtitleForgeError: 流水线处理过程中的特定错误
         """
+        # 1. 验证输入
+        self._validate_video_file(video_path)
+
+        if not api_key:
+            logger.warning("API Key 为空，翻译相关阶段将无法工作（仅进行语音识别/断句）")
+
         os.makedirs(output_dir, exist_ok=True)
 
-        # 初始化检查点
+        # 2. 初始化检查点
         self._init_checkpoint(output_dir, enable_checkpoint)
 
-        print("=" * 60)
-        print("SubtitleForge v2 - 升级版流水线")
-        print("=" * 60)
-        print(f"视频: {video_path}")
-        print(f"风格: {style}")
-        print(f"源语言: {source_lang} → 目标语言: {target_lang}")
-        print(f"断点续传: {'启用' if self._checkpoint_enabled else '禁用'}")
-        print("=" * 60)
+        separator = "=" * 60
+        logger.info(separator)
+        logger.info("SubtitleForge v2 - 升级版流水线")
+        logger.info(separator)
+        logger.info(f"视频: {video_path}")
+        logger.info(f"风格: {style}")
+        logger.info(f"源语言: {source_lang} → 目标语言: {target_lang}")
+        logger.info(f"断点续传: {'启用' if self._checkpoint_enabled else '禁用'}")
+        logger.info(separator)
 
         result = {}
 
-        # 阶段 1: 音频提取
-        if self._should_skip_stage("AUDIO_EXTRACTION"):
-            print("\n[阶段 1/8] 跳过音频提取（已有检查点）")
-            wav_path = os.path.join(output_dir, "audio.wav")
-            if not os.path.exists(wav_path):
-                wav_path = audio_path or wav_path
-        elif not skip_audio:
-            print("\n[阶段 1/8] 提取音频...")
-            wav_path = self.extract_audio(video_path, output_dir)
-            self._save_checkpoint(None, "AUDIO_EXTRACTION", {"wav_path": wav_path})
-        else:
-            print("\n[阶段 1/8] 跳过音频提取（用户请求）")
-            wav_path = audio_path or os.path.join(output_dir, "audio.wav")
-
-        result["wav_path"] = wav_path
-        print(f"  音频: {wav_path}")
-
-        # 阶段 2: 语音识别
-        if self._should_skip_stage("SPEECH_RECOGNITION"):
-            print("\n[阶段 2/8] 跳过语音识别（已有检查点）")
-            transcript_path = os.path.join(output_dir, "raw_transcript.json")
-            if os.path.exists(transcript_path):
-                from speech_recognizer import SpeechRecognizer
-                transcript = SpeechRecognizer.load_result(transcript_path)
+        try:
+            # 阶段 1: 音频提取
+            if self._should_skip_stage("AUDIO_EXTRACTION"):
+                logger.info("\n[阶段 1/8] 跳过音频提取（已有检查点）")
+                wav_path = os.path.join(output_dir, "audio.wav")
+                if not os.path.exists(wav_path):
+                    wav_path = audio_path or wav_path
+            elif not skip_audio:
+                logger.info("\n[阶段 1/8] 提取音频...")
+                try:
+                    wav_path = self.extract_audio(video_path, output_dir)
+                    self._save_checkpoint(None, "AUDIO_EXTRACTION", {"wav_path": wav_path})
+                except FileNotFoundError as e:
+                    logger.error(f"  [阶段 1] 音频提取失败：文件不存在 - {e}")
+                    raise AudioExtractionError(f"音频提取失败：文件不存在 - {e}") from e
+                except (RuntimeError, OSError) as e:
+                    logger.error(f"  [阶段 1] 音频提取失败：FFmpeg 执行错误 - {e}")
+                    raise AudioExtractionError(f"音频提取失败：{e}") from e
+                except Exception as e:
+                    logger.error(f"  [阶段 1] 音频提取发生未预期错误: {e}", exc_info=True)
+                    raise AudioExtractionError(f"音频提取失败：{e}") from e
             else:
-                transcript = self.recognize_speech(wav_path, output_dir, language=source_lang)
-        else:
-            print("\n[阶段 2/8] 语音识别...")
-            transcript = self.recognize_speech(wav_path, output_dir, language=source_lang)
-            self._save_checkpoint(None, "SPEECH_RECOGNITION", {"transcript_path": os.path.join(output_dir, "raw_transcript.json")})
+                logger.info("\n[阶段 1/8] 跳过音频提取（用户请求）")
+                wav_path = audio_path or os.path.join(output_dir, "audio.wav")
 
-        result["transcript"] = transcript
-        result["language"] = transcript.get("language", "unknown")
-        print(f"  识别语言: {result['language']}")
+            result["wav_path"] = wav_path
+            logger.info(f"  音频: {wav_path}")
 
-        # 阶段 3: 语义断句
-        if self._should_skip_stage("SEMANTIC_SPLITTING"):
-            print("\n[阶段 3/8] 跳过语义断句（已有检查点）")
-            sentences_path = os.path.join(output_dir, "sentences.json")
-            if os.path.exists(sentences_path):
-                with open(sentences_path, 'r', encoding='utf-8') as f:
-                    sentences = json.load(f)
+            # 阶段 2: 语音识别
+            if self._should_skip_stage("SPEECH_RECOGNITION"):
+                logger.info("\n[阶段 2/8] 跳过语音识别（已有检查点）")
+                transcript_path = os.path.join(output_dir, "raw_transcript.json")
+                if os.path.exists(transcript_path):
+                    from speech_recognizer import SpeechRecognizer
+                    transcript = SpeechRecognizer.load_result(transcript_path)
+                else:
+                    transcript = self.recognize_speech(wav_path, output_dir, language=source_lang)
             else:
-                sentences = self.split_sentences(transcript, output_dir)
-        else:
-            print("\n[阶段 3/8] 语义断句...")
-            sentences = self.split_sentences(transcript, output_dir)
-            self._save_checkpoint(None, "SEMANTIC_SPLITTING", {"sentences_path": os.path.join(output_dir, "sentences.json")})
+                logger.info("\n[阶段 2/8] 语音识别...")
+                try:
+                    transcript = self.recognize_speech(wav_path, output_dir, language=source_lang)
+                    self._save_checkpoint(None, "SPEECH_RECOGNITION",
+                                          {"transcript_path": os.path.join(output_dir, "raw_transcript.json")})
+                except (OSError, FileNotFoundError) as e:
+                    logger.error(f"  [阶段 2] 语音识别失败：音频文件错误 - {e}")
+                    raise
+                except RuntimeError as e:
+                    logger.error(f"  [阶段 2] 语音识别失败：模型加载/推理错误 - {e}")
+                    raise SubtitleForgeError(f"语音识别模型错误：{e}") from e
+                except Exception as e:
+                    logger.error(f"  [阶段 2] 语音识别发生未预期错误: {e}", exc_info=True)
+                    raise SubtitleForgeError(f"语音识别失败：{e}") from e
 
-        result["sentences_count"] = len(sentences)
-        print(f"  句子数: {len(sentences)}")
+            result["transcript"] = transcript
+            result["language"] = transcript.get("language", "unknown")
+            logger.info(f"  识别语言: {result['language']}")
 
-        # 阶段 4: 上下文感知翻译（v2 核心）
-        if self._should_skip_stage("TRANSLATION"):
-            print("\n[阶段 4/8] 跳过翻译（已有检查点）")
-            translated_path = os.path.join(output_dir, "translated.json")
-            if os.path.exists(translated_path):
-                with open(translated_path, 'r', encoding='utf-8') as f:
-                    translated = json.load(f)
+            # 阶段 3: 语义断句
+            if self._should_skip_stage("SEMANTIC_SPLITTING"):
+                logger.info("\n[阶段 3/8] 跳过语义断句（已有检查点）")
+                sentences_path = os.path.join(output_dir, "sentences.json")
+                if os.path.exists(sentences_path):
+                    with open(sentences_path, 'r', encoding='utf-8') as f:
+                        sentences = json.load(f)
+                else:
+                    sentences = self.split_sentences(transcript, output_dir)
             else:
-                translated = self.translate_subtitles_v2(
-                    sentences, output_dir, api_key, style=style,
-                    provider=provider, model=model
-                )
-        else:
-            print("\n[阶段 4/8] 上下文感知翻译...")
-            translated = self.translate_subtitles_v2(
-                sentences, output_dir, api_key, style=style,
-                provider=provider, model=model
-            )
-            self._save_checkpoint(None, "TRANSLATION", {"translated_path": os.path.join(output_dir, "translated.json")})
+                logger.info("\n[阶段 3/8] 语义断句...")
+                try:
+                    sentences = self.split_sentences(transcript, output_dir)
+                    self._save_checkpoint(None, "SEMANTIC_SPLITTING",
+                                          {"sentences_path": os.path.join(output_dir, "sentences.json")})
+                except (OSError, IOError, json.JSONDecodeError) as e:
+                    logger.warning(f"  [阶段 3] 语义断句失败（文件/JSON 错误），将返回空列表: {e}")
+                    sentences = []
+                except (KeyError, TypeError, AttributeError) as e:
+                    logger.warning(f"  [阶段 3] 语义断句数据结构错误，将返回空列表: {e}")
+                    sentences = []
+                except Exception as e:
+                    logger.warning(f"  [阶段 3] 语义断句发生未预期错误: {e}", exc_info=True)
+                    sentences = []
 
-        result["translated_sentences"] = len(translated)
+            result["sentences_count"] = len(sentences)
+            logger.info(f"  句子数: {len(sentences)}")
 
-        # 阶段 5: 后处理润色
-        if self._should_skip_stage("POST_PROCESSING"):
-            print("\n[阶段 5/8] 跳过后处理润色（已有检查点）")
-            processed_path = os.path.join(output_dir, "final_subtitles_v2.json")
-            if os.path.exists(processed_path):
-                with open(processed_path, 'r', encoding='utf-8') as f:
-                    processed = json.load(f)
+            # 阶段 4: 上下文感知翻译（v2 核心）
+            if not api_key:
+                # 如果没有 API Key，跳过翻译阶段，使用原文
+                logger.warning("\n[阶段 4/8] 无 API Key，跳过翻译（将使用原文作为占位）")
+                translated = [dict(s, translated_text=s.get("text", "")) for s in sentences]
+            elif self._should_skip_stage("TRANSLATION"):
+                logger.info("\n[阶段 4/8] 跳过翻译（已有检查点）")
+                translated_path = os.path.join(output_dir, "translated.json")
+                if os.path.exists(translated_path):
+                    with open(translated_path, 'r', encoding='utf-8') as f:
+                        translated = json.load(f)
+                else:
+                    translated = self.translate_subtitles_v2(
+                        sentences, output_dir, api_key, style=style,
+                        provider=provider, model=model
+                    )
             else:
+                logger.info("\n[阶段 4/8] 上下文感知翻译...")
+                try:
+                    translated = self.translate_subtitles_v2(
+                        sentences, output_dir, api_key, style=style,
+                        provider=provider, model=model
+                    )
+                except (OSError, IOError) as e:
+                    logger.error(f"  [阶段 4] 翻译失败：网络/文件错误 - {e}")
+                    logger.warning("  将使用原文作为翻译占位，继续后续阶段")
+                    translated = [dict(s, translated_text=s.get("text", "")) for s in sentences]
+                except (ValueError, RuntimeError) as e:
+                    logger.error(f"  [阶段 4] 翻译失败：API/模型错误 - {e}")
+                    logger.warning("  将使用原文作为翻译占位，继续后续阶段")
+                    translated = [dict(s, translated_text=s.get("text", "")) for s in sentences]
+                except Exception as e:
+                    logger.error(f"  [阶段 4] 翻译发生未预期错误: {e}", exc_info=True)
+                    logger.warning("  将使用原文作为翻译占位，继续后续阶段")
+                    translated = [dict(s, translated_text=s.get("text", "")) for s in sentences]
+                # 保存翻译结果
+                translated_path = os.path.join(output_dir, "translated.json")
+                try:
+                    with open(translated_path, 'w', encoding='utf-8') as f:
+                        json.dump(translated, f, ensure_ascii=False, indent=2)
+                except (OSError, IOError) as e:
+                    logger.warning(f"保存翻译结果失败: {e}")
+                self._save_checkpoint(None, "TRANSLATION", {"translated_path": translated_path})
+
+            result["translated_sentences"] = len(translated)
+
+            # 阶段 5: 后处理润色
+            if self._should_skip_stage("POST_PROCESSING"):
+                logger.info("\n[阶段 5/8] 跳过后处理润色（已有检查点）")
+                processed_path = os.path.join(output_dir, "final_subtitles_v2.json")
+                if os.path.exists(processed_path):
+                    with open(processed_path, 'r', encoding='utf-8') as f:
+                        processed = json.load(f)
+                else:
+                    processed = self.post_process(translated, style=style)
+            else:
+                logger.info("\n[阶段 5/8] 后处理润色...")
                 processed = self.post_process(translated, style=style)
-        else:
-            print("\n[阶段 5/8] 后处理润色...")
-            processed = self.post_process(translated, style=style)
 
-            # 保存后处理结果
-            processed_path = os.path.join(output_dir, "final_subtitles_v2.json")
-            with open(processed_path, 'w', encoding='utf-8') as f:
-                json.dump(processed, f, ensure_ascii=False, indent=2)
-            self._save_checkpoint(None, "POST_PROCESSING", {"processed_path": processed_path})
+                # 保存后处理结果
+                processed_path = os.path.join(output_dir, "final_subtitles_v2.json")
+                try:
+                    with open(processed_path, 'w', encoding='utf-8') as f:
+                        json.dump(processed, f, ensure_ascii=False, indent=2)
+                except (OSError, IOError) as e:
+                    logger.warning(f"保存后处理结果失败: {e}")
+                self._save_checkpoint(None, "POST_PROCESSING", {"processed_path": processed_path})
 
-        result["final_json"] = processed_path
+            result["final_json"] = processed_path
 
-        # 阶段 6: 翻译校对（二次精翻）
-        if self._should_skip_stage("REFINEMENT"):
-            print("\n[阶段 6/8] 跳过翻译校对（已有检查点）")
-            refined_path = os.path.join(output_dir, "refined_subtitles.json")
-            if os.path.exists(refined_path):
-                with open(refined_path, 'r', encoding='utf-8') as f:
-                    refined = json.load(f)
+            # 阶段 6: 翻译校对（二次精翻）
+            if not api_key:
+                logger.warning("\n[阶段 6/8] 无 API Key，跳过翻译校对")
+                refined = processed
+                refined_path = os.path.join(output_dir, "refined_subtitles.json")
+            elif self._should_skip_stage("REFINEMENT"):
+                logger.info("\n[阶段 6/8] 跳过翻译校对（已有检查点）")
+                refined_path = os.path.join(output_dir, "refined_subtitles.json")
+                if os.path.exists(refined_path):
+                    with open(refined_path, 'r', encoding='utf-8') as f:
+                        refined = json.load(f)
+                else:
+                    refined = self.refine_translations(processed, api_key,
+                                                        provider=provider, model=model, style=style)
             else:
-                refined = self.refine_translations(processed, api_key, provider=provider, model=model, style=style)
-        else:
-            print("\n[阶段 6/8] 翻译校对...")
-            refined = self.refine_translations(processed, api_key, provider=provider, model=model, style=style)
+                logger.info("\n[阶段 6/8] 翻译校对...")
+                refined = self.refine_translations(processed, api_key,
+                                                    provider=provider, model=model, style=style)
 
-            # 保存校对结果
-            refined_path = os.path.join(output_dir, "refined_subtitles.json")
-            with open(refined_path, 'w', encoding='utf-8') as f:
-                json.dump(refined, f, ensure_ascii=False, indent=2)
-            self._save_checkpoint(None, "REFINEMENT", {"refined_path": refined_path})
+                # 保存校对结果
+                refined_path = os.path.join(output_dir, "refined_subtitles.json")
+                try:
+                    with open(refined_path, 'w', encoding='utf-8') as f:
+                        json.dump(refined, f, ensure_ascii=False, indent=2)
+                except (OSError, IOError) as e:
+                    logger.warning(f"保存校对结果失败: {e}")
+                self._save_checkpoint(None, "REFINEMENT", {"refined_path": refined_path})
 
-        result["refined_json"] = refined_path
+            result["refined_json"] = refined_path
 
-        # 阶段 7: 生成 SRT 和导出文件
-        if self._should_skip_stage("SUBTITLE_EXPORT"):
-            print("\n[阶段 7/8] 跳过字幕生成（已有检查点）")
-            bilingual_srt = os.path.join(output_dir, "subtitle_bilingual_v2.srt")
-            chinese_srt = os.path.join(output_dir, "subtitle_zh_v2.srt")
-            text_path = os.path.join(output_dir, "video_subtitle_result_v2.txt")
-        else:
-            print("\n[阶段 7/8] 生成字幕文件...")
+            # 阶段 7: 生成 SRT 和导出文件
+            if self._should_skip_stage("SUBTITLE_EXPORT"):
+                logger.info("\n[阶段 7/8] 跳过字幕生成（已有检查点）")
+                bilingual_srt = os.path.join(output_dir, "subtitle_bilingual_v2.srt")
+                chinese_srt = os.path.join(output_dir, "subtitle_zh_v2.srt")
+                text_path = os.path.join(output_dir, "video_subtitle_result_v2.txt")
+            else:
+                logger.info("\n[阶段 7/8] 生成字幕文件...")
 
-            # 双语 SRT
-            bilingual_srt = os.path.join(output_dir, "subtitle_bilingual_v2.srt")
-            self.generate_srt(refined, bilingual_srt, True, True)
+                # 双语 SRT
+                bilingual_srt = os.path.join(output_dir, "subtitle_bilingual_v2.srt")
+                try:
+                    self.generate_srt(refined, bilingual_srt, True, True)
+                    result["bilingual_srt"] = bilingual_srt
+                except (OSError, IOError) as e:
+                    logger.error(f"  [阶段 7] 双语 SRT 写入失败: {e}")
+                    bilingual_srt = None
+
+                # 纯中文 SRT
+                chinese_srt = os.path.join(output_dir, "subtitle_zh_v2.srt")
+                try:
+                    self.generate_srt(refined, chinese_srt, False, True)
+                    result["chinese_srt"] = chinese_srt
+                except (OSError, IOError) as e:
+                    logger.error(f"  [阶段 7] 纯中文 SRT 写入失败: {e}")
+                    chinese_srt = None
+
+                # 导出纯文本结果
+                text_path = os.path.join(output_dir, "video_subtitle_result_v2.txt")
+                try:
+                    self._export_text_result(refined, text_path, style)
+                    result["text_result"] = text_path
+                except (OSError, IOError) as e:
+                    logger.error(f"  [阶段 7] 纯文本结果写入失败: {e}")
+                    text_path = None
+
+                self._save_checkpoint(None, "SUBTITLE_EXPORT", {
+                    "bilingual_srt": bilingual_srt,
+                    "chinese_srt": chinese_srt,
+                    "text_path": text_path
+                })
+
             result["bilingual_srt"] = bilingual_srt
-
-            # 纯中文 SRT
-            chinese_srt = os.path.join(output_dir, "subtitle_zh_v2.srt")
-            self.generate_srt(refined, chinese_srt, False, True)
             result["chinese_srt"] = chinese_srt
+            result["text_result"] = text_path
 
-            # 导出纯文本结果
-            text_path = os.path.join(output_dir, "video_subtitle_result_v2.txt")
-            self._export_text_result(refined, text_path, style)
-            self._save_checkpoint(None, "SUBTITLE_EXPORT", {
-                "bilingual_srt": bilingual_srt,
-                "chinese_srt": chinese_srt,
-                "text_path": text_path
-            })
+            # 阶段 8: 字幕烧录到视频
+            if self._should_skip_stage("VIDEO_BURNING"):
+                logger.info("\n[阶段 8/8] 跳过字幕烧录（已有检查点）")
+                video_output = os.path.join(output_dir, "video_with_subtitles.mp4")
+                if os.path.exists(video_output):
+                    result["video_with_subtitles"] = video_output
+            elif not skip_burn:
+                logger.info("\n[阶段 8/8] 字幕烧录到视频...")
+                try:
+                    if bilingual_srt is None or not os.path.exists(bilingual_srt):
+                        logger.warning("  [阶段 8] 双语 SRT 文件不可用，跳过字幕烧录")
+                    else:
+                        video_output = self.burn_subtitles(video_path, bilingual_srt, output_dir)
+                        self._save_checkpoint(None, "VIDEO_BURNING", {"video_output": video_output}, completed=True)
+                        result["video_with_subtitles"] = video_output
+                except SubtitleBurnError as e:
+                    logger.error(f"  [阶段 8] 字幕烧录失败: {e.message}")
+                    logger.warning("  流水线继续完成（字幕文件已生成，可手动烧录）")
+                except (OSError, IOError) as e:
+                    logger.error(f"  [阶段 8] 字幕烧录文件操作失败: {e}")
+                    logger.warning("  流水线继续完成（字幕文件已生成，可手动烧录）")
+                except Exception as e:
+                    logger.error(f"  [阶段 8] 字幕烧录发生未预期错误: {e}", exc_info=True)
+                    logger.warning("  流水线继续完成（字幕文件已生成，可手动烧录）")
+            else:
+                logger.info("\n[阶段 8/8] 跳过字幕烧录（用户请求）")
 
-        result["bilingual_srt"] = bilingual_srt
-        result["chinese_srt"] = chinese_srt
-        result["text_result"] = text_path
+            logger.info(f"\n{separator}")
+            logger.info("流水线执行完成！")
+            logger.info(separator)
+            for key, value in result.items():
+                logger.info(f"  {key}: {value}")
 
-        # 阶段 8: 字幕烧录到视频
-        if self._should_skip_stage("VIDEO_BURNING"):
-            print("\n[阶段 8/8] 跳过字幕烧录（已有检查点）")
-            video_output = os.path.join(output_dir, "video_with_subtitles.mp4")
-            if os.path.exists(video_output):
-                result["video_with_subtitles"] = video_output
-        elif not skip_burn:
-            print("\n[阶段 8/8] 字幕烧录到视频...")
-            video_output = self.burn_subtitles(video_path, bilingual_srt, output_dir)
-            self._save_checkpoint(None, "VIDEO_BURNING", {"video_output": video_output}, completed=True)
-            result["video_with_subtitles"] = video_output
-        else:
-            print("\n[阶段 8/8] 跳过字幕烧录（用户请求）")
+            return result
 
-        print("\n" + "=" * 60)
-        print("流水线执行完成！")
-        print("=" * 60)
-        for key, value in result.items():
-            print(f"  {key}: {value}")
-
-        return result
+        except SubtitleForgeError as e:
+            # 已知的 SubtitleForge 错误，直接抛出
+            logger.error(f"流水线异常: {e.message}")
+            raise
+        except (OSError, IOError) as e:
+            logger.error(f"文件操作失败: {e}")
+            raise
+        except Exception as e:
+            # 未预期的错误
+            logger.error(f"流水线发生未预期错误: {e}", exc_info=True)
+            raise SubtitleForgeError(f"流水线执行失败: {e}")
     
     def _export_text_result(self, sentences: List[Dict], output_path: str, style: str):
         """导出纯文本翻译结果"""
-        with open(output_path, 'w', encoding='utf-8') as f:
-            f.write(f"SubtitleForge v2 翻译结果\n")
-            f.write(f"风格: {style}\n")
-            f.write("=" * 40 + "\n\n")
-            for i, s in enumerate(sentences):
-                jp = s.get("text", "")
-                zh = s.get("translated_text", "")
-                ts = s.get("start", 0)
-                te = s.get("end", 0)
-                f.write(f"[{i+1}] {ts:.1f}s-{te:.1f}s\n")
-                f.write(f"    日文: {jp}\n")
-                f.write(f"    中文: {zh}\n\n")
-        
-        print(f"纯文本结果已保存: {output_path}")
-    
+        try:
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(f"SubtitleForge v2 翻译结果\n")
+                f.write(f"风格: {style}\n")
+                f.write("=" * 40 + "\n\n")
+                for i, s in enumerate(sentences):
+                    jp = s.get("text", "")
+                    zh = s.get("translated_text", "")
+                    ts = s.get("start", 0)
+                    te = s.get("end", 0)
+                    f.write(f"[{i+1}] {ts:.1f}s-{te:.1f}s\n")
+                    f.write(f"    日文: {jp}\n")
+                    f.write(f"    中文: {zh}\n\n")
+
+            logger.info(f"纯文本结果已保存: {output_path}")
+        except (OSError, IOError) as e:
+            logger.warning(f"保存纯文本结果失败: {e}")
+
     # ========== 阶段 8: 字幕烧录 ==========
-    
+
     def burn_subtitles(self, video_path: str, bilingual_srt: str, output_dir: str,
                        zh_font_size: int = 52, jp_font_size: int = 44,
                        font_name: str = "Microsoft YaHei") -> str:
@@ -866,16 +1089,23 @@ class SubtitlePipelineV2:
         使用 FFmpeg 的 subtitles 滤镜直接烧录 SRT 格式，
         而不是转换为 ASS 格式，以确保字幕时间戳完全对齐。
         """
-        print("\n[阶段 8/8] 字幕烧录到视频...")
+        logger.info("[阶段 8/8] 字幕烧录到视频")
 
-        # SRT 格式字幕可以直接使用 FFmpeg 的 subtitles 滤镜烧录
-        # 这样可以保证时间戳完全对齐，不会出现 ASS 格式的延迟问题
+        # 验证 SRT 文件存在
+        if not os.path.exists(bilingual_srt):
+            raise SubtitleBurnError(
+                f"字幕文件不存在: {bilingual_srt}"
+            )
+
+        # 确保输出目录存在
+        os.makedirs(output_dir, exist_ok=True)
+
         output_video = os.path.join(output_dir, "video_with_subtitles.mp4")
 
         # 转义 SRT 路径中的特殊字符
-        srt_escaped = bilingual_srt.replace('\\', '\\\\').replace(':', '\\:').replace("'", "\\'")
+        srt_escaped = bilingual_srt.replace(
+            '\\', '\\\\').replace(':', '\\:').replace("'", "\\'")
 
-        # 使用 subtitles 滤镜直接烧录 SRT
         cmd = [
             self._ffmpeg, '-i', video_path,
             '-vf', f"subtitles='{srt_escaped}'",
@@ -884,15 +1114,54 @@ class SubtitlePipelineV2:
             '-y', output_video
         ]
 
-        print(f"  执行: {' '.join(cmd)}")
+        cmd_str = ' '.join(cmd)
+        logger.debug(f"  FFmpeg 完整命令: {cmd_str}")
+        logger.info(f"  输入视频: {video_path}")
+        logger.info(f"  字幕文件: {bilingual_srt}")
+        logger.info(f"  输出视频: {output_video}")
 
-        result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace')
-        if result.returncode != 0:
-            print(f"  FFmpeg 错误:\n{result.stderr}")
-            raise RuntimeError(f"字幕烧录失败: {result.stderr}")
+        try:
+            result = subprocess.run(
+                cmd, capture_output=True, text=True,
+                encoding='utf-8', errors='replace'
+            )
 
-        print(f"  字幕已烧录到视频: {output_video}")
-        return output_video
+            if result.returncode != 0:
+                logger.error(f"  FFmpeg 返回码: {result.returncode}")
+                if result.stdout:
+                    logger.debug(f"  FFmpeg stdout (最后 1000 字符):\n{result.stdout[-1000:]}")
+                if result.stderr:
+                    logger.error(f"  FFmpeg stderr (最后 1500 字符):\n{result.stderr[-1500:]}")
+                raise SubtitleBurnError(
+                    f"FFmpeg 执行失败（返回码 {result.returncode}）: {result.stderr[-500:]}"
+                )
+
+            # 详细输出 FFmpeg 信息（调试用）
+            if result.stdout:
+                logger.debug(f"  FFmpeg stdout (最后 800 字符):\n{result.stdout[-800:]}")
+            if result.stderr:
+                logger.debug(f"  FFmpeg stderr (最后 800 字符):\n{result.stderr[-800:]}")
+
+            # 验证输出文件
+            if not os.path.exists(output_video):
+                raise SubtitleBurnError(
+                    f"FFmpeg 执行成功但输出文件未生成: {output_video}"
+                )
+
+            output_size = os.path.getsize(output_video)
+            if output_size == 0:
+                raise SubtitleBurnError(
+                    f"FFmpeg 输出文件为空（0 bytes）: {output_video}"
+                )
+
+            output_size_mb = output_size / (1024 * 1024)
+            logger.info(f"  输出文件大小: {output_size} bytes ({output_size_mb:.2f} MB)")
+            logger.info(f"  字幕已烧录到视频: {output_video}")
+            return output_video
+
+        except (subprocess.SubprocessError, OSError) as e:
+            logger.error(f"  字幕烧录执行失败: {e}")
+            raise SubtitleBurnError(str(e)) from e
     
     # ========== 兼容旧版接口 ==========
     
@@ -900,27 +1169,27 @@ class SubtitlePipelineV2:
         """兼容旧版 run() 接口（仅生成SRT，不翻译）"""
         os.makedirs(output_dir, exist_ok=True)
         
-        print("=" * 60)
-        print(f"开始处理视频: {video_path}")
-        print("=" * 60)
-        
-        print("\n[1/4] 提取音频...")
+        logger.info("=" * 60)
+        logger.info(f"开始处理视频: {video_path}")
+        logger.info("=" * 60)
+
+        logger.info("\n[1/4] 提取音频...")
         wav_path = self.extract_audio(video_path, output_dir)
-        
-        print("\n[2/4] 语音识别...")
+
+        logger.info("\n[2/4] 语音识别...")
         transcript = self.recognize_speech(wav_path, output_dir, language=source_lang)
-        
-        print("\n[3/4] 语义断句...")
+
+        logger.info("\n[3/4] 语义断句...")
         sentences = self.split_sentences(transcript, output_dir)
-        
-        print("\n[4/4] 生成 SRT 字幕...")
+
+        logger.info("\n[4/4] 生成 SRT 字幕...")
         srt_path = os.path.join(output_dir, "subtitle.srt")
         self.generate_srt(sentences, srt_path, True, False)
-        
-        print("\n" + "=" * 60)
-        print("流水线执行完成！")
-        print(f"  SRT 字幕: {srt_path}")
-        print("=" * 60)
+
+        logger.info("\n" + "=" * 60)
+        logger.info("流水线执行完成！")
+        logger.info(f"  SRT 字幕: {srt_path}")
+        logger.info("=" * 60)
         
         return {
             "wav_path": wav_path,

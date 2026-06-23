@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SubtitleForge · v2 字幕翻译工作室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 背景纹理层 -->
+<div class="grain" aria-hidden="true"></div>
+<div class="ambient-light" aria-hidden="true"></div>
+
+<!-- ===== 应用外壳：侧边栏 + 主区 ===== -->
+<div class="app-shell">
+
+  <!-- ===== 左边栏 ===== -->
+  <aside class="sidebar">
+    <div class="sb-brand">
+      <div class="rec-dot" aria-hidden="true"></div>
+      <div class="sb-title-block">
+        <h1 class="sb-title">SUBTITLEFORGE</h1>
+        <span class="sb-sub">v2 · 字幕翻译工作室</span>
+      </div>
+    </div>
+
+    <div class="sb-label">导航 · NAV</div>
+
+    <nav class="main-nav">
+      <div class="nav-item active" data-page="workshop">
+        <span class="nav-num">01</span>
+        <span class="nav-cn">制片室</span>
+        <span class="nav-en">WORKSHOP</span>
+      </div>
+      <div class="nav-item" data-page="library">
+        <span class="nav-num">02</span>
+        <span class="nav-cn">作品库</span>
+        <span class="nav-en">LIBRARY</span>
+      </div>
+      <div class="nav-item" data-page="config">
+        <span class="nav-num">03</span>
+        <span class="nav-cn">配置室</span>
+        <span class="nav-en">CONFIG</span>
+      </div>
+    </nav>
+
+    <div class="sb-footer">
+      <div class="sb-meta">
+        <span class="frame-counter">FRAME <span id="frameCount">000000</span></span>
+        <span class="session-id">SESSION 2026.06.18</span>
+        <span class="clock">00:00:00</span>
+      </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <span class="tt-icon" aria-hidden="true"></span>
+        <span class="tt-label">切换主题</span>
+        <span class="tt-state">DARK → LIGHT</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===== 主区 ===== -->
+  <div class="main-area">
+
+    <!-- ===== 顶部状态条 ===== -->
+    <div class="top-bar">
+      <div class="top-left">
+        <span class="top-kicker">LIVE TELEMETRY</span>
+      </div>
+      <div class="top-right">
+        <span class="top-pill">FRAME · <span id="timeCode">00:00:00:00</span></span>
+        <span class="top-pill">SESSION · 2026.06.18</span>
+      </div>
+    </div>
+
+    <!-- ===== 页面容器 ===== -->
+    <main class="pages">
+
+  <!-- =======================================
+       01 制片室 · WORKSHOP  [主工作区]
+       ======================================= -->
+  <section class="page page-workshop active" data-page="workshop">
+
+    <!-- 页面头部 -->
+    <div class="page-meta">
+      <div class="meta-left">
+        <span class="meta-label">制片室</span>
+        <span class="meta-sep">/</span>
+        <span class="meta-value">新建项目</span>
+      </div>
+      <div class="meta-right">
+        <span class="clock">22:15:42</span>
+      </div>
+    </div>
+
+    <!-- REEL 标签 -->
+    <div class="reel-line">
+      <span class="reel-label">REEL</span>
+      <span class="reel-num">001</span>
+      <span class="reel-rule"></span>
+      <span class="reel-note">新建项目 · 原始素材</span>
+    </div>
+
+    <!-- [A] 上传区 -->
+    <div class="drop-zone" id="dropZone">
+      <div class="drop-grid">
+        <div class="drop-left">
+          <span class="drop-kicker">A — 素材导入</span>
+          <h3 class="drop-title">拖拽文件至此，或点击选择</h3>
+          <p class="drop-formats">MP4 · MKV · AVI · MOV · WAV · MP3 · SRT · VTT · Max 8 GB</p>
+        </div>
+        <div class="drop-right">
+          <button class="btn-primary" id="fileBtn">选择文件 →</button>
+        </div>
+      </div>
+      <input type="file" id="fileInput" multiple style="display:none">
+    </div>
+
+    <!-- [B] 快速配置行 -->
+    <div class="quick-config">
+      <div class="qc-label">B · 项目参数</div>
+      <div class="qc-grid">
+        <div class="qc-field">
+          <span class="qc-kicker">源语言</span>
+          <select class="qc-select" id="sourceLang">
+            <option value="auto">自动检测</option>
+            <option value="ja">日语</option>
+            <option value="en">英语</option>
+            <option value="zh">中文</option>
+          </select>
+        </div>
+        <div class="qc-field">
+          <span class="qc-kicker">目标语言</span>
+          <select class="qc-select" id="targetLang">
+            <option value="zh">中文</option>
+            <option value="en">英语</option>
+            <option value="ja">日语</option>
+          </select>
+        </div>
+        <div class="qc-field">
+          <span class="qc-kicker">翻译风格</span>
+          <select class="qc-select" id="styleSelect">
+            <option value="anime">动漫字幕</option>
+            <option value="drama">影视剧集</option>
+            <option value="youtube">油管视频</option>
+            <option value="documentary">纪录长片</option>
+          </select>
+        </div>
+        <div class="qc-field">
+          <span class="qc-kicker">识别模型</span>
+          <select class="qc-select" id="modelSelect">
+            <option value="large-v3">Large V3</option>
+            <option value="medium">Medium</option>
+            <option value="small">Small</option>
+            <option value="base">Base</option>
+          </select>
+        </div>
+        <div class="qc-field" style="grid-column: span 2;">
+          <span class="qc-kicker">DeepSeek API Key</span>
+          <input class="qc-input" type="password" id="apiKey" placeholder="sk-... (留空则不翻译，直接输出原文)" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="qc-field">
+          <span class="qc-kicker">状态</span>
+          <span class="qc-status" id="pipelineStatus">INIT...</span>
+        </div>
+        <button class="btn-primary qc-action" id="runBtn">▶ 启动流水线</button>
+      </div>
+    </div>
+
+    <!-- [C] 流水线 · 电影胶片效果 -->
+    <div class="pipeline">
+      <div class="section-head">
+        <span class="sec-label">C · 处理流水线</span>
+        <span class="sec-sub">PIPELINE · 8 STAGES</span>
+      </div>
+      <div class="film-strip">
+        <div class="film-sprocket" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="film-frames">
+          <div class="fframe" data-step="1" data-stage="音频提取">
+            <div class="fframe-num">01</div>
+            <div class="fframe-title">音频提取</div>
+            <div class="fframe-en">AUDIO</div>
+            <div class="fframe-progress"><div class="fframe-progress-fill"></div></div>
+            <div class="fframe-indicator"></div>
+          </div>
+          <div class="fframe" data-step="2" data-stage="语音识别">
+            <div class="fframe-num">02</div>
+            <div class="fframe-title">语音识别</div>
+            <div class="fframe-en">WHISPER</div>
+            <div class="fframe-progress"><div class="fframe-progress-fill"></div></div>
+            <div class="fframe-indicator"></div>
+          </div>
+          <div class="fframe" data-step="3" data-stage="语义断句">
+            <div class="fframe-num">03</div>
+            <div class="fframe-title">语义断句</div>
+            <div class="fframe-en">SPLIT</div>
+            <div class="fframe-progress"><div class="fframe-progress-fill"></div></div>
+            <div class="fframe-indicator"></div>
+          </div>
+          <div class="fframe" data-step="4" data-stage="上下文翻译">
+            <div class="fframe-num">04</div>
+            <div class="fframe-title">上下文翻译</div>
+            <div class="fframe-en">TRANSLATE</div>
+            <div class="fframe-progress"><div class="fframe-progress-fill"></div></div>
+            <div class="fframe-indicator"></div>
+          </div>
+          <div class="fframe" data-step="5" data-stage="译后处理">
+            <div class="fframe-num">05</div>
+            <div class="fframe-title">译后处理</div>
+            <div class="fframe-en">PROCESS</div>
+            <div class="fframe-progress"><div class="fframe-progress-fill"></div></div>
+            <div class="fframe-indicator"></div>
+          </div>
+          <div class="fframe" data-step="6" data-stage="字幕生成">
+            <div class="fframe-num">06</div>
+            <div class="fframe-title">字幕生成</div>
+            <div class="fframe-en">SRT</div>
+            <div class="fframe-progress"><div class="fframe-progress-fill"></div></div>
+            <div class="fframe-indicator"></div>
+          </div>
+          <div class="fframe" data-step="7" data-stage="双语字幕">
+            <div class="fframe-num">07</div>
+            <div class="fframe-title">双语字幕</div>
+            <div class="fframe-en">BILINGUAL</div>
+            <div class="fframe-progress"><div class="fframe-progress-fill"></div></div>
+            <div class="fframe-indicator"></div>
+          </div>
+          <div class="fframe" data-step="8" data-stage="字幕烧录">
+            <div class="fframe-num">08</div>
+            <div class="fframe-title">字幕烧录</div>
+            <div class="fframe-en">BURN</div>
+            <div class="fframe-progress"><div class="fframe-progress-fill"></div></div>
+            <div class="fframe-indicator"></div>
+          </div>
+        </div>
+        <div class="film-sprocket" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- [C2] 任务状态 + 文件信息 + 输出结果 -->
+    <div class="task-panel" id="taskPanel">
+      <div class="file-info" id="fileInfo">
+        <div class="fi-icon">📄</div>
+        <div class="fi-details">
+          <div class="fi-name">尚未选择文件</div>
+          <div class="fi-meta">拖拽视频文件到上方区域，或点击"选择文件"</div>
+        </div>
+        <div class="fi-status idle">● IDLE</div>
+      </div>
+
+      <div class="file-location" id="fileLocation" style="display:none">
+        <div class="fl-row">
+          <div class="fl-label">上传目录</div>
+          <div class="fl-path" id="uploadPath">—</div>
+          <button class="btn-folder" data-folder="upload">📂 打开</button>
+        </div>
+        <div class="fl-row">
+          <div class="fl-label">输出目录</div>
+          <div class="fl-path" id="outputPath">—</div>
+          <button class="btn-folder" data-folder="output">📂 打开</button>
+        </div>
+        <div class="fl-row fl-row-primary">
+          <div class="fl-label">下载目录</div>
+          <div class="fl-path" id="downloadPath">—</div>
+          <button class="btn-folder" data-folder="download">⬇ 打开下载</button>
+        </div>
+      </div>
+
+      <div class="task-progress" id="taskProgress" style="display:none">
+        <div class="tp-label">
+          <span id="stageHint">流水线准备中...</span>
+        </div>
+        <div class="tp-bar">
+          <div class="tp-fill" id="progressFill"></div>
+        </div>
+        <div class="tp-value" id="progressValue">0%</div>
+      </div>
+
+      <div class="output-area" id="outputArea">
+        <div class="ol-head">📁 输出文件</div>
+        <div class="ol-list">
+          <div class="ol-empty">等待处理完成后，此处将显示输出文件</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- [D] 预览区 + 字幕列表 -->
+    <div class="work-section">
+      <div class="section-head">
+        <span class="sec-label">D · 预览</span>
+        <span class="sec-sub">MONITOR · TIMELINE</span>
+      </div>
+
+      <div class="preview-grid">
+        <!-- 视频监视器 -->
+        <div class="monitor">
+          <div class="monitor-top">
+            <span class="mon-dot rec">● REC</span>
+            <span class="mon-timecode" id="monTimecode">00:00:00:00</span>
+            <span class="mon-right" id="monInfo">等待视频</span>
+          </div>
+          <div class="monitor-screen">
+            <div class="screen-safe" aria-hidden="true"></div>
+            <div class="screen-crosshair" aria-hidden="true"></div>
+            <div class="screen-vignette" aria-hidden="true"></div>
+            <video id="videoPlayer" class="screen-video" controls></video>
+            <div class="screen-subtitle" id="screenSubtitle">
+              <div class="ss-cn" id="ssCn">尚未导入视频</div>
+              <div class="ss-en" id="ssEn">NO VIDEO LOADED</div>
+            </div>
+          </div>
+          <div class="monitor-bottom">
+            <span>PROGRAM · 主监视器</span>
+            <span class="mon-zoom" id="monZoom">—</span>
+          </div>
+        </div>
+
+        <!-- 字幕时间轴 -->
+        <div class="timeline">
+          <div class="tl-head">
+            <span>字幕时间轴</span>
+            <span class="tl-count" id="tlCount">0 LINES</span>
+          </div>
+          <div class="tl-list" id="tlList">
+            <div class="tl-empty" id="tlEmpty">等待处理完成后，此处将显示字幕内容</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- [E] 输出产物 + 日志 -->
+    <div class="work-section">
+      <div class="section-head">
+        <span class="sec-label">E · 输出与日志</span>
+        <span class="sec-sub">OUTPUT · SYSTEM LOG</span>
+      </div>
+
+      <div class="output-log-grid">
+        <!-- 输出产物 -->
+        <div class="output-list">
+          <div class="ol-head">输出产物</div>
+          <div class="ol-rows">
+            <div class="ol-row">
+              <span class="ol-icon">📼</span>
+              <div class="ol-meta">
+                <div class="ol-name">project_burned.mp4</div>
+                <div class="ol-info">MP4 · H.264 · 1920×1080 · 240 MB</div>
+              </div>
+              <span class="ol-size">240M</span>
+            </div>
+            <div class="ol-row">
+              <span class="ol-icon">📝</span>
+              <div class="ol-meta">
+                <div class="ol-name">project.zh.srt</div>
+                <div class="ol-info">中文字幕 · 1,248 lines</div>
+              </div>
+              <span class="ol-size">86K</span>
+            </div>
+            <div class="ol-row">
+              <span class="ol-icon">📝</span>
+              <div class="ol-meta">
+                <div class="ol-name">project.ja.srt</div>
+                <div class="ol-info">原始字幕 · 1,248 lines</div>
+              </div>
+              <span class="ol-size">78K</span>
+            </div>
+            <div class="ol-row">
+              <span class="ol-icon">📑</span>
+              <div class="ol-meta">
+                <div class="ol-name">project.log</div>
+                <div class="ol-info">运行日志 · UTF-8</div>
+              </div>
+              <span class="ol-size">12K</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =======================================
+       02 作品库 · LIBRARY
+       ======================================= -->
+  <section class="page page-library" data-page="library">
+    <div class="page-meta">
+      <div class="meta-left">
+        <span class="meta-label">作品库</span>
+        <span class="meta-sep">/</span>
+        <span class="meta-value">全部作品 · 12</span>
+      </div>
+      <div class="meta-right">
+        <span class="clock">22:15:42</span>
+      </div>
+    </div>
+
+    <div class="reel-line">
+      <span class="reel-label">REEL</span>
+      <span class="reel-num">002</span>
+      <span class="reel-rule"></span>
+      <span class="reel-note">历史档案 · 项目归档</span>
+    </div>
+    <!-- 影片列表 - 横向列表布局 -->
+    <div class="library-list">
+      <div class="lib-row">
+        <span class="lib-reel">R—001</span>
+        <div class="lib-visual lib-v-1"><span class="lib-strip"></span></div>
+        <div class="lib-main">
+          <div class="lib-title">自然之声 · 纪录片</div>
+          <div class="lib-sub">EN → ZH · 24 min · 2026.05.12 · MP4</div>
+        </div>
+        <span class="lib-status">已完成</span>
+        <button class="lib-action">↗ 打开</button>
+      </div>
+      <div class="lib-row">
+        <span class="lib-reel">R—002</span>
+        <div class="lib-visual lib-v-2"><span class="lib-strip"></span></div>
+        <div class="lib-main">
+          <div class="lib-title">机甲纪元 E06 · 动画番剧</div>
+          <div class="lib-sub">JA → ZH · 23 min · 2026.05.18 · MKV</div>
+        </div>
+        <span class="lib-status">已完成</span>
+        <button class="lib-action">↗ 打开</button>
+      </div>
+      <div class="lib-row">
+        <span class="lib-reel">R—003</span>
+        <div class="lib-visual lib-v-3"><span class="lib-strip"></span></div>
+        <div class="lib-main">
+          <div class="lib-title">科技创业者访谈</div>
+          <div class="lib-sub">EN → ZH · 45 min · 2026.06.01 · MP4</div>
+        </div>
+        <span class="lib-status">已完成</span>
+        <button class="lib-action">↗ 打开</button>
+      </div>
+      <div class="lib-row">
+        <span class="lib-reel">R—004</span>
+        <div class="lib-visual lib-v-4"><span class="lib-strip"></span></div>
+        <div class="lib-main">
+          <div class="lib-title">技术讲解视频 · YouTube</div>
+          <div class="lib-sub">EN → ZH · 18 min · 2026.06.10 · MP4</div>
+        </div>
+        <span class="lib-status">处理中</span>
+        <button class="lib-action">↗ 打开</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- =======================================
+       03 配置室 · CONFIG
+       ======================================= -->
+  <section class="page page-config" data-page="config">
+    <div class="page-meta">
+      <div class="meta-left">
+        <span class="meta-label">配置室</span>
+        <span class="meta-sep">/</span>
+        <span class="meta-value">系统与引擎</span>
+      </div>
+      <div class="meta-right">
+        <span class="clock">22:15:42</span>
+      </div>
+    </div>
+
+    <div class="reel-line">
+      <span class="reel-label">REEL</span>
+      <span class="reel-num">004</span>
+      <span class="reel-rule"></span>
+      <span class="reel-note">系统与引擎配置</span>
+    </div>
+    <!-- 4 个配置模块 - 纵向区块 -->
+    <div class="config-stack">
+
+      <!-- 1. API 密钥 -->
+      <div class="config-block">
+        <div class="cb-head">
+          <span class="cb-num">01</span>
+          <span class="cb-title">API 密钥管理</span>
+          <span class="cb-en">ENCRYPTED CREDENTIALS</span>
+        </div>
+        <div class="cb-grid">
+          <div class="cb-field">
+            <span class="cb-kicker">DeepSeek API Key</span>
+            <div class="cb-input-wrap">
+              <input type="password" class="cb-input" id="apiKey" value="sk-project-cinema-2026-xxxxxxxx">
+              <button class="cb-toggle" id="toggleKey">显示</button>
+            </div>
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">Endpoint</span>
+            <input type="text" class="cb-input" value="https://api.deepseek.com/v1">
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">模型</span>
+            <select class="cb-input">
+              <option>deepseek-chat</option>
+              <option>deepseek-reasoner</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 字幕样式 -->
+      <div class="config-block">
+        <div class="cb-head">
+          <span class="cb-num">02</span>
+          <span class="cb-title">字幕样式</span>
+          <span class="cb-en">VISUAL PRESET</span>
+        </div>
+        <div class="cb-grid">
+          <div class="cb-field cb-field-wide">
+            <span class="cb-kicker">中文字号 <span id="fsLabel" class="cb-kicker-val">52px</span></span>
+            <input type="range" min="24" max="80" value="52" class="cb-slider" id="fontSize">
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">字体</span>
+            <select class="cb-input">
+              <option>微软雅黑 · Microsoft YaHei</option>
+              <option>思源黑体 · Source Han</option>
+              <option>苹方 · PingFang SC</option>
+            </select>
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">字幕位置</span>
+            <select class="cb-input">
+              <option>底部居中</option>
+              <option>底部偏左</option>
+              <option>顶部居中</option>
+            </select>
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">双语模式</span>
+            <select class="cb-input">
+              <option>中文在上 · EN 在下</option>
+              <option>仅显示中文</option>
+              <option>仅显示原文</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 识别引擎 -->
+      <div class="config-block">
+        <div class="cb-head">
+          <span class="cb-num">03</span>
+          <span class="cb-title">识别引擎</span>
+          <span class="cb-en">ASR ENGINE</span>
+        </div>
+        <div class="cb-grid">
+          <div class="cb-field">
+            <span class="cb-kicker">模型类型</span>
+            <select class="cb-input">
+              <option>faster-whisper</option>
+              <option>FunASR</option>
+              <option>WhisperX</option>
+            </select>
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">模型大小</span>
+            <select class="cb-input">
+              <option>large-v3</option>
+              <option>medium</option>
+              <option>small</option>
+              <option>base</option>
+            </select>
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">计算设备</span>
+            <select class="cb-input">
+              <option>GPU · CUDA</option>
+              <option>CPU</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 输出 -->
+      <div class="config-block">
+        <div class="cb-head">
+          <span class="cb-num">04</span>
+          <span class="cb-title">输出配置</span>
+          <span class="cb-en">EXPORT</span>
+        </div>
+        <div class="cb-grid">
+          <div class="cb-field">
+            <span class="cb-kicker">视频编码</span>
+            <select class="cb-input">
+              <option>H.264 · MP4</option>
+              <option>H.265 · MP4</option>
+              <option>仅 SRT 文件</option>
+            </select>
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">输出目录</span>
+            <input type="text" class="cb-input" value="D:\Cinema\Translated">
+          </div>
+          <div class="cb-field">
+            <span class="cb-kicker">烧录速度</span>
+            <select class="cb-input">
+              <option>快速</option>
+              <option>标准</option>
+              <option>高质量</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 保存按钮 -->
+    <div class="action-row">
+      <button class="btn-primary" id="saveBtn">▶ 保存配置</button>
+      <button class="btn-ghost">↻ 还原默认</button>
+    </div>
+
+  </section>
+</main>
+
+    <!-- ===== 底部 ===== -->
+    <footer class="foot-bar">
+      <span>© 2026 SUBTITLEFORGE · 电影级字幕翻译</span>
+      <span class="foot-right">v2.0.0-alpha · BUILD 20260618</span>
+    </footer>
+
+  </div>
+  <!-- /main-area -->
+</div>
+<!-- /app-shell -->
+
+<script src="app.js"></script>
+</body>
+</html>

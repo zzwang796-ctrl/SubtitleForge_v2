@@ -9,10 +9,31 @@ import os
 import json
 import time
 import re
+import random
 import requests
-from typing import List, Dict, Optional, Union
+from typing import List, Dict, Optional, Union, Tuple
 from dataclasses import dataclass, asdict
 from enum import Enum
+
+# 添加项目根目录到路径
+import sys
+MODULE_DIR = os.path.dirname(os.path.abspath(__file__))
+if MODULE_DIR not in sys.path:
+    sys.path.insert(0, MODULE_DIR)
+
+# 统一日志和异常
+from logging_setup import get_logger
+from exceptions import (
+    APIKeyMissingError,
+    APIRateLimitError,
+    APIAuthenticationError,
+    APIConnectionError,
+    APIResponseParseError,
+    APITimeoutError,
+    TranslationBatchError,
+)
+
+logger = get_logger("translator")
 
 
 class TranslationStyle(Enum):
@@ -55,7 +76,8 @@ class ContextAwareTranslator:
             # 尝试从环境变量读取
             self.config.api_key = os.getenv("DEEPSEEK_API_KEY") or os.getenv("OPENAI_API_KEY")
             if not self.config.api_key:
-                raise ValueError("API Key 不能为空，请设置环境变量 DEEPSEEK_API_KEY 或通过参数传入")
+                raise APIKeyMissingError(self.config.provider.upper())
+        logger.debug(f"配置验证通过: provider={self.config.provider}, style={self.config.style}")
     
     def _load_style_prompts(self):
         """加载不同风格的 System Prompt"""
@@ -240,10 +262,10 @@ class ContextAwareTranslator:
             return []
 
         batch_size = batch_size or self.config.batch_size
-        results = []
+        results: List[Dict] = []
         total_batches = (len(sentences) + batch_size - 1) // batch_size
 
-        print(f"开始上下文感知翻译，共 {len(sentences)} 句，批次大小: {batch_size}")
+        logger.info(f"开始上下文感知翻译，共 {len(sentences)} 句，{total_batches} 个批次")
 
         for batch_idx in range(0, len(sentences), batch_size):
             batch = sentences[batch_idx:batch_idx + batch_size]
@@ -253,7 +275,6 @@ class ContextAwareTranslator:
             items_text = ""
             for i, s in enumerate(batch):
                 idx = batch_idx + i
-                # 预处理文本
                 text = self._preprocess_text(s["text"])
                 items_text += f"[{idx}] {text}\n"
 
@@ -275,41 +296,116 @@ class ContextAwareTranslator:
 
 请将以上 {len(batch)} 个句子翻译成中文，保持上下文连贯和语气一致。返回JSON数组。"""
 
-            print(f"  翻译批次 {current_batch}/{total_batches} "
-                  f"(句子 {batch_idx+1}-{min(batch_idx+batch_size, len(sentences))})")
+            logger.info(
+                f"  批次 {current_batch}/{total_batches} "
+                f"(句子 {batch_idx+1}-{min(batch_idx+batch_size, len(sentences))})"
+            )
 
-            # 发送批次进度回调
             if progress_callback and len(batch) > 0:
                 first_text = batch[0].get("text", "")[:40]
                 progress_callback(current_batch, total_batches, first_text)
 
+            batch_translations: List[str] = []
             try:
-                # 调用 API
                 if self.config.provider == "deepseek":
-                    translations = self._call_deepseek_api(system_prompt, user_prompt, len(batch))
+                    batch_translations = self._call_deepseek_api(system_prompt, user_prompt, len(batch))
                 else:
-                    translations = self._call_openai_api(system_prompt, user_prompt, len(batch))
+                    batch_translations = self._call_openai_api(system_prompt, user_prompt, len(batch))
 
-                # 合并结果
-                for i, s in enumerate(batch):
-                    s_copy = dict(s)
-                    if i < len(translations):
-                        s_copy["translated_text"] = translations[i]
-                    else:
-                        s_copy["translated_text"] = s_copy["text"]  # 失败时保留原文
-                    results.append(s_copy)
-                
-                time.sleep(0.5)  # API 限流
-                
+                logger.info(f"  批次 {current_batch} 翻译成功，{len(batch_translations)} 句")
+
+            except (APIRateLimitError, APIAuthenticationError) as e:
+                # 这些错误需要立即中断，不能降级
+                logger.error(f"  批次 {current_batch} 致命错误: {e.message}")
+                raise
+            except (APIConnectionError, APITimeoutError, APIResponseParseError, TranslationBatchError) as e:
+                logger.warning(f"  批次 {current_batch} 翻译失败: {e.message}，降级为单句模式")
+                # 降级为单句翻译
+                batch_translations = self._translate_batch_fallback(batch, batch_idx, sentences)
+            except Exception as e:  # 捕获其他未预期的异常
+                logger.error(f"  批次 {current_batch} 翻译发生未预期错误: {e}")
+                batch_translations = self._translate_batch_fallback(batch, batch_idx, sentences)
+
+            # 合并结果
+            for i, s in enumerate(batch):
+                s_copy = dict(s)
+                if i < len(batch_translations) and batch_translations[i]:
+                    s_copy["translated_text"] = batch_translations[i]
+                else:
+                    s_copy["translated_text"] = s_copy["text"]  # 最后兜底：保留原文
+                results.append(s_copy)
+
+            time.sleep(0.3)  # API 限流
+
+        logger.info(f"翻译完成，共处理 {len(results)} 句")
+        return results
+
+    def _translate_batch_fallback(self, batch: List[Dict], batch_idx: int,
+                                   all_sentences: List[Dict]) -> List[str]:
+        """
+        批次翻译失败时的降级策略：逐句翻译
+
+        当批量翻译失败（如网络问题、API 返回格式错误等）时，
+        回退到逐句翻译模式，每句单独请求 API，提高成功率。
+
+        Args:
+            batch: 当前批次的句子
+            batch_idx: 当前批次起始索引
+            all_sentences: 全部句子（用于构建上下文）
+
+        Returns:
+            翻译结果列表（长度与 batch 相同）
+        """
+        results: List[str] = []
+        provider = self.config.provider.upper()
+
+        for i, sent in enumerate(batch):
+            global_idx = batch_idx + i
+            text = self._preprocess_text(sent["text"])
+
+            # 单句上下文（前2句）
+            context = ""
+            start = max(0, global_idx - 2)
+            for j in range(start, global_idx):
+                if j < len(all_sentences):
+                    prev = self._preprocess_text(all_sentences[j]["text"])
+                    context += f"上文: {prev}\n"
+
+            system_prompt = self.style_prompts.get(self.config.style, self.style_prompts[TranslationStyle.ANIME])
+            user_prompt = f"""上下文：
+{context}
+待翻译句子：
+[0] {text}
+
+请将以上句子翻译成中文，保持自然口语。返回JSON数组格式，只包含1个翻译结果。"""
+
+            try:
+                if self.config.provider == "deepseek":
+                    translations = self._call_deepseek_api(system_prompt, user_prompt, 1)
+                else:
+                    translations = self._call_openai_api(system_prompt, user_prompt, 1)
+
+                if translations and len(translations) > 0:
+                    results.append(translations[0])
+                    logger.debug(f"    单句 {global_idx} 翻译成功: {text[:20]}...")
+                else:
+                    results.append(sent["text"])
+                    logger.warning(f"    单句 {global_idx} 翻译结果为空，保留原文")
+
+            except (APIRateLimitError, APIAuthenticationError):
+                # 限流或认证失败，无法继续
+                results.append(sent["text"])
+                logger.warning(f"    单句 {global_idx} API认证/限流失败，保留原文")
+            except (APIConnectionError, APITimeoutError, APIResponseParseError) as e:
+                results.append(sent["text"])
+                logger.warning(f"    单句 {global_idx} 翻译失败: {e.message}，保留原文")
             except Exception as e:
-                print(f"  批次翻译失败: {e}")
-                # 失败时保留原文
-                for s in batch:
-                    s_copy = dict(s)
-                    s_copy["translated_text"] = s_copy["text"]
-                    results.append(s_copy)
-        
-        print(f"翻译完成，共处理 {len(results)} 句")
+                results.append(sent["text"])
+                logger.error(f"    单句 {global_idx} 未预期错误: {e}，保留原文")
+
+            time.sleep(0.5)  # 单句翻译增加一点延迟避免频繁请求
+
+        logger.info(f"  单句降级模式完成，{len(results)} 句")
         return results
     
     def _parse_translation_response(self, content: str, expected_count: int) -> List[str]:
@@ -347,7 +443,7 @@ class ContextAwareTranslator:
         
         # 数量匹配
         if len(translations) != expected_count:
-            print(f"  JSON解析: 期望 {expected_count} 个翻译，实际返回 {len(translations)} 个")
+            logger.warning(f"JSON解析: 期望 {expected_count} 个翻译，实际返回 {len(translations)} 个")
             if len(translations) > expected_count:
                 translations = translations[:expected_count]
             else:
@@ -356,14 +452,12 @@ class ContextAwareTranslator:
         return translations
     
     def _call_deepseek_api(self, system_prompt: str, user_prompt: str, expected_count: int) -> List[str]:
-        """调用 DeepSeek API（带指数退避重试）"""
-        import random
-        
+        """调用 DeepSeek API（带指数退避重试 + 精细化异常处理）"""
         headers = {
             "Authorization": f"Bearer {self.config.api_key}",
             "Content-Type": "application/json"
         }
-        
+
         payload = {
             "model": self.config.model,
             "messages": [
@@ -374,44 +468,43 @@ class ContextAwareTranslator:
             "max_tokens": self.config.max_tokens,
             "stream": False
         }
-        
+
         max_retries = 5
-        base_delay = 2  # 基础退避时间（秒）
-        max_delay = 60   # 最大退避时间（秒）
-        
-        last_error = None
+        base_delay = 2
+        max_delay = 60
+        api_url = "https://api.deepseek.com/v1/chat/completions"
+
+        last_error: Optional[Exception] = None
         for attempt in range(max_retries):
             try:
-                resp = requests.post(
-                    "https://api.deepseek.com/v1/chat/completions",
-                    headers=headers,
-                    json=payload,
-                    timeout=90
-                )
-                
+                resp = requests.post(api_url, headers=headers, json=payload, timeout=90)
+
                 # 处理 Rate Limit (429)
                 if resp.status_code == 429:
-                    # 尝试从响应头获取 retry-after
                     retry_after = resp.headers.get("Retry-After")
-                    if retry_after:
-                        delay = int(retry_after)
-                    else:
-                        # 指数退避 + 随机抖动
-                        delay = min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
-                    
+                    delay = int(retry_after) if retry_after else \
+                        min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
+
                     if attempt < max_retries - 1:
-                        print(f"  API 限流 (429)，等待 {delay:.1f} 秒后重试 (第 {attempt+1}/{max_retries} 次)...")
+                        logger.warning(f"API 限流 (429)，等待 {delay:.1f} 秒后重试 ({attempt+1}/{max_retries})")
                         time.sleep(delay)
                         continue
                     else:
-                        raise RuntimeError(f"API 限流 (429)，已达最大重试次数")
-                
+                        raise APIRateLimitError("DEEPSEEK", delay)
+
+                # 处理认证失败 (401)
+                if resp.status_code == 401:
+                    raise APIAuthenticationError("DEEPSEEK")
+
+                # 处理其他 HTTP 错误
+                if resp.status_code >= 400:
+                    logger.warning(f"API 返回 HTTP {resp.status_code}，{resp.text[:200]}")
+
                 resp.raise_for_status()
 
                 data = resp.json()
                 content = data["choices"][0]["message"]["content"].strip()
 
-                # 增强的 JSON 解析容错
                 translations = self._parse_translation_response(content, expected_count)
                 return translations
 
@@ -419,33 +512,58 @@ class ContextAwareTranslator:
                 last_error = e
                 if attempt < max_retries - 1:
                     delay = min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
-                    print(f"  API 返回解析失败 ({e})，{delay:.1f} 秒后重试...")
+                    logger.warning(f"API 返回解析失败 ({e})，{delay:.1f} 秒后重试 ({attempt+1}/{max_retries})")
                     time.sleep(delay)
                     continue
+                raise APIResponseParseError("DEEPSEEK", str(e)) from e
+
+            except requests.exceptions.Timeout as e:
+                last_error = e
+                if attempt < max_retries - 1:
+                    delay = min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
+                    logger.warning(f"API 请求超时，{delay:.1f} 秒后重试 ({attempt+1}/{max_retries})")
+                    time.sleep(delay)
+                    continue
+                raise APITimeoutError("DEEPSEEK", 90) from e
+
+            except requests.exceptions.ConnectionError as e:
+                last_error = e
+                if attempt < max_retries - 1:
+                    delay = min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
+                    logger.warning(f"API 连接失败，{delay:.1f} 秒后重试 ({attempt+1}/{max_retries})")
+                    time.sleep(delay)
+                    continue
+                raise APIConnectionError("DEEPSEEK", str(e)) from e
+
+            except requests.exceptions.HTTPError:
+                # HTTP 错误已经在上面单独处理了（429、401）
+                # 其他 HTTPError 直接让它触发最后错误
+                raise
             except requests.exceptions.RequestException as e:
                 last_error = e
                 if attempt < max_retries - 1:
                     delay = min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
-                    print(f"  API 请求失败 ({e})，{delay:.1f} 秒后重试...")
+                    logger.warning(f"API 请求异常 ({e})，{delay:.1f} 秒后重试 ({attempt+1}/{max_retries})")
                     time.sleep(delay)
                     continue
+                raise APIConnectionError("DEEPSEEK", str(e)) from e
 
-        raise RuntimeError(f"DeepSeek API 调用失败 (重试{max_retries}次后): {last_error}")
+        # 正常情况下应该在循环中返回或抛出异常，这里是冗余保护
+        raise APIConnectionError("DEEPSEEK", f"重试 {max_retries} 次后仍失败: {last_error}")
     
     def _call_openai_api(self, system_prompt: str, user_prompt: str, expected_count: int) -> List[str]:
-        """调用 OpenAI API（带指数退避重试）"""
+        """调用 OpenAI API（带指数退避重试 + 精细化异常处理）"""
         import openai
-        import random
-        
+
         max_retries = 5
-        base_delay = 2  # 基础退避时间（秒）
-        max_delay = 60   # 最大退避时间（秒）
-        
-        last_error = None
+        base_delay = 2
+        max_delay = 60
+
+        last_error: Optional[Exception] = None
         for attempt in range(max_retries):
             try:
                 client = openai.OpenAI(api_key=self.config.api_key)
-                
+
                 response = client.chat.completions.create(
                     model=self.config.model,
                     messages=[
@@ -455,36 +573,44 @@ class ContextAwareTranslator:
                     temperature=self.config.temperature,
                     max_tokens=self.config.max_tokens
                 )
-                
+
                 content = response.choices[0].message.content.strip()
-                
-                # 增强的 JSON 解析容错
+
                 translations = self._parse_translation_response(content, expected_count)
                 return translations
-                
+
             except openai.RateLimitError as e:
                 last_error = e
                 if attempt < max_retries - 1:
                     delay = min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
-                    print(f"  OpenAI 限流 (RateLimitError)，{delay:.1f} 秒后重试...")
+                    logger.warning(f"OpenAI 限流，{delay:.1f} 秒后重试 ({attempt+1}/{max_retries})")
                     time.sleep(delay)
                     continue
+                raise APIRateLimitError("OPENAI", delay) from e
+
+            except openai.AuthenticationError as e:
+                logger.error(f"OpenAI 认证失败: {e}")
+                raise APIAuthenticationError("OPENAI") from e
+
             except (json.JSONDecodeError, ValueError, KeyError) as e:
                 last_error = e
                 if attempt < max_retries - 1:
                     delay = min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
-                    print(f"  API 返回解析失败 ({e})，{delay:.1f} 秒后重试...")
+                    logger.warning(f"API 返回解析失败 ({e})，{delay:.1f} 秒后重试 ({attempt+1}/{max_retries})")
                     time.sleep(delay)
                     continue
+                raise APIResponseParseError("OPENAI", str(e)) from e
+
             except Exception as e:
                 last_error = e
                 if attempt < max_retries - 1:
                     delay = min(base_delay * (2 ** attempt) + random.uniform(0, 1), max_delay)
-                    print(f"  API 请求失败 ({e})，{delay:.1f} 秒后重试...")
+                    logger.warning(f"API 请求异常 ({e})，{delay:.1f} 秒后重试 ({attempt+1}/{max_retries})")
                     time.sleep(delay)
                     continue
-        
-        raise RuntimeError(f"OpenAI API 调用失败 (重试{max_retries}次后): {last_error}")
+                raise APIConnectionError("OPENAI", str(e)) from e
+
+        raise APIConnectionError("OPENAI", f"重试 {max_retries} 次后仍失败: {last_error}")
     
     def translate_scene(self, sentences: List[Dict], scene_description: str = "") -> List[Dict]:
         """
@@ -514,14 +640,14 @@ class ContextAwareTranslator:
         if scene_description:
             user_prompt = f"场景描述: {scene_description}\n\n" + user_prompt
         
-        print(f"开始场景翻译，共 {len(sentences)} 句")
-        
+        logger.info(f"开始场景翻译，共 {len(sentences)} 句")
+
         try:
             if self.config.provider == "deepseek":
                 translations = self._call_deepseek_api(system_prompt, user_prompt, len(sentences))
             else:
                 translations = self._call_openai_api(system_prompt, user_prompt, len(sentences))
-            
+
             results = []
             for i, s in enumerate(sentences):
                 s_copy = dict(s)
@@ -530,12 +656,17 @@ class ContextAwareTranslator:
                 else:
                     s_copy["translated_text"] = s_copy["text"]
                 results.append(s_copy)
-            
+
             return results
-            
+
+        except (APIRateLimitError, APIAuthenticationError) as e:
+            logger.error(f"场景翻译失败: {e.message}")
+            return [dict(s, translated_text=s["text"]) for s in sentences]
+        except (APIConnectionError, APITimeoutError, APIResponseParseError) as e:
+            logger.warning(f"场景翻译 API 失败: {e.message}")
+            return [dict(s, translated_text=s["text"]) for s in sentences]
         except Exception as e:
-            print(f"场景翻译失败: {e}")
-            # 失败时保留原文
+            logger.error(f"场景翻译未预期错误: {e}")
             return [dict(s, translated_text=s["text"]) for s in sentences]
 
 
@@ -594,7 +725,7 @@ class ContextAwareTranslator:
 ["修正翻译1", "修正翻译2", ...]"""
 
         total = len(sentences)
-        print(f"开始二次精翻校对，共 {total} 句，批次大小: {BATCH_SIZE}")
+        logger.info(f"开始二次精翻校对，共 {total} 句，批次大小: {BATCH_SIZE}")
 
         for batch_idx in range(0, total, BATCH_SIZE):
             batch = sentences[batch_idx:batch_idx + BATCH_SIZE]
@@ -632,8 +763,10 @@ class ContextAwareTranslator:
             user_prompt = "上下文与待审查句子（「待审查」标记的为本批需要审查修正的句子）：\n\n" + "\n".join(context_parts)
             user_prompt += f"\n\n请审查以上 {len(batch)} 个「待审查」句子，返回修正后的 JSON 数组。"
 
-            print(f"  校对批次 {batch_idx // BATCH_SIZE + 1}/{(total + BATCH_SIZE - 1) // BATCH_SIZE} "
-                  f"(句子 {batch_idx + 1}-{min(batch_idx + BATCH_SIZE, total)})")
+            logger.info(
+                f"  校对批次 {batch_idx // BATCH_SIZE + 1}/{(total + BATCH_SIZE - 1) // BATCH_SIZE} "
+                f"(句子 {batch_idx + 1}-{min(batch_idx + BATCH_SIZE, total)})"
+            )
 
             try:
                 if self.config.provider == "deepseek":
@@ -647,14 +780,22 @@ class ContextAwareTranslator:
                         s_copy["translated_text"] = refined_texts[i]
                     results.append(s_copy)
 
-                time.sleep(0.5)
+                time.sleep(0.3)
 
+            except (APIRateLimitError, APIAuthenticationError) as e:
+                logger.error(f"  校对批次致命错误: {e.message}")
+                for s in batch:
+                    results.append(dict(s))
+            except (APIConnectionError, APITimeoutError, APIResponseParseError) as e:
+                logger.warning(f"  校对批次失败: {e.message}，保留原译文")
+                for s in batch:
+                    results.append(dict(s))
             except Exception as e:
-                print(f"  校对批次失败: {e}，保留原译文")
+                logger.error(f"  校对批次未预期错误: {e}，保留原译文")
                 for s in batch:
                     results.append(dict(s))
 
-        print(f"二次精翻校对完成，共处理 {len(results)} 句")
+        logger.info(f"二次精翻校对完成，共处理 {len(results)} 句")
         return results
 
 
